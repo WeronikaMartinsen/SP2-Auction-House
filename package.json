@@ -2,6 +2,7 @@
   "name": "sp2-auction-house",
   "version": "1.0.0",
   "description": "Semester Project 2",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +15,15 @@
     "type": "git",
     "url": "git+https://github.com/WeronikaMartinsen/SP2-Auction-House.git"
   },
-  "author": "Weronika Martinsen",
+  "keywords": [
+    "CSS",
+    "API",
+    "JS",
+    "Bootstrap",
+    "SCSS",
+    "SASS"
+  ],
+  "author": "Weronika Martinsen <wb3167@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/WeronikaMartinsen/SP2-Auction-House/issues"
