@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/WeronikaMartinsen/SP2-Auction-House/issues"
   },
-  "homepage": "https://github.com/WeronikaMartinsen/SP2-Auction-House#readme"
+  "homepage": "https://github.com/WeronikaMartinsen/SP2-Auction-House#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  }
 }
