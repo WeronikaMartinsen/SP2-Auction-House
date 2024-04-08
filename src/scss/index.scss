@@ -1,6 +1,6 @@
 $primary: #fb642d;
 $secondary: #f1ece9;
-$light: #ced4da;
+$light: #e9ecef;
 $dark: #353535;
 $success: #03a696;
 $danger: #f3033c;
@@ -52,4 +52,22 @@ a {
 
 .custom-toggler {
   border: none;
+}
+
+.navbar-collapse {
+  padding: 10px; /* Add padding */
+  border-radius: 10px; /* Add border radius */
+  width: max-content;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link {
+  display: inline-block;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: bold; /* Make the active link bold */
+}
+.custom-hero-size {
+  width: 15em;
 }
