@@ -38,6 +38,18 @@ a {
 .custom-letter-spacing {
   letter-spacing: 0.1em;
 }
+
+.custom-avatar-size {
+  width: 1.8em;
+  height: auto;
+}
+
+// NAVBAR
+
+.custom-collapse {
+  display: flex;
+}
+
 .custom-toggler {
   border: none;
 }
