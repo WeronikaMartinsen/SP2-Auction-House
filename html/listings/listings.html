@@ -51,7 +51,7 @@
             <span class="fa-solid fa-bars"></span>
           </button>
           <div class="float-left">
-            <a class="navbar-brand" href="#"
+            <a class="navbar-brand" href="listings.html"
               ><img
                 class="custom-logo-size-feed"
                 src="/images/logo-bidme.png"
@@ -60,26 +60,21 @@
           </div>
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="listings.html"
+                  >Home</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
               </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link disabled"
-                  href="#"
-                  tabindex="-1"
-                  aria-disabled="true"
-                  >Disabled</a
-                >
-              </li>
             </ul>
           </div>
-          <div class="">
-            <!-- Added div with ml-auto class -->
+          <div>
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">
@@ -95,15 +90,22 @@
       </nav>
     </header>
     <section>
-      <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="container mt-3">
+        <form class="d-flex p-0">
+          <input
+            class="form-control border border-dark"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-success border border-dark"
+            type="submit"
+          >
+            <i class="fa-solid fa-magnifying-glass text-primary"></i>
+          </button>
+        </form>
+      </div>
     </section>
     <section>
       <div class="listings"></div>
