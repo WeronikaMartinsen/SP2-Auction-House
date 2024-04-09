@@ -1,5 +1,5 @@
 $primary: #fb642d;
-$secondary: #f1ece9;
+$secondary: #ced4da;
 $light: #e9ecef;
 $dark: #353535;
 $success: #03a696;
@@ -70,4 +70,7 @@ a {
 }
 .custom-hero-size {
   width: 15em;
+}
+.custom-width-inputs {
+  max-width: 30em;
 }
