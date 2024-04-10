@@ -78,3 +78,30 @@ a {
 .custom-input-size {
   max-width: 120em;
 }
+
+.search_icon {
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: $primary;
+  text-decoration: none;
+}
+
+.searchbar {
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  width: 600px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 10px;
+}
+.custom-hover-search:hover,
+.custom-hover-search:active,
+.custom-hover-search:focus {
+  outline: none;
+}
