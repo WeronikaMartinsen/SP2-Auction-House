@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="listings.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="listings.html">Auctions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Auctions</a>
+            <a class="nav-link" href="#">My auctions</a>
           </li>
         </ul>
       </div>
