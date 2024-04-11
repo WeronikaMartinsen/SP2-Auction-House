@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   navbar.innerHTML = `
     <div class="container-fluid custom-height-pre-navbar bg-dark"></div>
     <header class="bg-light sticky-top">
-      <nav class="navbar navbar-expand-sm text-white">
+      <nav class="navbar navbar-expand-sm text-white p-0">
         <div class="container-fluid d-flex align-items-center">
         <button
         class="navbar-toggler custom-toggler"
