@@ -19,6 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
       rel="stylesheet"
     />
+    <script type="module" defer src="./src/js/login/index.js"></script>
     <title>Auction House - Login</title>
   </head>
   <body class="vh-100">
@@ -55,22 +56,32 @@
                 class="d-flex justify-content-start align-content-senter flex-column custom-width-inputs"
               >
                 <h2 class="mb-4">Login</h2>
-                <div class="input-group mb-3">
+                <form id="loginForm" class="input-group mb-3">
+                  <label for="email" class="form-label d-none">Email</label>
                   <input
+                    name="email"
+                    id="email"
                     type="text"
+                    placeholder="Email address"
                     class="form-control"
-                    placeholder="Email*"
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
+                    pattern="^[\w\-.]+@(stud.)?noroff.no$"
+                    title="Email address must contains endpoint @stud.noroff.no or @noroff.no."
+                    required
                   />
-                </div>
+                
                 <div class="input-group mb-3">
+                  <label for="password" class="form-label d-none">Password</label>
                   <input
-                    type="password"
-                    class="form-control"
-                    placeholder="Password*"
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
+                  name="password"
+                  type="password"
+                  id="password"
+                  for="password"
+                  placeholder="Password"
+                  autocomplete="current-password"
+                  class="form-control"
+                  minlength="8"
+                  title="Password must be at least 8 characters long."
+                  required
                   />
                 </div>
                 <div class="form-check mt-3">
@@ -84,12 +95,14 @@
                     Remember me
                   </label>
                 </div>
-                <button
+                <button  type="submit"
+                id="loginBtn"
                   class="btn btn-primary w-100 w-sm-50 mt-4 text-white custom-letter-spacing"
                 >
                   LOGIN
                 </button>
               </div>
+            </form>
             </div>
           </div>
         </div>
