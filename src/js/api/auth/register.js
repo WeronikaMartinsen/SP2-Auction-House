@@ -26,7 +26,7 @@ export async function register(user) {
     } else if (status === 400) {
       userFeedback("This profile already exist! Try again, please.", () => {
         // Callback function to execute after the timeout
-        window.location.href = "/register/index.html"
+        location.reload()
       })
     }
   } catch (error) {

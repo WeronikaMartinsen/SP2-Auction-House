@@ -1,6 +1,6 @@
-import { register } from "../api/register.js"
-import { handleError } from "../global/functions/handleError.js"
-import { userFeedback } from "../global/functions/userFeedback.js"
+import { register } from "../api/auth/register.js"
+import { handleError } from "../userFeedback/errorMessage.js"
+import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 
 /**
  * Event listener for the form submission.
