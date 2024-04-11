@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <span class="fa-solid fa-bars"></span>
       </button>
       <div class="float-left">
-        <a class="navbar-brand" href="listings.html">
+        <a class="navbar-brand" href="#">
           <img
             class="custom-logo-size-feed"
             src="/images/logo-bidme.png"
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <div>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="profile.html">
               <img
                 class="custom-avatar-size"
                 src="/images/avatar-bidme.png"
