@@ -56,41 +56,60 @@
                 <h2 class="mb-4">Create an account</h2>
                 <form id="registerForm" class="input-group mb-3 gap-2">
                   <div class="input-group mb-3">
+                    <label for="name" class="form-label d-none">Name</label>
                     <input
                       name="name"
                       type="text"
                       minlength="2"
                 class="form-control"
                 pattern="^[\w]+$"
-                id="registerName"
+                id="name"
                 title="Name can only contain lower/ uppercase letter, numbers and
                 underscore. Example: User_Name123"
                 required
                     />
                   </div>
                   <div class="input-group mb-3">
+                    <label for="email" class="form-label d-none">Email</label>
                     <input
-                      type="email"
-                      class="form-control"
-                      placeholder="Email*"
-                      aria-label="Recipient's username"
-                      aria-describedby="basic-addon2"
+                    name="email"
+                    type="text"
+                    for="email"
+                    placeholder="Email address"
+                    class="form-control"
+                    pattern="^[\w\-.]+@(stud.)?noroff.no$"
+                    title="Email address must contains endpoint @stud.noroff.no or
+                    @noroff.no."
+                    id="email"
+                    required
                     />
                   </div>
 
                   <div class="input-group mb-3">
+                    <label for="password" class="form-label d-none">Password</label>
                     <input
-                      type="password"
-                      class="form-control"
-                      placeholder="Password*"
-                      aria-label="Recipient's username"
-                      aria-describedby="basic-addon2"
+                    name="password"
+                    type="password"
+                    id="password"
+                    for="password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                    class="form-control"
+                    minlength="8"
+                    title="Password must be at least 8 characters long."
+                    required
                     />
                   </div>
 
                   <div class="input-group mb-3">
+                    <label for="avatar" class="form-label d-none"
+                    >Avatar</label
+                  >
                     <input
                       type="url"
+                      id="avatar"
+                      name="avatar"
+                      for="avatar"
                       class="form-control"
                       placeholder="Avatar url"
                       aria-label="Recipient's username"
