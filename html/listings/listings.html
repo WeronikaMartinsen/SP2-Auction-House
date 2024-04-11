@@ -39,7 +39,7 @@
     <title>Auction House - Listings</title>
   </head>
   <body class="vh-100 bg-light">
-    <div class="navbar-custom"></div>
+    <div class="navbar-custom sticky-top"></div>
     <section>
       <div class="container-fluid bg-white shadow-sm">
         <div class="row d-flex justify-content-center align-items-center">
@@ -85,8 +85,40 @@
         </div>
       </div>
     </section>
+
     <section>
-      <div class="container vh-100 bg-white"></div>
+      <div class="container vh-100 bg-white custom-max-width-listings-cont">
+        <h3>Online auctions</h3>
+        <div class="d-flex justify-content-end align-items-center gap-1">
+          <div class="btn-group">
+            <button
+              class="btn btn-light text-dark btn-sm dropdown-toggle rounded"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Show
+            </button>
+            <ul class="dropdown-menu">
+              ...
+            </ul>
+          </div>
+          <div class="btn-group">
+            <button
+              class="btn btn-secondary btn-sm dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Filter
+            </button>
+            <ul class="dropdown-menu">
+              ...
+            </ul>
+          </div>
+        </div>
+        <div class="listings"></div>
+      </div>
     </section>
 
     <footer>
