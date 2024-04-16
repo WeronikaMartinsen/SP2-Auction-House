@@ -44,34 +44,48 @@ a {
   height: auto;
 }
 
-// NAVBAR
+///////////////////////////////////////////// NAVBAR
 
-.custom-height-pre-navbar {
-  height: 2em;
+.dropdown-toggle::after {
+  display: none;
 }
 
-.custom-collapse {
+.navbar-collapse.collapse.show {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.collapse.show {
+  background-color: rgba(255, 255, 255, 0.9); /* Example background color */
+  border-radius: 10px; /* Example border radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+}
+.custom-height-pre-navbar {
+  height: 2em;
 }
 
 .custom-toggler {
   border: none;
 }
 
-.navbar-collapse {
-  padding: 10px; /* Add padding */
-  border-radius: 10px; /* Add border radius */
-  width: max-content;
-  transition: max-height 0.3s ease-in-out;
-}
-
-.navbar-nav .nav-link {
-  display: inline-block;
-}
-
 .navbar-nav .nav-link.active {
   font-weight: bold; /* Make the active link bold */
 }
+
+///////////////////////////////////////////// DROPDOWN
+.dropdown-menu.show {
+  min-width: 2em;
+  margin-right: 1em;
+}
+.dropdown-item {
+  display: inline-block;
+  padding: 0.3em;
+}
+.li.nav-item.show {
+  padding: 0;
+}
+
 .custom-hero-size {
   width: 15em;
 }
@@ -84,7 +98,7 @@ a {
 }
 
 .custom-small-font {
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 .search_icon {

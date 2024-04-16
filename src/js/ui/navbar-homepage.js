@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="container-fluid custom-height-pre-navbar bg-dark"></div>
     <header class="bg-light sticky-top">
       <nav class="navbar navbar-expand-sm text-white p-0">
-        <div class="container-fluid d-flex align-items-center">
+        <div class="container-fluid d-flex align-items-center p-1">
         <button
         class="navbar-toggler custom-toggler"
         type="button"
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="listings.html">Auctions</a>
+            <a class="nav-link" aria-current="page" href="listings.html">Auctions</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">My auctions</a>
@@ -37,18 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
         </ul>
       </div>
       <div>
-        <ul class="navbar-nav">
+      
+        <ul class="navbar-nav me-auto mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active custom-small-font text-primary px-3" aria-current="page" href="html/login/index.html">
+            <a class="nav-link custom-small-font text-primary px-2 active" aria-current="page" href="html/login/index.html">
               LOG IN
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active custom-small-font text-primary" aria-current="page" href="html/login/index.html">
-              SIGN UP
-            </a>
-          </li>
-        </ul>
+        </ul>    
       </div>
         </div>
       </nav>
