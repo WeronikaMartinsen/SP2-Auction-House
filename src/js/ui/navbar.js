@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar-custom")
   navbar.innerHTML = `
-    <div class="container-fluid custom-height-pre-navbar bg-dark"></div>
+    <div class="container-fluid custom-height-pre-navbar bg-dark d-flex justify-content-end align-items-center">
+  </div>
     <header class="bg-light sticky-top">
       <nav class="navbar navbar-expand-sm text-white p-0">
         <div class="container-fluid d-flex align-items-center p-1 border border-bottom shadow-sm">
