@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="container-fluid custom-height-pre-navbar bg-dark"></div>
     <header class="bg-light sticky-top">
       <nav class="navbar navbar-expand-sm text-white p-0">
-        <div class="container-fluid d-flex align-items-center p-0">
-          <div class="float-left">
+        <div class="container-fluid d-flex align-items-center p-1 border border-bottom shadow-sm">
+          <div class="float-left px-3">
             <a class="navbar-brand" href="#">
               <img
                 class="custom-logo-size-feed"
@@ -30,14 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarTogglerDemo02">
             <ul class="navbar-nav mb-lg-0 text-center">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="listings.html">Auctions</a>
+                <a class="nav-link" aria-current="page" href="listings.html">Auctions</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">My auctions</a>
-              </li>
+              <a class="nav-link" href="#">Sell items</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Contact us</a>
+          </li>
             </ul>
           
-            <div class="dropdown-center">
+            <div class="dropdown-center px-3">
               <a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img
                   class="custom-avatar-size"

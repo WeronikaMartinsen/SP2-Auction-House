@@ -46,25 +46,19 @@ a {
 
 ///////////////////////////////////////////// NAVBAR
 
-.dropdown-toggle::after {
-  display: none;
-}
-
 .navbar-collapse.collapse.show {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   transition: height 0.3s ease;
-  border-top: 1px solid transparent; /* Transparent top border */
-  border-left: 1px solid transparent; /* Transparent left border */
-  border-right: 1px solid transparent; /* Transparent right border */
-
-  box-shadow: 0px 5px 5px -5px $dark; /* Shadow on bottom border */
-}
-.collapse.show {
-  padding: 1em;
-  margin-top: 0.6em;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0px 5px 5px -5px $dark;
+  font-size: 1.7em;
+  padding: 1.2em;
+  height: 12em;
 }
 
 .custom-height-pre-navbar {
@@ -75,22 +69,24 @@ a {
   border: none;
 }
 
-.navbar-nav .nav-link.active {
-  font-weight: bold; /* Make the active link bold */
-}
-
 ///////////////////////////////////////////// DROPDOWN
 .dropdown-menu.show {
   min-width: 6em;
   margin-right: 5em;
-  left: -64px;
+  left: -16px;
   background-color: $light;
   border: none;
   text-align: center;
 }
+
 .dropdown-item {
   display: inline-block;
   padding: 0.3em;
+}
+.dropdown-item:hover,
+.dropdown-item:active {
+  background-color: $primary;
+  color: white;
 }
 .li.nav-item.show {
   padding: 0;
