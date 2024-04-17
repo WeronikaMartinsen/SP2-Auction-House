@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   alt="Avatar."
                 />
               </a>
-              <div class="dropdown-menu text-center">
-                <a class="dropdown-item" href="profile.html">Profile</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="../profiles/profile.html">Profile</a>
                 <a class="dropdown-item" href="#">Log out</a>
               </div>
             </div>
