@@ -31,7 +31,7 @@ export async function login(user) {
         userEmail: json.email,
       })
 
-      window.location.href = "../listings/listings.html"
+      window.location.href = "/html/listings/listings.html"
     } else {
       const status = json.statusCode
       if (status === 401) {

@@ -20,7 +20,7 @@ export async function register(user) {
         "You have successfully registered now! Log in to enter the page.",
         () => {
           // Callback function to execute after the timeout
-          window.location.href = "/index.html"
+          window.location.href = "/html/login/index.html"
         },
       )
     } else if (status === 400) {

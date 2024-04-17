@@ -1,3 +1,5 @@
+import { logout } from "../api/auth/logout.js"
+
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar-custom")
   navbar.innerHTML = `
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
               </a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="../profiles/profile.html">Profile</a>
-                <a class="dropdown-item" href="#">Log out</a>
+                <a class="dropdown-item" id="logout" href="#">Log out</a>
               </div>
             </div>
             
@@ -60,4 +62,5 @@ document.addEventListener("DOMContentLoaded", function () {
       </nav>
     </header>
   `
+  logout()
 })
