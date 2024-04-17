@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="container-fluid custom-height-pre-navbar bg-dark"></div>
     <header class="bg-light sticky-top">
       <nav class="navbar navbar-expand-sm text-white p-0">
-        <div class="container-fluid d-flex align-items-center">
+        <div class="container-fluid d-flex align-items-center p-0">
           <div class="float-left">
             <a class="navbar-brand" href="#">
               <img
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
               </li>
             </ul>
           
-            <div class="dropdown">
+            <div class="dropdown-center">
               <a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img
                   class="custom-avatar-size"
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   alt="Avatar."
                 />
               </a>
-              <div class="dropdown-menu dropdown-menu-dark">
+              <div class="dropdown-menu text-center">
                 <a class="dropdown-item" href="profile.html">Profile</a>
                 <a class="dropdown-item" href="#">Log out</a>
               </div>
