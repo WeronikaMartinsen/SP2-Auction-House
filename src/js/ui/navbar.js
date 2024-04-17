@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="fa-solid fa-bars"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mb-lg-0">
+          <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mb-lg-0 text-center">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="listings.html">Auctions</a>
               </li>
@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a class="nav-link" href="#">My auctions</a>
               </li>
             </ul>
-            <div class="dropdown float-right">
+          
+            <div class="dropdown">
               <a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img
                   class="custom-avatar-size"
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a class="dropdown-item" href="#">Log out</a>
               </div>
             </div>
+            
           </div>
         </div>
       </nav>

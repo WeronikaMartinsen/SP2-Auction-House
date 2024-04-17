@@ -57,10 +57,16 @@ a {
   flex-direction: column;
 }
 .collapse.show {
-  background-color: rgba(255, 255, 255, 0.9); /* Example background color */
-  border-radius: 10px; /* Example border radius */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+  padding: 1em;
+  margin-top: 0.6em;
+  transition: height 0.3s ease;
+  border-top: 1px solid transparent; /* Transparent top border */
+  border-left: 1px solid transparent; /* Transparent left border */
+  border-right: 1px solid transparent; /* Transparent right border */
+
+  box-shadow: 0px 5px 5px -5px $dark; /* Shadow on bottom border */
 }
+
 .custom-height-pre-navbar {
   height: 2em;
 }
