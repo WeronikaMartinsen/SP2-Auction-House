@@ -5,8 +5,8 @@ import { hideLoadingIndicator } from "../ui/loadingIndicator.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 
 export async function getListings() {
-  const getListingsURL = API_BASE_URL + LISTINGS + `?_author=true`
-  const token = load(token)
+  const getListingsURL = API_BASE_URL + LISTINGS + `?_seller=true`
+  const token = load("token")
 
   try {
     showLoadingIndicator()
@@ -16,12 +16,12 @@ export async function getListings() {
         Authorization: `Bearer ${token}`,
       },
     })
-    const posts = await response.json()
+    const listings = await response.json()
     if (response.ok) {
       hideLoadingIndicator()
-
-      save("posts", posts)
-      return posts
+      save("listings", listings)
+      console.log(listings)
+      return listings
     }
   } catch (error) {
     handleError("Error fecthing posts.")
@@ -32,6 +32,7 @@ export async function getListing(id) {
   const getSingleListingUrl =
     API_BASE_URL + LISTINGS + `/` + id + `?_author=true`
   const token = load("token")
+
   try {
     showLoadingIndicator()
     let response = await fetch(getSingleListingUrl, {
@@ -40,10 +41,10 @@ export async function getListing(id) {
         Authorization: `Bearer ${token}`,
       },
     })
-    const post = await response.json()
+    const listing = await response.json()
     if (response.ok) {
       hideLoadingIndicator()
-      return post
+      return listing
     }
   } catch (error) {
     handleError("Error fetching post.")
