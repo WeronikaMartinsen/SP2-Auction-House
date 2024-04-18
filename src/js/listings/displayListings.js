@@ -8,12 +8,16 @@ const LISTINGS_PER_PAGE = 20
 
 export async function displayListings() {
   try {
+    console.log("Fetching listings...")
     let allListings = await getListings()
     const getProfile = load("profile")
 
     if (!Array.isArray(allListings)) {
+      console.error("Error: getListings did not return an array:", allListings)
       return
     }
+
+    console.log("Listings fetched successfully:", allListings)
 
     const searchInput = document.querySelector("#search")
     const listingsContainer = document.querySelector("#listings")
@@ -25,6 +29,7 @@ export async function displayListings() {
     let currentPage = 1
 
     filterOptionOne.addEventListener("click", function () {
+      console.log("Sorting listings from new to old...")
       const sortedListings = [...allListings].sort(
         (a, b) => new Date(b.created) - new Date(a.created),
       )
@@ -32,6 +37,7 @@ export async function displayListings() {
     })
 
     filterOptionTwo.addEventListener("click", function () {
+      console.log("Sorting listings from old to new...")
       const sortedListings = [...allListings].sort(
         (a, b) => new Date(a.created) - new Date(b.created),
       )
@@ -39,10 +45,12 @@ export async function displayListings() {
     })
 
     filterOptionThree.addEventListener("click", function () {
+      console.log("Displaying all listings...")
       displayFilteredPosts(allListings, getProfile, listingsContainer)
     })
 
     searchInput.addEventListener("keyup", function (event) {
+      console.log("Searching listings...")
       const searchValue = event.target.value.trim().toLowerCase()
       const filteredListings = allListings.filter(function (listing) {
         return (
@@ -56,6 +64,7 @@ export async function displayListings() {
     })
 
     loadMoreBtn.addEventListener("click", function () {
+      console.log("Loading more listings...")
       currentPage++
       const startIndex = (currentPage - 1) * LISTINGS_PER_PAGE
       const endIndex = startIndex + LISTINGS_PER_PAGE
@@ -68,12 +77,14 @@ export async function displayListings() {
       }
     })
 
+    console.log("Displaying initial listings...")
     displayFilteredPosts(
       allListings.slice(0, LISTINGS_PER_PAGE),
       getProfile,
       listingsContainer,
     )
   } catch (error) {
+    console.error("Error fetching and displaying listings:", error)
     handleError("Error fetching and displaying listings")
     userFeedback("Something went wrong. Please, try again.", () => {
       // Callback function to execute after the timeout

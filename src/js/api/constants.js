@@ -10,4 +10,4 @@ const params = new URLSearchParams(queryString)
 
 export const id = params.get("id")
 
-export const authorName = params.get("author")
+export const sellerName = params.get("seller")

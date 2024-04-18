@@ -5,11 +5,12 @@ import { hideLoadingIndicator } from "../ui/loadingIndicator.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 
 export async function getListings() {
-  const getListingsURL = API_BASE_URL + LISTINGS + `?_seller=true`
+  const getListingsURL = API_BASE_URL + LISTINGS
   const token = load("token")
 
   try {
     showLoadingIndicator()
+    console.log("Fetching listings...")
     const response = await fetch(getListingsURL, {
       headers: {
         "Content-Type": "application/json",
@@ -20,11 +21,14 @@ export async function getListings() {
     if (response.ok) {
       hideLoadingIndicator()
       save("listings", listings)
-      console.log(listings)
+      console.log("Listings fetched successfully:", listings)
       return listings
+    } else {
+      console.log("Error fetching listings:", listings)
     }
   } catch (error) {
-    handleError("Error fecthing posts.")
+    console.error("Error fetching listings:", error)
+    handleError("Error fetching listings.")
   }
 }
 

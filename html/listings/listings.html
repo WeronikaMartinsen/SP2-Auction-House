@@ -89,7 +89,7 @@
     </section>
 
     <section>
-      <div class="container vh-100 bg-white custom-max-width-listings-cont">
+      <div class="container bg-white custom-max-width-listings-cont">
         <h4>Online auctions</h4>
         <div class="d-flex justify-content-end align-items-center gap-1">
           <div class="btn-group">
@@ -115,11 +115,17 @@
               Filter
             </button>
             <ul class="dropdown-menu">
-              ...
+              <li id="new-to-old"></li>
+              <li id="old-to-new"></li>
+              <li id="all-listings"></li>
             </ul>
           </div>
         </div>
+        <div class="loaderContainer">
+          <div id="loader"></div>
+        </div>
         <div id="listings"></div>
+        <button id="loadMore">Load more</button>
       </div>
     </section>
 
