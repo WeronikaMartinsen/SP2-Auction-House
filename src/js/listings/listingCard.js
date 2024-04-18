@@ -1,7 +1,22 @@
 export function createListingCard(listing) {
+  console.log(listing)
   const card = document.createElement("div")
   card.classList.add("listing-card")
 
+  // Image
+  if (listing.media && listing.media.length > 0) {
+    const imageContainer = document.createElement("div")
+    imageContainer.classList.add("image-container")
+
+    listing.media.forEach((imageUrl) => {
+      const image = document.createElement("img")
+      image.src = imageUrl
+      image.alt = "Listing Image"
+      imageContainer.appendChild(image)
+    })
+
+    card.appendChild(imageContainer)
+  }
   // Title
   const title = document.createElement("h2")
   title.textContent = listing.title
@@ -11,17 +26,6 @@ export function createListingCard(listing) {
   const description = document.createElement("p")
   description.textContent = listing.description
   card.appendChild(description)
-
-  // Image
-  if (listing.media && listing.media.length > 0) {
-    const imageContainer = document.createElement("div")
-    imageContainer.classList.add("image-container")
-    const image = document.createElement("img")
-    image.src = listing.media[0].url
-    image.alt = listing.media[0].alt
-    imageContainer.appendChild(image)
-    card.appendChild(imageContainer)
-  }
 
   // Tags
   if (listing.tags && listing.tags.length > 0) {
