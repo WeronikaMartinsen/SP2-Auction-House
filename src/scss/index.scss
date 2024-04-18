@@ -183,11 +183,8 @@ a {
 }
 #listings {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  ); /* Adjust the minmax width as needed */
-  gap: 20px; /* Adjust the gap between items as needed */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 ///////////////////////////////LOADING INDICATOR
@@ -195,7 +192,7 @@ a {
 #loader {
   width: 48px;
   height: 48px;
-  border: 5px solid $secondary;
+  border: 5px solid $primary;
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
@@ -210,4 +207,20 @@ a {
   100% {
     transform: rotate(360deg);
   }
+}
+
+#new-to-old,
+#all-listings,
+#old-to-new {
+  cursor: pointer;
+}
+
+#new-to-old:hover,
+#new-to-old:active,
+#old-to-new:hover,
+#old-to-new:active,
+#all-listings:hover,
+#all-listings:active {
+  color: $primary;
+  transition: color 0.3s ease;
 }
