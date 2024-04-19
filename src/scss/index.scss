@@ -181,13 +181,17 @@ p {
 
 #listings {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
   gap: 3em;
+  align-items: stretch;
 }
 
 .listing-card {
   position: relative;
-  background-color: #f9f9f9;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -202,36 +206,45 @@ p {
 
 .image-container img {
   width: 100%;
-  max-height: 10em;
+  max-height: 12em;
   display: block;
   object-fit: cover;
 }
 .contentContainer {
-  padding: 1em;
+  padding: 0.6em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .sellerContainer {
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.7em;
+  padding: 0.4em;
 }
 .sellerAvatar {
   border-radius: 50%;
-  width: 2em;
-  height: 2em;
+  width: 2.2em;
+  height: 2.2em;
+}
+.avatarAndDate {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 .details {
-  font-size: 0.8em;
-  display: flex;
-  gap: 1em;
+  font-size: 0.7em;
+  opacity: 0.8;
 }
 .auctionEnds {
   position: absolute;
   top: -9px;
   left: -12px;
-  width: 5em;
-  height: 5em;
-  background-color: $primary;
+  width: 4.7em;
+  height: 4.7em;
+  background-color: $success;
   color: white;
   text-align: center;
   display: flex;
@@ -242,6 +255,29 @@ p {
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 2;
+}
+
+.seeMore {
+  padding-left: 1em;
+}
+.btnContainer {
+  padding: 1em;
+}
+.bids-container {
+  margin-top: 2em;
+  border: 1px solid $light;
+}
+
+.seeMore {
+  font-size: 0.9em;
+  color: $dark;
+}
+
+.small-font-size {
+  font-size: 0.8em;
+  text-align: end;
+  padding-top: 1em;
+  opacity: 0.8;
 }
 ///////////////////////////////LOADING INDICATOR
 
