@@ -29,6 +29,10 @@ $rubik-font-weight-bold: 700;
 a {
   text-decoration: none;
 }
+p {
+  padding: 0;
+  margin: 0;
+}
 .custom-logo-size {
   width: 10em;
 }
@@ -188,6 +192,7 @@ a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   word-wrap: break-word;
+  z-index: 1;
 }
 
 .image-container {
@@ -219,17 +224,24 @@ a {
   font-size: 0.8em;
   display: flex;
   gap: 1em;
-  opacity: 0.7;
 }
 .auctionEnds {
   position: absolute;
-  top: 124px;
-  left: 187px;
+  top: -9px;
+  left: -12px;
   width: 5em;
   height: 5em;
   background-color: $primary;
   color: white;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 ///////////////////////////////LOADING INDICATOR
 

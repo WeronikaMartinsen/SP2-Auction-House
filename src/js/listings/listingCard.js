@@ -10,26 +10,22 @@ function formatDateTime(date) {
 }
 function formatEndDateTime(date) {
   const options = {
+    day: "numeric",
+    month: "short",
+  }
+  const dateFormatted = new Intl.DateTimeFormat("en-US", options).format(date)
+
+  const hourOptions = {
     hour: "numeric",
     minute: "numeric",
+    hour12: false,
   }
-  const time = new Intl.DateTimeFormat("en-US", options).format(date)
+  const time = new Intl.DateTimeFormat("en-US", hourOptions).format(date)
 
-  const today = new Date()
-  const tomorrow = new Date()
-  tomorrow.setDate(tomorrow.getDate() + 1)
-
-  let relativeTime
-  if (date.toDateString() === today.toDateString()) {
-    relativeTime = "TODAY"
-  } else if (date.toDateString() === tomorrow.toDateString()) {
-    relativeTime = "TOMORROW"
-  } else {
-    const options = { month: "long", day: "numeric" }
-    relativeTime = new Intl.DateTimeFormat("en-US", options).format(date)
+  return {
+    date: dateFormatted,
+    time: time,
   }
-
-  return `${time}, ${relativeTime}`
 }
 
 export function createListingCard(listing) {
@@ -79,12 +75,21 @@ export function createListingCard(listing) {
   const formattedDate = formatDateTime(createdDate)
   details.textContent = `${formattedDate}`
 
+  const auctionsEnd = document.createElement("div")
+  auctionsEnd.classList.add("auctionEnds")
+  card.appendChild(auctionsEnd)
+
   const endDate = new Date(listing.endsAt)
-  const formattedEndDate = formatEndDateTime(endDate)
-  const endDateElement = document.createElement("p")
-  endDateElement.textContent = `${formattedEndDate}`
-  endDateElement.classList.add("auctionEnds")
-  details.appendChild(endDateElement)
+  const formattedEndDateTime = formatEndDateTime(endDate)
+
+  const dateElement = document.createElement("p")
+  dateElement.textContent = formattedEndDateTime.date
+
+  const timeElement = document.createElement("p")
+  timeElement.textContent = formattedEndDateTime.time
+
+  auctionsEnd.appendChild(timeElement)
+  auctionsEnd.appendChild(dateElement)
 
   contentContainer.appendChild(details)
 
