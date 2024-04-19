@@ -103,6 +103,9 @@ function displayFilteredPosts(
     listingsContainer.innerHTML = ""
   }
 
+  // Sort listings by creation date in descending order
+  listings.sort((a, b) => new Date(b.created) - new Date(a.created))
+
   listings.forEach((listing) => {
     const card = createListingCard(listing, getProfile)
     listingsContainer.append(card)

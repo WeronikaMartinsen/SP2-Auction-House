@@ -34,19 +34,21 @@ export function createListingCard(listing) {
   card.classList.add("listing-card")
 
   // Image
+  const imageContainer = document.createElement("div")
+  imageContainer.classList.add("image-container")
+
+  const image = document.createElement("img")
   if (listing.media && listing.media.length > 0) {
-    const imageContainer = document.createElement("div")
-    imageContainer.classList.add("image-container")
-
-    listing.media.forEach((imageUrl) => {
-      const image = document.createElement("img")
-      image.src = imageUrl
-      image.alt = "Listing Image"
-      imageContainer.appendChild(image)
-    })
-
-    card.appendChild(imageContainer)
+    // Display the first image if available
+    image.src = listing.media[0]
+  } else {
+    // Set default image source if no images are available
+    image.src = "/images/defaultImage.png" // Path to your default image
   }
+  image.alt = "Listing Image"
+  imageContainer.appendChild(image)
+
+  card.appendChild(imageContainer)
 
   const contentContainer = document.createElement("div")
   contentContainer.classList.add("contentContainer")
