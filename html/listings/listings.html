@@ -96,6 +96,8 @@
           <h6 class="custom-cursor" id="new-to-old">Recently added</h6>
           <span>|</span>
           <h6 class="custom-cursor" id="old-to-new">Oldest</h6>
+          <span>|</span>
+          <h6 class="custom-cursor" id="active-listings">Active</h6>
         </div>
         <div class="d-flex justify-content-end align-items-center gap-1">
           <div class="btn-group">
@@ -105,10 +107,15 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Show
+              Price
             </button>
             <ul class="dropdown-menu">
-              ...
+              <li class="dropdown-item" id="bid-less-than-100">
+                Less then 100
+              </li>
+              <li class="dropdown-item" id="bid-less-than-200">
+                Less then 200
+              </li>
             </ul>
           </div>
           <div class="btn-group">

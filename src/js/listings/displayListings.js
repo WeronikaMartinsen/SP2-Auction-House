@@ -24,7 +24,10 @@ export async function displayListings() {
     const filterOptionOne = document.querySelector("#new-to-old")
     const filterOptionTwo = document.querySelector("#old-to-new")
     const filterOptionThree = document.querySelector("#all-listings")
+    const filterOptionFour = document.querySelector("#active-listings")
     const loadMoreBtn = document.querySelector("#loadMore")
+    const bidLessThan100Option = document.querySelector("#bid-less-than-100")
+    const bidLessThan200Option = document.querySelector("#bid-less-than-200")
 
     let currentPage = 1
 
@@ -33,7 +36,7 @@ export async function displayListings() {
       const sortedListings = [...allListings].sort(
         (a, b) => new Date(b.created) - new Date(a.created),
       )
-      displayFilteredPosts(sortedListings, getProfile, listingsContainer)
+      displayFilteredListings(sortedListings, getProfile, listingsContainer)
     })
 
     filterOptionTwo.addEventListener("click", function () {
@@ -41,12 +44,46 @@ export async function displayListings() {
       const sortedListings = [...allListings].sort(
         (a, b) => new Date(a.created) - new Date(b.created),
       )
-      displayFilteredPosts(sortedListings, getProfile, listingsContainer)
+      displayFilteredListings(sortedListings, getProfile, listingsContainer)
     })
 
     filterOptionThree.addEventListener("click", function () {
       console.log("Displaying all listings...")
-      displayFilteredPosts(allListings, getProfile, listingsContainer)
+      displayFilteredListings(allListings, getProfile, listingsContainer)
+    })
+
+    filterOptionFour.addEventListener("click", function () {
+      console.log("Filtering for active listings...")
+      const activeListings = allListings.filter(
+        (listing) => listing.active === true,
+      )
+      displayFilteredListings(activeListings, getProfile, listingsContainer)
+    })
+
+    bidLessThan100Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 100...")
+      const bidLessThan100Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount < 100
+      })
+      displayFilteredListings(
+        bidLessThan100Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
+
+    bidLessThan200Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 200...")
+      const bidLessThan200Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 100 && lastBid.amount < 200
+      })
+      displayFilteredListings(
+        bidLessThan200Listings,
+        getProfile,
+        listingsContainer,
+      )
     })
 
     searchInput.addEventListener("keyup", function (event) {
@@ -60,7 +97,7 @@ export async function displayListings() {
         )
       })
 
-      displayFilteredPosts(filteredListings, getProfile, listingsContainer)
+      displayFilteredListings(filteredListings, getProfile, listingsContainer)
     })
 
     loadMoreBtn.addEventListener("click", function () {
@@ -69,7 +106,7 @@ export async function displayListings() {
       const startIndex = (currentPage - 1) * LISTINGS_PER_PAGE
       const endIndex = startIndex + LISTINGS_PER_PAGE
       const nextListings = allListings.slice(startIndex, endIndex)
-      displayFilteredPosts(nextListings, getProfile, listingsContainer, true)
+      displayFilteredListings(nextListings, getProfile, listingsContainer, true)
 
       // Disable the button if there are no more listings to load
       if (endIndex >= allListings.length) {
@@ -78,7 +115,7 @@ export async function displayListings() {
     })
 
     console.log("Displaying initial listings...")
-    displayFilteredPosts(
+    displayFilteredListings(
       allListings.slice(0, LISTINGS_PER_PAGE),
       getProfile,
       listingsContainer,
@@ -93,7 +130,7 @@ export async function displayListings() {
   }
 }
 
-function displayFilteredPosts(
+function displayFilteredListings(
   listings,
   getProfile,
   listingsContainer,
@@ -102,6 +139,7 @@ function displayFilteredPosts(
   if (!append) {
     listingsContainer.innerHTML = ""
   }
+  console.log("Filtered Listings:", listings) // Log filtered listings
 
   // Sort listings by creation date in descending order
   listings.sort((a, b) => new Date(b.created) - new Date(a.created))
@@ -110,4 +148,10 @@ function displayFilteredPosts(
     const card = createListingCard(listing, getProfile)
     listingsContainer.append(card)
   })
+}
+function getLastBid(bids) {
+  if (!bids || bids.length === 0) {
+    return null
+  }
+  return bids[bids.length - 1]
 }
