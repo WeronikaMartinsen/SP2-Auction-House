@@ -34,8 +34,8 @@
       crossorigin="anonymous"
     ></script>
     <script defer type="module" src="/src/js/ui/navbar.js"></script>
-
     <script defer type="module" src="/src/js/ui/footer.js"></script>
+    <script defer type="module" src="/src/js/profile/index.js"></script>
     <title>Auction House - Profile</title>
   </head>
   <body class="vh-100 bg-light">
@@ -49,13 +49,15 @@
             class="col-12 col-sm-6 d-flex justify-content-start align-items-center"
           >
             <img
+              id="avatar"
               src="/images/avatar-bidme.png"
               alt="Avatar."
               class="custom-hero-size-profile"
             />
             <div class="d-flex flex-column px-2 w-100 text-white">
-              <h2>Name</h2>
-              <span>Email</span>
+              <h2 id="name">Name</h2>
+              <span id="email">Email</span>
+              <span id="credits">Credits</span>
             </div>
           </div>
         </div>
