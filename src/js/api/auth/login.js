@@ -31,7 +31,9 @@ export async function login(user) {
         userEmail: json.email,
       })
 
-      window.location.href = "/html/listings/listings.html"
+      userFeedback("Your are successfully log in now!", () => {
+        window.location.href = "/html/listings/listings.html"
+      })
     } else {
       const status = json.statusCode
       if (status === 401) {

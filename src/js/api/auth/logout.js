@@ -1,5 +1,5 @@
 import { remove } from "../storage/storeToken.js"
-
+import { userFeedback } from "../../userFeedback/feedbackOverlay.js"
 /**
  * Logs the user out by removing the token and profile information from local storage.
  * Redirects the user to the index page after successful logout.
@@ -15,6 +15,8 @@ export function logout() {
     console.log("Logout button clicked")
     remove("token")
     remove("profile")
-    window.location.href = "/html/login/index.html"
+    userFeedback("Your have successfully log out now!", () => {
+      window.location.href = "/html/login/index.html"
+    })
   })
 }
