@@ -36,3 +36,17 @@ export function load(key) {
 export function remove(key) {
   localStorage.removeItem(key)
 }
+
+/**
+ * Loads the user's profile data from the browser's storage.
+ * @returns {Object|null} The user's profile data, or null if not found.
+ */
+export function loadProfile() {
+  try {
+    const profileData = localStorage.getItem("profile")
+    return profileData ? JSON.parse(profileData) : null
+  } catch (error) {
+    console.error("Error loading profile:", error)
+    return null
+  }
+}
