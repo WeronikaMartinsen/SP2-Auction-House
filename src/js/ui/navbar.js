@@ -1,4 +1,5 @@
 import { logout } from "../api/auth/logout.js"
+import { profileLink } from "../listings/profileLink.js"
 
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar-custom")
@@ -52,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 />
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="../profiles/profile.html">Profile</a>
+                <a class="dropdown-item" id="profile" href="#">Profile</a>
                 <a class="dropdown-item" id="logout" href="#">Log out</a>
               </div>
             </div>
@@ -63,4 +64,5 @@ document.addEventListener("DOMContentLoaded", function () {
     </header>
   `
   logout()
+  profileLink()
 })
