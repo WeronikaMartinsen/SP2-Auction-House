@@ -29,6 +29,9 @@ export async function login(user) {
       storage.save("profile", {
         userName: json.name,
         userEmail: json.email,
+        userCredit: json.credits,
+        userAvatar: json.avatar,
+        userWins: json.wins,
       })
 
       userFeedback("Your are successfully log in now!", () => {
