@@ -1,21 +1,19 @@
 import { load } from "../api/storage/storeToken.js"
 
-import { API_BASE_URL, PROFILES, sellerName } from "../api/constants.js"
+import { API_BASE_URL, PROFILES } from "../api/constants.js"
 
 import { handleError } from "../userFeedback/errorMessage.js"
 
 export async function getProfile() {
-  const getProfileURL = `${API_BASE_URL}${PROFILES}/${sellerName}`
-  const token = load("token")
-  if (!sellerName) {
-    return // Return or handle this case appropriately
-  }
+  const userName = localStorage.getItem("name")
+  const getProfileURL = `${API_BASE_URL}${PROFILES}/${userName}`
+  const user = load("token")
 
   try {
     const response = await fetch(getProfileURL, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${user}`,
       },
     })
     const currentUser = await response.json()
@@ -23,6 +21,6 @@ export async function getProfile() {
       return currentUser
     }
   } catch (error) {
-    handleError("Error fetching users posts.")
+    handleError("Error fetching users profile.")
   }
 }
