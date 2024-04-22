@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <nav class="navbar navbar-expand-sm text-white p-0">
         <div class="container-fluid d-flex align-items-center p-1 border border-bottom shadow-sm">
           <div class="float-left px-3">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/html/listings/listings.html">
               <img
                 class="custom-logo-size-feed"
                 src="/images/logo-bidme.png"

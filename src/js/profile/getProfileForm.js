@@ -18,6 +18,6 @@ export async function getProfileForm() {
 
     return profile
   } catch (error) {
-    handleError("Error fetching users posts.")
+    handleError("Error fetching user profile.")
   }
 }

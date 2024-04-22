@@ -1,4 +1,4 @@
-import { loadProfile } from "../api/storage/storeToken.js"
+import { loadProfile, load } from "../api/storage/storeToken.js"
 
 import { API_BASE_URL, PROFILES } from "../api/constants.js"
 
@@ -11,15 +11,14 @@ export async function getProfile() {
     console.error("User profile not found or incomplete.")
     return null // Return null if profile data is missing or incomplete
   }
-
+  const token = load("token")
   const getProfileURL = `${API_BASE_URL}${PROFILES}/${userProfile.userName}`
-  const userToken = userProfile.token // Assuming token is stored in the profile data
 
   try {
     const response = await fetch(getProfileURL, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken}`,
+        Authorization: `Bearer ${token}`,
       },
     })
 
