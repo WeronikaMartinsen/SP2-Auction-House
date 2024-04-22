@@ -35,6 +35,14 @@ export function createListingCard(listing) {
   // Image
   const imageContainer = document.createElement("div")
   imageContainer.classList.add("image-container")
+  imageContainer.href =
+    "/html/listings/singleListing.html?id=" +
+    listing.id +
+    `seller=` +
+    (listing.seller?.name || "")
+  imageContainer.addEventListener("click", () => {
+    window.location.href = imageContainer.href
+  })
 
   const image = document.createElement("img")
   if (listing.media && listing.media.length > 0) {

@@ -1,29 +1,28 @@
 import { getListing } from "../listings/getListings.js"
-import { handleError } from "../userFeedback/errorMessage.js"
-import { userFeedback } from "../userFeedback/feedbackOverlay.js"
-import { createListingCard } from "./singleListingCard.js"
 
-export async function displayListing(listingId) {
+// Get the listing ID from the URL query parameter
+const urlParams = new URLSearchParams(window.location.search)
+const listingId = urlParams.get("id")
+
+// Function to update HTML elements with listing data
+export async function updateListingDetails() {
   try {
-    console.log("Fetching single listing...")
+    // Get the listing data
     const listing = await getListing(listingId)
 
-    if (!listing) {
-      console.error("Error: getListing did not return a listing:", listing)
-      return
-    }
+    // Update HTML elements with listing data
+    document.getElementById("listing-title").innerText = listing.title
+    document.getElementById("listing-description").innerText =
+      listing.description
+    document.getElementById("listing-seller").innerText =
+      `Seller: ${listing.seller}`
 
-    console.log("Listing fetched successfully:", listing)
-
-    const singleListingsContainer = document.querySelector("#singleListing")
-    const listingCard = createListingCard(listing)
-    singleListingsContainer.appendChild(listingCard)
+    // Additional updates for other listing details
+    // Add similar lines for other details you want to display
   } catch (error) {
-    console.error("Error fetching and displaying listing:", error)
-    handleError("Error fetching and displaying listing")
-    userFeedback("Something went wrong. Please, try again.", () => {
-      // Callback function to execute after the timeout
-      location.reload()
-    })
+    console.error("Error fetching listing:", error)
   }
 }
+
+// Call the function to update listing details when the page loads
+updateListingDetails()

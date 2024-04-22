@@ -34,7 +34,7 @@ export async function getListings() {
 
 export async function getListing(id) {
   const getSingleListingUrl =
-    API_BASE_URL + LISTINGS + `/` + id + `?_author=true`
+    API_BASE_URL + LISTINGS + `/` + id + `?_seller=true`
   const token = load("token")
 
   try {
@@ -51,6 +51,6 @@ export async function getListing(id) {
       return listing
     }
   } catch (error) {
-    handleError("Error fetching post.")
+    handleError("Error fetching single listing.")
   }
 }
