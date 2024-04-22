@@ -31,15 +31,17 @@ export async function getListings() {
     handleError("Error fetching listings.")
   }
 }
+export async function getListing(id, sellerId) {
+  const queryParams = new URLSearchParams()
+  queryParams.append("_seller", true) // Assuming this parameter is always included
+  queryParams.append("seller", sellerId) // Append the seller ID
 
-export async function getListing(id) {
-  const getSingleListingUrl =
-    API_BASE_URL + LISTINGS + `/` + id + `?_seller=true`
+  const getSingleListingUrl = `${API_BASE_URL}${LISTINGS}/${id}?${queryParams.toString()}`
   const token = load("token")
 
   try {
     showLoadingIndicator()
-    let response = await fetch(getSingleListingUrl, {
+    const response = await fetch(getSingleListingUrl, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -48,9 +50,13 @@ export async function getListing(id) {
     const listing = await response.json()
     if (response.ok) {
       hideLoadingIndicator()
-      return listing
+      return listing // Return the retrieved single listing
+    } else {
+      console.error("Error fetching listing:", listing)
+      throw new Error("Failed to fetch listing")
     }
   } catch (error) {
     handleError("Error fetching single listing.")
+    throw error // Rethrow the error for further handling if needed
   }
 }

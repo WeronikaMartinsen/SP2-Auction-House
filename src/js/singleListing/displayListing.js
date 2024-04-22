@@ -1,21 +1,23 @@
 import { getListing } from "../listings/getListings.js"
 
-// Get the listing ID from the URL query parameter
 const urlParams = new URLSearchParams(window.location.search)
 const listingId = urlParams.get("id")
 
-// Function to update HTML elements with listing data
 export async function updateListingDetails() {
   try {
     // Get the listing data
     const listing = await getListing(listingId)
 
+    // Log the retrieved data for debugging
+    console.log("Retrieved Listing Data:", listing)
+
     // Update HTML elements with listing data
-    document.getElementById("listing-title").innerText = listing.title
-    document.getElementById("listing-description").innerText =
-      listing.description
-    document.getElementById("listing-seller").innerText =
-      `Seller: ${listing.seller}`
+    document.getElementById("title").innerText =
+      listing.title || "Title Not Available"
+    document.getElementById("description").innerText =
+      listing.description || "Description Not Available"
+    document.getElementById("seller").innerText =
+      `Seller: ${listing.seller?.name || "Unknown Seller"}`
 
     // Additional updates for other listing details
     // Add similar lines for other details you want to display

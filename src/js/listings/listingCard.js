@@ -1,3 +1,5 @@
+import { getListing } from "./getListings.js"
+
 function formatDateTime(date) {
   const options = {
     day: "numeric",
@@ -35,13 +37,14 @@ export function createListingCard(listing) {
   // Image
   const imageContainer = document.createElement("div")
   imageContainer.classList.add("image-container")
-  imageContainer.href =
-    "/html/listings/singleListing.html?id=" +
-    listing.id +
-    `seller=` +
-    (listing.seller?.name || "")
-  imageContainer.addEventListener("click", () => {
-    window.location.href = imageContainer.href
+  imageContainer.addEventListener("click", async () => {
+    try {
+      const listing = await getListing(listing.id)
+      const url = "/html/listings/singleListing.html?id=" + listing.id
+      window.location.href = url
+    } catch (error) {
+      console.error("Error fetching listing:", error)
+    }
   })
 
   const image = document.createElement("img")
