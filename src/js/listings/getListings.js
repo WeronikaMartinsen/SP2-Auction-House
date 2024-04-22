@@ -33,7 +33,7 @@ export async function getListings() {
 }
 
 export async function getListing(id) {
-  const getListingIdUrl = `${API_BASE_URL}${LISTINGS}/?id=${id}?_seller=true`
+  const getListingIdUrl = API_BASE_URL + LISTINGS + `/${id}?_seller=true`
   const token = load("token")
   try {
     showLoadingIndicator()
