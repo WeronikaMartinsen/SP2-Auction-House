@@ -80,6 +80,9 @@ export function createListingCard(listing) {
   const sellerName = document.createElement("a")
   sellerName.textContent = listing.seller.name
   sellerName.classList.add("h6", "text-dark")
+  sellerContainer.addEventListener("click", () => {
+    window.location.href = `/html/profiles/profile.html?name=${encodeURIComponent(listing.seller.name)}`
+  })
 
   // Append sellerName to avatarAndDate
   avatarAndDate.appendChild(sellerName)

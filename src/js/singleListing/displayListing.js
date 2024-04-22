@@ -62,7 +62,7 @@ export async function updateListingDetails() {
 
     // Update tags
     const tagsElement = document.getElementById("tags")
-    tagsElement.innerText = listing.tags.join(", ") || "N/A"
+    tagsElement.innerText = listing.tags.join(", ")
   } catch (error) {
     console.error("Error fetching listing:", error)
   }
