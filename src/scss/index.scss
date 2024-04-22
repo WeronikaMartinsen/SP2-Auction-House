@@ -354,3 +354,11 @@ p {
   height: auto;
   padding: 0;
 }
+.custom-width-col {
+  max-width: 35em;
+  min-width: 20em;
+}
+.text-break {
+  word-wrap: break-word;
+  text-wrap: wrap;
+}

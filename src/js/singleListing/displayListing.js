@@ -8,9 +8,13 @@ export async function updateListingDetails() {
     console.log("Retrieved Listing Data:", listing)
 
     document.getElementById("title").innerText = listing.title || "N/A"
-    document.getElementById("created").innerText = listing.created || "N/A"
+
+    // Format the created date
+    const createdDate = listing.created ? new Date(listing.created) : new Date()
+    document.getElementById("created").innerText = formatDateTime(createdDate)
+
     document.getElementById("count-bids").innerText =
-      listing._count.bids || "N/A"
+      listing._count.bids || "Bids"
     document.getElementById("description").innerText =
       listing.description || "Description"
 
@@ -25,6 +29,32 @@ export async function updateListingDetails() {
     // Replace the seller name text with the link
     sellerNameElement.innerHTML = "" // Clear the content first
     sellerNameElement.appendChild(sellerProfileLink)
+
+    const endsAtElement = document.getElementById("endsAt")
+    endsAtElement.textContent = listing.endsAt || "Auction ends"
+
+    // Start countdown if endsAt is provided
+    if (listing.endsAt) {
+      const endsAt = new Date(listing.endsAt).getTime()
+      const countdownInterval = setInterval(() => {
+        const now = new Date().getTime()
+        const distance = endsAt - now
+        if (distance < 0) {
+          clearInterval(countdownInterval)
+          endsAtElement.textContent = "Auction ended"
+        } else {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          )
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60),
+          )
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+          endsAtElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`
+        }
+      }, 1000)
+    }
 
     // Update media
     const mediaElement = document.getElementById("media")
@@ -66,4 +96,14 @@ export async function updateListingDetails() {
   } catch (error) {
     console.error("Error fetching listing:", error)
   }
+}
+function formatDateTime(date) {
+  const options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }
+  return new Intl.DateTimeFormat("en-US", options).format(date)
 }
