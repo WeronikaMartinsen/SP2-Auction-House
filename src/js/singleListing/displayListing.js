@@ -1,17 +1,15 @@
 import { getListing } from "../listings/getListings.js"
-
-const urlParams = new URLSearchParams(window.location.search)
-const listingId = urlParams.get("id")
+import { id } from "../api/constants.js"
+import { load } from "../api/storage/storeToken.js"
 
 export async function updateListingDetails() {
   try {
-    // Get the listing data
-    const listing = await getListing(listingId)
+    const listing = await getListing(id)
+    const getProfile = load("profile")
 
-    // Log the retrieved data for debugging
     console.log("Retrieved Listing Data:", listing)
 
-    // Update HTML elements with listing data
+    const singleListingContainer = document.querySelector("singleListing")
     document.getElementById("title").innerText =
       listing.title || "Title Not Available"
     document.getElementById("description").innerText =
@@ -19,12 +17,9 @@ export async function updateListingDetails() {
     document.getElementById("seller").innerText =
       `Seller: ${listing.seller?.name || "Unknown Seller"}`
 
-    // Additional updates for other listing details
-    // Add similar lines for other details you want to display
+    const singleCard = updateListingDetails(listing, getProfile)
+    singleListingContainer.appendChild(singleCard)
   } catch (error) {
     console.error("Error fetching listing:", error)
   }
 }
-
-// Call the function to update listing details when the page loads
-updateListingDetails()
