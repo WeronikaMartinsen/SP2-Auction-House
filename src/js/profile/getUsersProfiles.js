@@ -2,9 +2,9 @@ import { API_BASE_URL, PROFILES } from "../api/constants"
 import { load } from "../api/storage/storeToken"
 import { handleError } from "../userFeedback/errorMessage"
 
-export async function getProfile(username) {
+export async function getProfile(userId) {
   const token = load("token")
-  const getProfileURL = `${API_BASE_URL}${PROFILES}/${username}`
+  const getProfileURL = `${API_BASE_URL}${PROFILES}/${userId}`
 
   try {
     const response = await fetch(getProfileURL, {

@@ -99,11 +99,11 @@ export async function updateListingDetails() {
 }
 function formatDateTime(date) {
   const options = {
-    year: "numeric",
-    month: "short",
     day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
+    month: "long",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
   }
   return new Intl.DateTimeFormat("en-US", options).format(date)
 }
