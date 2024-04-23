@@ -3,7 +3,7 @@ import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 
 export function createNewListing() {
   try {
-    const getForm = document.querySelector("#createListing")
+    const getForm = document.getElementById("createListing")
 
     if (getForm) {
       getForm.addEventListener("submit", (event) => {
@@ -26,7 +26,7 @@ export function createNewListing() {
           deadline,
         }
         createListing(newListing)
-        userFeedback("Your post has been added!", () => {
+        userFeedback("Your listing has been added!", () => {
           location.reload()
         })
       })
