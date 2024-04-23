@@ -47,17 +47,94 @@
           <div
             class="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center"
           >
-            <div class="d-flex flex-column gap-2">
-              <h2 class="p-0 m-0 mt-5">Welcome to Auction House!</h2>
+            <div class="d-flex flex-column gap-2 flex-column text-center">
+              <h5 class="p-0 m-0 mt-5">Welcome to Auction House!</h5>
+              <h4 class="text-wrap text-dark mt-2">
+                Ready to Sell? Create Your Auction Now!
+              </h4>
               <div
-                class="d-flex justify-content-center align-items-center gap-3 text-center"
+                class="d-flex justify-content-center align-items-center gap-3"
               >
-                <h4 class="text-center text-wrap text-primary">
-                  add your auction here!
-                </h4>
+                <!-- Button trigger modal -->
+                <h2 class="text-primary">Add you auction here:</h2>
                 <i
-                  class="fa-solid fa-plus text-white border rounded-circle p-2 bg-primary"
-                ></i>
+                  type="button"
+                  class="fa-solid fa-plus btn btn-primary text-white rounded-circle p-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                >
+                </i>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="staticBackdrop"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                          Create Listing
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body gap-3">
+                        <form id="createListing">
+                          <label for="title" class="d-none"></label>
+                          <input
+                            id="title"
+                            type="text"
+                            placeholder="Title"
+                            class="form-label w-100 rounded border border-light shadow-sm mb-3"
+                          />
+                          <label for="description" class="d-none"></label>
+                          <input
+                            id="description"
+                            type="text"
+                            placeholder="Description"
+                            class="form-label w-100 rounded border border-light shadow-sm mb-3"
+                          />
+                          <label for="media" class="d-none"></label>
+                          <input
+                            id="media"
+                            type="text"
+                            placeholder="Media URL"
+                            class="form-label w-100 rounded border border-light shadow-sm mb-3"
+                          />
+                          <label for="title" class="d-none"></label>
+                          <input
+                            id="title"
+                            type="text"
+                            placeholder="Title"
+                            class="form-label w-100 rounded border border-light shadow-sm mb-3"
+                          />
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Understood
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
