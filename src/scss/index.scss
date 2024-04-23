@@ -198,6 +198,7 @@ p {
 .image-container {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .image-container img {
@@ -219,6 +220,7 @@ p {
   align-items: center;
   gap: 0.7em;
   padding: 0.4em;
+  cursor: pointer;
 }
 .sellerAvatar {
   border-radius: 50%;
