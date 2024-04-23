@@ -6,8 +6,10 @@ export function createNewListing() {
     const getForm = document.querySelector("#createListing")
 
     if (getForm) {
-      getForm.addEventListener("sumbit", (event) => {
+      getForm.addEventListener("submit", (event) => {
+        // Corrected event type to "submit"
         event.preventDefault()
+        console.log("Form submitted!") // Added console log
         const form = event.target
         const title = form.querySelector("#title").value
         const description = form.querySelector("#description").value

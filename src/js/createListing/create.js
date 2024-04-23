@@ -20,10 +20,13 @@ export async function createListing(newListing) {
     const response = await fetch(createListingURL, postData)
     const resultNewListing = await response.json()
 
+    console.log("Response from createListing:", resultNewListing) // Added console log
+
     if (resultNewListing.ok) {
       return resultNewListing
     }
   } catch (error) {
+    console.error(error)
     handleError("Error adding listing. Please try again.")
     userFeedback("Something went wrong. Please, try again.", () => {
       // Callback function to execute after the timeout
