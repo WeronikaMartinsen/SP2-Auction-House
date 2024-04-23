@@ -92,6 +92,7 @@
                         <form id="createListing">
                           <label for="title" class="d-none"></label>
                           <input
+                            form="title"
                             id="title"
                             type="text"
                             placeholder="Title*"
@@ -100,6 +101,7 @@
                           />
                           <label for="description" class="d-none"></label>
                           <textarea
+                            form="description"
                             id="description"
                             type="text-area"
                             placeholder="Description*"
@@ -111,6 +113,7 @@
                             >Media URL 1:</label
                           >
                           <input
+                            form="media1"
                             id="media1"
                             type="url"
                             placeholder="Media Url*"
@@ -122,6 +125,7 @@
                             >Media URL 2:</label
                           >
                           <input
+                            form="media2"
                             id="media2"
                             type="url"
                             placeholder="Media Url"
@@ -132,6 +136,7 @@
                             >Media URL 3:</label
                           >
                           <input
+                            for="media3"
                             id="media3"
                             type="url"
                             placeholder="Media Url"
@@ -140,7 +145,8 @@
 
                           <label for="date" class="d-none"></label>
                           <input
-                            id="deadline-date"
+                            for="deadline"
+                            id="deadline"
                             type="text"
                             placeholder="Deadline date*"
                             class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
@@ -157,6 +163,7 @@
                           Close
                         </button>
                         <button
+                          form="Submit"
                           type="button"
                           class="btn btn-primary text-white"
                         >
