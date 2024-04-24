@@ -12,27 +12,26 @@ export function createNewListing() {
         const form = event.target
         const title = form.querySelector("#title").value
         const description = form.querySelector("#description").value
-
-        // Collect media URLs as an array
-        const media = []
-        const media1 = form.querySelector("#media1").value
-        const media2 = form.querySelector("#media2").value
-        const media3 = form.querySelector("#media3").value
-        if (media1.trim() !== "") media.push(media1)
-        if (media2.trim() !== "") media.push(media2)
-        if (media3.trim() !== "") media.push(media3)
-
         const deadline = form.querySelector("#deadline").value
 
-        // Include media array in the newListing object
+        // Collect media URLs as an array
+        const mediaInputs = Array.from(form.querySelectorAll(".media-input"))
+        const media = mediaInputs
+          .map((input) => input.value.trim())
+          .filter((url) => url !== "")
+
+        // Create a new listing object
         const newListing = {
           title,
           description,
           media,
-          deadline,
+          endsAt: new Date(deadline).toISOString(), // Convert deadline to ISO string
         }
 
+        // Call the createListing function with the newListing object
         createListing(newListing)
+
+        // Provide user feedback
         userFeedback("Your listing has been added!", () => {
           location.reload()
         })
