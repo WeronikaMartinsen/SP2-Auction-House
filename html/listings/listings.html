@@ -93,7 +93,7 @@
                         <form id="createListing">
                           <label for="title" class="d-none"></label>
                           <input
-                            form="createListing"
+                            name="title"
                             id="title"
                             type="text"
                             placeholder="Title*"
@@ -102,7 +102,7 @@
                           />
                           <label for="description" class="d-none"></label>
                           <textarea
-                            form="createListing"
+                            name="description"
                             id="description"
                             type="text-area"
                             placeholder="Description*"
@@ -114,7 +114,7 @@
                             >Media URL 1:</label
                           >
                           <input
-                            form="createListing"
+                            name="media1"
                             id="media1"
                             type="url"
                             placeholder="Media Url*"
@@ -126,7 +126,7 @@
                             >Media URL 2:</label
                           >
                           <input
-                            form="createListing"
+                            name="media2"
                             id="media2"
                             type="url"
                             placeholder="Media Url"
@@ -137,7 +137,7 @@
                             >Media URL 3:</label
                           >
                           <input
-                            form="createListing"
+                            name="media3"
                             for="media3"
                             id="media3"
                             type="url"
@@ -147,7 +147,7 @@
 
                           <label for="date" class="d-none"></label>
                           <input
-                            form="createListing"
+                            name="deadline"
                             for="deadline"
                             id="deadline"
                             type="text"
@@ -155,11 +155,10 @@
                             class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
                             required
                           />
-                        </form>
+                        
                       </div>
                       <div class="modal-footer">
                         <button
-                          form="createListing"
                           type="button"
                           class="btn btn-secondary"
                           data-bs-dismiss="modal"
@@ -174,8 +173,11 @@
                         </button>
                       </div>
                     </div>
+                  
                   </div>
+                
                 </div>
+              </form>
               </div>
             </div>
           </div>
