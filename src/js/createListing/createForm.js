@@ -34,8 +34,9 @@ export async function createNewListing() {
             description,
             media,
             endsAt: new Date(deadline).toISOString(),
-            seller: { name: userName }, // Include the seller's name
+            seller: { name: userName },
           }
+          console.log("New Listing:", newListing)
 
           // Call the createListing function with the newListing object
           const createdListing = await createListing(newListing)
