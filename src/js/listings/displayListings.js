@@ -19,6 +19,8 @@ export async function displayListings() {
 
     console.log("Listings fetched successfully:", allListings)
 
+    allListings.sort((a, b) => new Date(b.created) - new Date(a.created))
+
     const searchInput = document.querySelector("#search")
     const listingsContainer = document.querySelector("#listings")
     const filterOptionOne = document.querySelector("#new-to-old")
@@ -42,7 +44,7 @@ export async function displayListings() {
     filterOptionTwo.addEventListener("click", function () {
       console.log("Sorting listings from old to new...")
       const sortedListings = [...allListings].sort(
-        (a, b) => new Date(a.created) - new Date(b.created),
+        (a, b) => new Date(b.created) - new Date(a.created),
       )
       displayFilteredListings(sortedListings, getProfile, listingsContainer)
     })
