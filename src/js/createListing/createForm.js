@@ -3,6 +3,25 @@ import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
 import { createListingCard } from "../listings/listingCard.js"
 
+async function displayNewListing(listingsContainer, newListing) {
+  try {
+    const userProfile = await getProfile()
+
+    // Create a new listing card for the newly created listing
+    const card = createListingCard(newListing, userProfile)
+
+    // Append the new listing card to the new created card
+    newListing.appendChild(card)
+
+    // Prepend the new created card to the top of the listings container
+    listingsContainer.prepend(newListing)
+  } catch (error) {
+    console.error("Error displaying new listing:", error)
+    // Handle error or provide user feedback
+    userFeedback("Something went wrong. Please try again.")
+  }
+}
+
 export async function createNewListing() {
   try {
     const getForm = document.getElementById("createListing")
@@ -15,10 +34,7 @@ export async function createNewListing() {
         try {
           // Fetch the user's profile to get the seller's name
           const userProfile = await getProfile()
-
-          if (!userProfile || !userProfile.userName) {
-            throw new Error("User profile not found or incomplete.")
-          }
+          const userName = userProfile.name
 
           const form = event.target
           const title = form.querySelector("#title").value
@@ -37,17 +53,23 @@ export async function createNewListing() {
             description,
             media,
             endsAt: new Date(deadline).toISOString(),
-            seller: { name: userProfile.userName }, // Include the seller's name
+            seller: { name: userName }, // Include the seller's name
           }
 
           // Call the createListing function with the newListing object
-          await createListing(newListing)
+          const createdListing = await createListing(newListing)
 
           // Provide user feedback
           userFeedback("Your listing has been added!")
 
           // Reload the page to reflect the new listing
           location.reload()
+
+          // Display the new listing
+
+          const listingsContainer = document.querySelector("#listings")
+
+          displayNewListing(listingsContainer, createdListing)
         } catch (error) {
           console.error("Error creating listing:", error)
           userFeedback("Something went wrong. Please try again.")
@@ -58,27 +80,3 @@ export async function createNewListing() {
     console.error(error)
   }
 }
-
-async function displayNewListing(newListing) {
-  try {
-    const listingsContainer = document.querySelector("#listings")
-
-    // Fetch the user's profile to get the seller's information
-    const userProfile = await getProfile()
-
-    if (!userProfile || !userProfile.userName) {
-      throw new Error("User profile not found or incomplete.")
-    }
-
-    // Create a new listing card for the newly created listing
-    const card = createListingCard(newListing, userProfile)
-
-    // Prepend the new listing card to the top of the listings container
-    listingsContainer.prepend(card)
-  } catch (error) {
-    console.error("Error displaying new listing:", error)
-    // Handle error or provide user feedback
-    userFeedback("Something went wrong. Please try again.")
-  }
-}
-displayNewListing()
