@@ -29,7 +29,6 @@ function formatEndDateTime(date) {
 }
 
 export function createListingCard(listing) {
-  console.log(listing)
   const card = document.createElement("div")
   card.classList.add("listing-card")
   const listingId = listing && listing.id ? listing.id : "Unknown ID"

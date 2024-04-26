@@ -75,7 +75,7 @@ export async function displayNewListing(listingsContainer, newListing) {
     listingsContainer.prepend(card)
   } catch (error) {
     console.error("Error displaying new listing:", error)
-    // Handle error or provide user feedback
+
     userFeedback("Something went wrong. Please try again.")
   }
 }
