@@ -22,11 +22,6 @@ export async function createListing(newListing) {
 
     if (response.ok) {
       const resultNewListing = await response.json()
-      console.log("Response from createListing:", resultNewListing)
-
-      setTimeout(() => {
-        console.log("Response from createListing:", resultNewListing)
-      }, 2000)
       return resultNewListing
     } else {
       // Handle error cases

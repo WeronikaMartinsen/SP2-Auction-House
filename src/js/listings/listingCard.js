@@ -31,11 +31,12 @@ function formatEndDateTime(date) {
 export function createListingCard(listing) {
   const card = document.createElement("div")
   card.classList.add("listing-card")
+  const listingId = listing && listing.id ? listing.id : "Unknown ID"
 
   // Image
   const imageContainer = document.createElement("div")
   imageContainer.classList.add("image-container")
-  imageContainer.href = "/html/listings/singleListing.html?id=" + listing.id
+  imageContainer.href = `/html/listings/singleListing.html?id=${listingId}`
   imageContainer.addEventListener("click", () => {
     window.location.href = imageContainer.href
   })

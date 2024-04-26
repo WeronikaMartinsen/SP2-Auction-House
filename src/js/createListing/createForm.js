@@ -3,25 +3,6 @@ import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
 import { createListingCard } from "../listings/listingCard.js"
 
-async function displayNewListing(listingsContainer, newListing) {
-  try {
-    const userProfile = await getProfile()
-
-    // Create a new listing card for the newly created listing
-    const card = createListingCard(newListing, userProfile)
-
-    // Append the new listing card to the new created card
-    newListing.appendChild(card)
-
-    // Prepend the new created card to the top of the listings container
-    listingsContainer.prepend(newListing)
-  } catch (error) {
-    console.error("Error displaying new listing:", error)
-    // Handle error or provide user feedback
-    userFeedback("Something went wrong. Please try again.")
-  }
-}
-
 export async function createNewListing() {
   try {
     const getForm = document.getElementById("createListing")
@@ -58,18 +39,19 @@ export async function createNewListing() {
 
           // Call the createListing function with the newListing object
           const createdListing = await createListing(newListing)
+          console.log("Created Listing:", createdListing)
 
           // Provide user feedback
           userFeedback("Your listing has been added!")
 
-          // Reload the page to reflect the new listing
-          location.reload()
+          setTimeout(() => {
+            // Reload the page to reflect the new listing
+            location.reload()
 
-          // Display the new listing
-
-          const listingsContainer = document.querySelector("#listings")
-
-          displayNewListing(listingsContainer, createdListing)
+            // Display the new listing
+            const listingsContainer = document.querySelector("#listings")
+            displayNewListing(listingsContainer, createdListing)
+          }, 19000)
         } catch (error) {
           console.error("Error creating listing:", error)
           userFeedback("Something went wrong. Please try again.")
@@ -78,5 +60,21 @@ export async function createNewListing() {
     }
   } catch (error) {
     console.error(error)
+  }
+}
+
+export async function displayNewListing(listingsContainer, newListing) {
+  try {
+    const userProfile = await getProfile()
+
+    // Create a new listing card for the newly created listing
+    const card = createListingCard(newListing, userProfile)
+
+    // Prepend the new listing card to the top of the listings container
+    listingsContainer.prepend(card)
+  } catch (error) {
+    console.error("Error displaying new listing:", error)
+    // Handle error or provide user feedback
+    userFeedback("Something went wrong. Please try again.")
   }
 }
