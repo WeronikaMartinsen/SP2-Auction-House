@@ -61,8 +61,12 @@ export function createListingCard(listing) {
   // Append sellerContainer to card
   card.appendChild(sellerContainer)
 
+  // Avatar
   const avatarImg = document.createElement("img")
-  avatarImg.src = listing.seller.avatar || "/images/avatar-bidme.png"
+  avatarImg.src =
+    listing.seller && listing.seller.avatar
+      ? listing.seller.avatar
+      : "/images/avatar-bidme.png"
   avatarImg.alt = "Avatar"
   avatarImg.classList.add("sellerAvatar")
 
@@ -78,10 +82,15 @@ export function createListingCard(listing) {
   // Other details
 
   const sellerName = document.createElement("a")
-  sellerName.textContent = listing.seller.name
+  sellerName.textContent =
+    listing.seller && listing.seller.name
+      ? listing.seller.name
+      : "Unknown Seller"
   sellerName.classList.add("h6", "text-dark")
   sellerContainer.addEventListener("click", () => {
-    window.location.href = `/html/profiles/profile.html?name=${encodeURIComponent(listing.seller.name)}`
+    if (listing.seller && listing.seller.name) {
+      window.location.href = `/html/profiles/profile.html?name=${encodeURIComponent(listing.seller.name)}`
+    }
   })
 
   // Append sellerName to avatarAndDate

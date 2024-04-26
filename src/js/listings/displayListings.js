@@ -30,6 +30,14 @@ export async function displayListings() {
     const loadMoreBtn = document.querySelector("#loadMore")
     const bidLessThan100Option = document.querySelector("#bid-less-than-100")
     const bidLessThan200Option = document.querySelector("#bid-less-than-200")
+    const bidLessThan300Option = document.querySelector("#bid-less-than-300")
+    const bidLessThan400Option = document.querySelector("#bid-less-than-400")
+    const bidLessThan500Option = document.querySelector("#bid-less-than-500")
+    const bidLessThan600Option = document.querySelector("#bid-less-than-600")
+    const bidLessThan700Option = document.querySelector("#bid-less-than-700")
+    const bidLessThan800Option = document.querySelector("#bid-less-than-800")
+    const bidLessThan900Option = document.querySelector("#bid-less-than-900")
+    const bidLessThan1000Option = document.querySelector("#bid-less-than-1000")
 
     let currentPage = 1
 
@@ -88,6 +96,109 @@ export async function displayListings() {
       )
     })
 
+    bidLessThan300Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 300...")
+      const bidLessThan300Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 200 && lastBid.amount < 300
+      })
+      displayFilteredListings(
+        bidLessThan300Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
+
+    bidLessThan400Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 400...")
+      const bidLessThan400Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 300 && lastBid.amount < 400
+      })
+      displayFilteredListings(
+        bidLessThan400Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
+
+    bidLessThan500Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 500...")
+      const bidLessThan500Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 400 && lastBid.amount < 500
+      })
+      displayFilteredListings(
+        bidLessThan500Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
+
+    bidLessThan600Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 600...")
+      const bidLessThan600Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 500 && lastBid.amount < 600
+      })
+      displayFilteredListings(
+        bidLessThan600Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
+
+    bidLessThan700Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 700...")
+      const bidLessThan700Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 600 && lastBid.amount < 700
+      })
+      displayFilteredListings(
+        bidLessThan700Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
+
+    bidLessThan800Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 800...")
+      const bidLessThan800Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 700 && lastBid.amount < 800
+      })
+      displayFilteredListings(
+        bidLessThan800Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
+
+    bidLessThan900Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 900...")
+      const bidLessThan900Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 800 && lastBid.amount < 900
+      })
+      displayFilteredListings(
+        bidLessThan900Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
+
+    bidLessThan1000Option.addEventListener("click", function () {
+      console.log("Filtering listings with bids less than 1000...")
+      const bidLessThan1000Listings = allListings.filter((listing) => {
+        const lastBid = getLastBid(listing.bids)
+        return lastBid && lastBid.amount > 900 && lastBid.amount < 1000
+      })
+      displayFilteredListings(
+        bidLessThan1000Listings,
+        getProfile,
+        listingsContainer,
+      )
+    })
     searchInput.addEventListener("keyup", function (event) {
       console.log("Searching listings...")
       const searchValue = event.target.value.trim().toLowerCase()
