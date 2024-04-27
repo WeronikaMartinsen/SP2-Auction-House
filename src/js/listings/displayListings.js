@@ -9,6 +9,7 @@ const LISTINGS_PER_PAGE = 10
 export async function displayListings() {
   try {
     console.log("Fetching listings...")
+
     let allListings = await getListings()
     const getProfile = load("profile")
 
@@ -53,7 +54,8 @@ export async function displayListings() {
     })
 
     filterOptionThree.addEventListener("click", function () {
-      console.log("Displaying all listings...")
+      console.log("Sorting listings from old to new...")
+      sortListingsByCreationDateDesc(allListings)
       displayFilteredListings(allListings, getProfile, listingsContainer)
     })
 
@@ -262,12 +264,16 @@ export function displayFilteredListings(
     const card = createListingCard(listing, getProfile)
     listingsContainer.append(card)
   })
+
   if (newListing) {
+    // Append the new listing to the existing list of listings
+    listings.push(newListing)
+
     // Create a card for the new listing
     const newListingCard = createListingCard(newListing, getProfile)
 
-    // Prepend the new listing card to the top of the listings container
-    listingsContainer.prepend(newListingCard)
+    // Append the new listing card to the listings container
+    listingsContainer.append(newListingCard)
   }
 }
 function getLastBid(bids) {

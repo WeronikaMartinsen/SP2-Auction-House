@@ -2,10 +2,12 @@ import { createListing } from "./create.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
 import { displayFilteredListings } from "../listings/displayListings.js"
+import { getListings } from "../listings/getListings.js"
 
 export async function createNewListing() {
   try {
     const getForm = document.getElementById("createListing")
+    const allListings = await getListings()
 
     if (getForm) {
       getForm.addEventListener("submit", async (event) => {
@@ -48,15 +50,13 @@ export async function createNewListing() {
           // Display the new listing
           const listingsContainer = document.querySelector("#listings")
           displayFilteredListings(
+            allListings,
             getProfile,
             listingsContainer,
             false,
-            newListing,
+            createdListing,
           )
           listingsContainer, newListing
-
-          // Reload the page to reflect the new listing
-          location.reload()
         } catch (error) {
           console.error("Error creating listing:", error)
           userFeedback("Something went wrong. Please try again.")
