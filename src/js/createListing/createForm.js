@@ -50,13 +50,11 @@ export async function createNewListing() {
           // Display the new listing
           const listingsContainer = document.querySelector("#listings")
           displayFilteredListings(
-            allListings,
+            allListings.concat(createdListing), // Concatenate the new listing with existing listings
             getProfile,
             listingsContainer,
-            false,
-            createdListing,
+            true, // Set append to true to indicate that we're appending the new listing
           )
-          listingsContainer, newListing
         } catch (error) {
           console.error("Error creating listing:", error)
           userFeedback("Something went wrong. Please try again.")
