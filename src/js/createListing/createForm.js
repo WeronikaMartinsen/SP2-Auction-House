@@ -1,7 +1,7 @@
 import { createListing } from "./create.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
-import { createListingCard } from "../listings/listingCard.js"
+import { displayFilteredListings } from "../listings/displayListings.js"
 
 export async function createNewListing() {
   try {
@@ -47,7 +47,13 @@ export async function createNewListing() {
 
           // Display the new listing
           const listingsContainer = document.querySelector("#listings")
-          displayNewListing(listingsContainer, newListing) // Pass newListing here
+          displayFilteredListings(
+            getProfile,
+            listingsContainer,
+            false,
+            newListing,
+          )
+          listingsContainer, newListing
 
           // Reload the page to reflect the new listing
           location.reload()
@@ -59,22 +65,5 @@ export async function createNewListing() {
     }
   } catch (error) {
     console.error(error)
-  }
-}
-
-export async function displayNewListing(listingsContainer, newListing) {
-  try {
-    const userProfile = await getProfile()
-    console.log("New Listing:", newListing)
-
-    // Create a new listing card for the newly created listing
-    const card = createListingCard(newListing, userProfile)
-
-    // Prepend the new listing card to the top of the listings container
-    listingsContainer.prepend(card)
-  } catch (error) {
-    console.error("Error displaying new listing:", error)
-
-    userFeedback("Something went wrong. Please try again.")
   }
 }

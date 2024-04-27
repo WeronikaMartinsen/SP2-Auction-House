@@ -43,18 +43,13 @@ export async function displayListings() {
 
     filterOptionOne.addEventListener("click", function () {
       console.log("Sorting listings from new to old...")
-      const sortedListings = [...allListings].sort(
-        (a, b) => new Date(b.created) - new Date(a.created),
-      )
-      displayFilteredListings(sortedListings, getProfile, listingsContainer)
+      sortListingsByCreationDateDesc(allListings)
+      displayFilteredListings(allListings, getProfile, listingsContainer)
     })
-
     filterOptionTwo.addEventListener("click", function () {
       console.log("Sorting listings from old to new...")
-      const sortedListings = [...allListings].sort(
-        (a, b) => new Date(b.created) - new Date(a.created),
-      )
-      displayFilteredListings(sortedListings, getProfile, listingsContainer)
+      sortListingsByCreationDateAsc(allListings)
+      displayFilteredListings(allListings, getProfile, listingsContainer)
     })
 
     filterOptionThree.addEventListener("click", function () {
@@ -243,24 +238,37 @@ export async function displayListings() {
   }
 }
 
-function displayFilteredListings(
+function sortListingsByCreationDateDesc(listings) {
+  listings.sort((a, b) => new Date(b.created) - new Date(a.created))
+}
+
+function sortListingsByCreationDateAsc(listings) {
+  listings.sort((a, b) => new Date(a.created) - new Date(b.created))
+}
+
+export function displayFilteredListings(
   listings,
   getProfile,
   listingsContainer,
   append = false,
+  newListing = null,
 ) {
   if (!append) {
     listingsContainer.innerHTML = ""
   }
   console.log("Filtered Listings:", listings) // Log filtered listings
 
-  // Sort listings by creation date in descending order
-  listings.sort((a, b) => new Date(b.created) - new Date(a.created))
-
   listings.forEach((listing) => {
     const card = createListingCard(listing, getProfile)
     listingsContainer.append(card)
   })
+  if (newListing) {
+    // Create a card for the new listing
+    const newListingCard = createListingCard(newListing, getProfile)
+
+    // Prepend the new listing card to the top of the listings container
+    listingsContainer.prepend(newListingCard)
+  }
 }
 function getLastBid(bids) {
   if (!bids || bids.length === 0) {
