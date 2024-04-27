@@ -28,11 +28,11 @@ export async function createNewListing() {
             .map((input) => input.value.trim())
             .filter((url) => url !== "")
 
-          // Create a new listing object
+          // Create a new listing object with media property
           const newListing = {
             title,
             description,
-            media,
+            media, // Include media property here
             endsAt: new Date(deadline).toISOString(),
             seller: { name: userName },
           }
@@ -45,14 +45,12 @@ export async function createNewListing() {
           // Provide user feedback
           userFeedback("Your listing has been added!")
 
-          setTimeout(() => {
-            // Reload the page to reflect the new listing
-            location.reload()
+          // Display the new listing
+          const listingsContainer = document.querySelector("#listings")
+          displayNewListing(listingsContainer, newListing) // Pass newListing here
 
-            // Display the new listing
-            const listingsContainer = document.querySelector("#listings")
-            displayNewListing(listingsContainer, createdListing)
-          }, 19000)
+          // Reload the page to reflect the new listing
+          location.reload()
         } catch (error) {
           console.error("Error creating listing:", error)
           userFeedback("Something went wrong. Please try again.")
@@ -67,6 +65,7 @@ export async function createNewListing() {
 export async function displayNewListing(listingsContainer, newListing) {
   try {
     const userProfile = await getProfile()
+    console.log("New Listing:", newListing)
 
     // Create a new listing card for the newly created listing
     const card = createListingCard(newListing, userProfile)

@@ -1,5 +1,6 @@
-import { createNewListing } from "./createForm.js"
+/* import { createNewListing } from "./createForm.js"
 import { displayNewListing } from "./createForm.js"
 
-createNewListing()
+createNewListing(displayNewListing)
 displayNewListing()
+ */
