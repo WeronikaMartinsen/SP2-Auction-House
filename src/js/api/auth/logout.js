@@ -15,6 +15,7 @@ export function logout() {
     console.log("Logout button clicked")
     remove("token")
     remove("profile")
+    remove("apiKey")
     userFeedback("Your have successfully log out now!", () => {
       window.location.href = "/html/login/index.html"
     })

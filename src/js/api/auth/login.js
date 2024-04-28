@@ -1,7 +1,8 @@
-import { API_BASE_URL, LOGIN } from "../constants.js"
+import { API_BASE_URL, LOGIN, API_KEY } from "../constants.js"
 import * as storage from "../storage/storeToken.js"
 import { userFeedback } from "../../userFeedback/feedbackOverlay.js"
 import { handleError } from "../../userFeedback/errorMessage.js"
+import { getApiKey } from "./apiKey.js"
 
 /**
  * Logs in the user and stores the token and profile data.
@@ -10,13 +11,18 @@ import { handleError } from "../../userFeedback/errorMessage.js"
  * @throws {Error} Throws an error if login fails or if an unexpected error occurs.
  */
 export async function login(user) {
-  const loginURL = API_BASE_URL + LOGIN
-
   try {
+    // Fetch the API key
+    const apiKey = await getApiKey(API_BASE_URL + API_KEY)
+
+    // Construct the login URL with the API key
+    const loginURL = API_BASE_URL + LOGIN
+
     const postData = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "X-Noroff-API-Key": apiKey.json.key,
       },
       body: JSON.stringify(user),
     }
@@ -34,7 +40,7 @@ export async function login(user) {
         userWins: json.wins,
       })
 
-      userFeedback("Your are successfully log in now!", () => {
+      userFeedback("You are successfully logged in!", () => {
         window.location.href = "/html/listings/listings.html"
       })
     } else {

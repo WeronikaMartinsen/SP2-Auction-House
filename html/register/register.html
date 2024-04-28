@@ -65,7 +65,7 @@
                       type="text"
                       minlength="2"
                       class="form-control"
-                      pattern="^[\w]+$"
+                      pattern="^[A-Za-z0-9_]+$"
                       id="name"
                       placeholder="Name*"
                       title="Name can only contain lower/ uppercase letter, numbers and
@@ -81,9 +81,8 @@
                     for="email"
                     placeholder="Email address*"
                     class="form-control"
-                    pattern="^[\w\-.]+@(stud.)?noroff.no$"
-                    title="Email address must contains endpoint @stud.noroff.no or
-                    @noroff.no."
+                    pattern="^[\w\-.]+@stud\.noroff\.no$"
+                    title="The email value must be a valid @stud.noroff.no email address"
                     id="email"
                     required
                     />

@@ -6,7 +6,8 @@ export const id = params.get("id")
 
 export const sellerName = params.get("sellerName")
 
-export const API_BASE_URL = "https://api.noroff.dev/api/v1/auction"
+export const API_BASE_URL = "https://v2.api.noroff.dev"
+export const API_KEY = "/auth/create-api-key"
 export const REGISTER = "/auth/register"
 export const LOGIN = "/auth/login"
 export const LISTINGS = "/listings"

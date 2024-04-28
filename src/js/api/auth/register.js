@@ -14,6 +14,7 @@ export async function register(user) {
     }
     const response = await fetch(registerURL, postData)
     const json = await response.json()
+    console.log("Response from server:", json)
     const status = json.statusCode
     if (response.ok) {
       userFeedback(
@@ -26,7 +27,6 @@ export async function register(user) {
     } else if (status === 400) {
       userFeedback("This profile already exist! Try again, please.", () => {
         // Callback function to execute after the timeout
-        location.reload()
       })
     }
   } catch (error) {

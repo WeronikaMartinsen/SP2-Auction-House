@@ -285,7 +285,7 @@ export function displayFilteredListings(
     listings.forEach((listing) => {
       const card = createListingCard(listing, getProfile)
       listingsContainer.appendChild(card) // Append each listing card to the container
-      console.log("Listing appended:", card) // Add this line
+      // Add this line
     })
   }
 }
