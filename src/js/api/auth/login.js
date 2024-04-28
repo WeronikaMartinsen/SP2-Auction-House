@@ -1,5 +1,5 @@
 import { API_BASE_URL, LOGIN } from "../constants.js"
-import * as storage from "../storage/storeToken.js"
+import { save } from "../storage/storeToken.js"
 import { userFeedback } from "../../userFeedback/feedbackOverlay.js"
 import { handleError } from "../../userFeedback/errorMessage.js"
 
@@ -15,27 +15,28 @@ export async function login(user) {
       body: JSON.stringify(user),
     }
 
-    // Log the postData being sent in the request
-    console.log("Request Data:", postData)
-
     const response = await fetch(loginURL, postData)
-
-    // Log the response received from the server
-    console.log("Response:", response)
-
     const json = await response.json()
 
-    // Log the JSON data received from the server
-    console.log("JSON Data:", json)
+    console.log("Response Data:", json)
 
     if (response.ok) {
-      storage.save("token", json.accessToken)
-      storage.save("profile", {
-        userName: json.name,
-        userEmail: json.email,
-        userCredit: json.credits,
-        userAvatar: json.avatar,
-        userWins: json.wins,
+      const accessToken = json.data.accessToken
+      if (!accessToken) {
+        console.error("Access token not found in response:", json)
+        throw new Error("Access token not found in response")
+      }
+      save("token", accessToken)
+      console.log("Access token saved successfully:", accessToken)
+      save("profile", {
+        userName: json.data.name,
+        userEmail: json.data.email,
+        userCredit: json.data.credits,
+        userAvatar: json.data.avatar,
+        userWins: json.data.wins,
+      })
+      userFeedback("You are successfully logged in!", () => {
+        window.location.href = "/html/listings/listings.html"
       })
     } else {
       const status = json.statusCode

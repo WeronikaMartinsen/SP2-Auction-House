@@ -4,6 +4,7 @@ import { load } from "../storage/storeToken.js"
 export async function createApiKey() {
   try {
     const token = load("accessToken")
+    console.log("Access token:", token)
     if (!token) {
       throw new Error("No access token found")
     }
