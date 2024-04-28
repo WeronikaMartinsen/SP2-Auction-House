@@ -255,27 +255,41 @@ export function displayFilteredListings(
   append = false,
   newListing = null,
 ) {
+  console.log("Displaying filtered listings...")
   if (!append) {
-    listingsContainer.innerHTML = ""
+    listingsContainer.innerHTML = "" // Clear the container if append is false
   }
+
   console.log("Filtered Listings:", listings) // Log filtered listings
 
-  listings.forEach((listing) => {
-    const card = createListingCard(listing, getProfile)
-    listingsContainer.append(card)
-  })
-
-  if (newListing) {
-    // Append the new listing to the existing list of listings
-    listings.push(newListing)
-
-    // Create a card for the new listing
-    const newListingCard = createListingCard(newListing, getProfile)
-
-    // Append the new listing card to the listings container
-    listingsContainer.append(newListingCard)
+  // If append is true, check if newListing exists
+  if (append) {
+    if (newListing) {
+      // If newListing exists, append only the new listing
+      console.log("Appending new listing...")
+      const newListingCard = createListingCard(newListing, getProfile)
+      listingsContainer.appendChild(newListingCard)
+      console.log("New listing appended:", newListingCard) // Add this line
+    } else {
+      // If newListing does not exist, append all listings
+      console.log("Appending all listings...")
+      listings.forEach((listing) => {
+        const card = createListingCard(listing, getProfile)
+        listingsContainer.appendChild(card) // Append each listing card to the container
+        console.log("Listing appended:", card) // Add this line
+      })
+    }
+  } else {
+    // If append is false, display all listings
+    console.log("Displaying all listings...")
+    listings.forEach((listing) => {
+      const card = createListingCard(listing, getProfile)
+      listingsContainer.appendChild(card) // Append each listing card to the container
+      console.log("Listing appended:", card) // Add this line
+    })
   }
 }
+
 function getLastBid(bids) {
   if (!bids || bids.length === 0) {
     return null
