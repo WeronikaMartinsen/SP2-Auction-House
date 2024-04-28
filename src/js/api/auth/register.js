@@ -20,14 +20,11 @@ export async function register(user) {
       userFeedback(
         "You have successfully registered now! Log in to enter the page.",
         () => {
-          // Callback function to execute after the timeout
           window.location.href = "/html/login/index.html"
         },
       )
     } else if (status === 400) {
-      userFeedback("This profile already exist! Try again, please.", () => {
-        // Callback function to execute after the timeout
-      })
+      userFeedback("This profile already exists! Try again, please.", () => {})
     }
   } catch (error) {
     handleError("An unexpected error occurred. Please try again.")

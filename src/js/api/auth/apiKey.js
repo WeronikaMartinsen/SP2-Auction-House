@@ -1,5 +1,5 @@
 import { API_BASE_URL, API_KEY } from "../constants.js"
-async function createApiKey() {
+export async function createApiKey() {
   try {
     const token = localStorage.getItem("accessToken")
     if (!token) {
