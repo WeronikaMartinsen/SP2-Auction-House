@@ -34,11 +34,11 @@
       crossorigin="anonymous"
     ></script>
     <script defer type="module" src="/src/js/ui/navbar-homepage.js"></script>
-
     <script defer type="module" src="/src/js/ui/footer.js"></script>
+    <script defer type="module" src="/src/js/homepage/index.js"></script>
     <title>Auction House - Homepage</title>
   </head>
-  <body class="vh-100 bg-light">
+  <body class="bg-light">
     <div class="navbar-custom sticky-top"></div>
     <section>
       <div class="container-fluid bg-white shadow-sm">
@@ -77,6 +77,7 @@
       <div class="d-flex justify-content-center h-100">
         <div class="searchbar shadow">
           <input
+          id="search"
             class="border-0 mt-1 px-2 custom-hover-search"
             type="text"
             name=""
@@ -88,7 +89,7 @@
     </section>
 
     <section>
-      <div class="container vh-100 bg-white custom-max-width-listings-cont">
+      <div class="container bg-white custom-max-width-listings-cont">
         <h4>Online auctions</h4>
         <div class="d-flex justify-content-end align-items-center gap-1">
           <div class="btn-group">
@@ -114,11 +115,26 @@
               Filter
             </button>
             <ul class="dropdown-menu">
-              ...
+              <li id="new-to-old">Recently added</li>
+              <li id="all-listings">All listings</li>
+              <li id="old-to-new">Oldest</li>
+              <li id="active-listings">Active</li>
             </ul>
           </div>
         </div>
-        <div class="listings"></div>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="loaderContainer">
+            <div id="loader"></div>
+          </div>
+        </div>
+        <div id="listings" class="mt-4"></div>
+        <div class="d-flex justify-content-center align-items-center">
+          <button class="btn btn-outline-dark m-3" id="loadMore">
+            Load more
+          </button>
+        </div>
+      </div>
+    </section>
       </div>
     </section>
 
