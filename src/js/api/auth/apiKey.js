@@ -1,33 +1,22 @@
 import { API_BASE_URL, API_KEY } from "../constants.js"
-export async function createApiKey() {
+
+export async function createAPIKey(apiKeyData) {
   try {
-    const token = localStorage.getItem("accessToken")
-    if (!token) {
-      throw new Error("No access token found")
-    }
-
-    const registerURL = API_BASE_URL + API_KEY
-
-    const postData = {
+    const response = await fetch(`${API_BASE_URL}${API_KEY}`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
-    }
-
-    const response = await fetch(registerURL, postData)
+      body: JSON.stringify(apiKeyData),
+    })
 
     if (!response.ok) {
       throw new Error("Failed to create API key")
     }
 
-    const data = await response.json()
-    console.log("API Key created successfully:", data.data.key)
-    return data.data.key
+    const apiKey = await response.json()
+    return apiKey
   } catch (error) {
-    console.error("Error creating API key:", error.message)
-    throw error // Rethrow the error to propagate it to the caller
+    throw new Error(`Failed to create API key: ${error.message}`)
   }
 }
-
-createApiKey()

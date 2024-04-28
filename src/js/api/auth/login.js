@@ -1,8 +1,8 @@
-import { API_BASE_URL, LOGIN, API_KEY } from "../constants.js"
+import { API_BASE_URL, LOGIN } from "../constants.js"
 import * as storage from "../storage/storeToken.js"
 import { userFeedback } from "../../userFeedback/feedbackOverlay.js"
 import { handleError } from "../../userFeedback/errorMessage.js"
-import { getApiKey } from "./apiKey.js"
+import { createAPIKey } from "./apiKey.js"
 
 /**
  * Logs in the user and stores the token and profile data.
@@ -13,16 +13,15 @@ import { getApiKey } from "./apiKey.js"
 export async function login(user) {
   try {
     // Fetch the API key
-    const apiKey = await getApiKey(API_BASE_URL + API_KEY)
+    const apiKey = await createAPIKey()
 
-    // Construct the login URL with the API key
-    const loginURL = API_BASE_URL + LOGIN
+    const loginURL = `${API_BASE_URL}${LOGIN}`
 
     const postData = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Noroff-API-Key": apiKey.json.key,
+        "X-Noroff-API-Key": apiKey.key,
       },
       body: JSON.stringify(user),
     }
@@ -31,15 +30,17 @@ export async function login(user) {
     const json = await response.json()
 
     if (response.ok) {
+      // Save token and profile data
       storage.save("token", json.accessToken)
       storage.save("profile", {
-        userName: json.name,
-        userEmail: json.email,
-        userCredit: json.credits,
-        userAvatar: json.avatar,
-        userWins: json.wins,
+        userName: json.data.name,
+        userEmail: json.data.email,
+        userCredit: json.data.credits,
+        userAvatar: json.data.avatar,
+        userWins: json.data.wins,
       })
 
+      // Show success message and redirect
       userFeedback("You are successfully logged in!", () => {
         window.location.href = "/html/listings/listings.html"
       })
@@ -49,7 +50,6 @@ export async function login(user) {
         userFeedback(
           "Login failed. Please check your email and password.",
           () => {
-            // Callback function to execute after the timeout
             location.reload()
           },
         )
@@ -61,7 +61,6 @@ export async function login(user) {
   } catch (error) {
     handleError("An unexpected error occurred. Please try again.")
     userFeedback("Login failed. Please check your email and password.", () => {
-      // Callback function to execute after the timeout
       location.reload()
     })
   }
