@@ -34,7 +34,7 @@ export async function getListings() {
 }
 
 export async function getListing(id) {
-  const getListingIdUrl = API_BASE_URL + LISTINGS + `/` + id + `?_author=true`
+  const getListingIdUrl = `${API_BASE_URL}${LISTINGS}/${id}?_seller=true&_bids=true`
   const token = load("token")
   try {
     showLoadingIndicator()

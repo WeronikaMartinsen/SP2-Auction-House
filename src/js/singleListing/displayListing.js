@@ -14,7 +14,7 @@ export async function updateListingDetails() {
     document.getElementById("created").innerText = formatDateTime(createdDate)
 
     document.getElementById("count-bids").innerText =
-      listing._count.bids || "Bids"
+      listing._count?.bids || "Bids"
     document.getElementById("description").innerText =
       listing.description || "Description"
 
@@ -26,8 +26,7 @@ export async function updateListingDetails() {
     sellerProfileLink.href = `/html/profiles/profile.html?name=${encodeURIComponent(sellerName)}`
     sellerProfileLink.textContent = sellerName
 
-    // Replace the seller name text with the link
-    sellerNameElement.innerHTML = "" // Clear the content first
+    sellerNameElement.innerHTML = ""
     sellerNameElement.appendChild(sellerProfileLink)
 
     const endsAtElement = document.getElementById("endsAt")
@@ -64,35 +63,44 @@ export async function updateListingDetails() {
       document.getElementById("media-3"),
     ]
 
-    listing.media.forEach((mediaUrl, index) => {
-      if (index === 0) {
-        mediaElement.src = mediaUrl
-        mediaElement.alt = "Listing Image"
-      } else if (index < smallMediaElements.length + 1) {
-        smallMediaElements[index - 1].src = mediaUrl
-        smallMediaElements[index - 1].alt = "Listing Image"
+    if (
+      listing.media &&
+      Array.isArray(listing.media) &&
+      listing.media.length > 0
+    ) {
+      listing.media.forEach((mediaItem, index) => {
+        if (index === 0) {
+          mediaElement.src = mediaItem.url
+          mediaElement.alt = mediaItem.alt
+        } else if (index < smallMediaElements.length) {
+          smallMediaElements[index - 1].src = mediaItem.url
+          smallMediaElements[index - 1].alt = mediaItem.alt
 
-        // Add click event listener to swap images
-        smallMediaElements[index - 1].addEventListener("click", () => {
-          const tempSrc = mediaElement.src
-          const tempAlt = mediaElement.alt
-          mediaElement.src = smallMediaElements[index - 1].src
-          mediaElement.alt = smallMediaElements[index - 1].alt
-          smallMediaElements[index - 1].src = tempSrc
-          smallMediaElements[index - 1].alt = tempAlt
-        })
-      }
-    })
+          smallMediaElements[index - 1].addEventListener("click", () => {
+            const tempSrc = mediaElement.src
+            const tempAlt = mediaElement.alt
+            mediaElement.src = smallMediaElements[index - 1].src
+            mediaElement.alt = smallMediaElements[index - 1].alt
+            smallMediaElements[index - 1].src = tempSrc
+            smallMediaElements[index - 1].alt = tempAlt
+          })
+        }
+      })
+    } else {
+      mediaElement.src = "/images/defaultImage.png"
+      mediaElement.alt = "Default Image"
 
-    // Set default images for remaining small elements
-    for (let i = listing.media.length; i < smallMediaElements.length; i++) {
-      smallMediaElements[i].src = "/images/defaultImage.png"
-      smallMediaElements[i].alt = "Default Image"
+      smallMediaElements.forEach((element) => {
+        element.style.display = "none"
+      })
     }
-
-    // Update tags
+    /// Update tags
     const tagsElement = document.getElementById("tags")
-    tagsElement.innerText = listing.tags.join(", ")
+    if (listing.tags && Array.isArray(listing.tags)) {
+      tagsElement.innerText = listing.tags.join(", ")
+    } else {
+      tagsElement.innerText = "No tags available"
+    }
   } catch (error) {
     console.error("Error fetching listing:", error)
   }
