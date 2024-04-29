@@ -1,5 +1,5 @@
 import { load, loadProfile } from "../api/storage/storeToken.js"
-import { API_BASE_URL, PROFILES } from "../api/constants.js"
+import { API_BASE_URL, PROFILES, API_KEY_NAME } from "../api/constants.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 
 /**
@@ -21,6 +21,7 @@ export async function getProfile() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
+          "X-Noroff-API-Key": API_KEY_NAME,
         },
       })
 

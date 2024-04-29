@@ -2,12 +2,10 @@ import { createListing } from "./create.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
 import { displayFilteredListings } from "../listings/displayListings.js"
-import { getListings } from "../listings/getListings.js"
 
 export async function createNewListing() {
   try {
     const getForm = document.getElementById("createListing")
-    const allListings = await getListings()
 
     if (getForm) {
       getForm.addEventListener("submit", async (event) => {
@@ -19,45 +17,42 @@ export async function createNewListing() {
           console.log("Fetching user profile...")
           const userProfile = await getProfile()
           console.log("User profile fetched:", userProfile)
-          const userName = userProfile.name
+          const userName = userProfile.data.name
 
           const form = event.target
           const title = form.querySelector("#title").value
           const description = form.querySelector("#description").value
           const deadline = form.querySelector("#deadline").value
 
-          // Collect media URLs as an array
           const mediaInputs = Array.from(form.querySelectorAll(".media-input"))
           const media = mediaInputs
-            .map((input) => input.value.trim())
-            .filter((url) => url !== "")
+            .map((input) => {
+              const url = input.value.trim()
+              return url ? { url, alt: "Listing Image" } : null
+            })
+            .filter((media) => media !== null)
 
-          // Create a new listing object with media property
           const newListing = {
             title,
             description,
-            media, // Include media property here
+            media,
             endsAt: new Date(deadline).toISOString(),
             seller: { name: userName },
           }
-          console.log("New Listing:", newListing)
 
-          // Call the createListing function with the newListing object
-          console.log("Creating new listing...")
           const createdListing = await createListing(newListing)
           console.log("Created Listing:", createdListing)
 
           const listingsContainer = document.querySelector("#listings")
-          console.log("Displaying filtered listings...")
-          displayFilteredListings(
-            allListings.concat(createdListing), // Concatenate the new listing with existing listings
-            getProfile,
-            listingsContainer,
-            true, // Set append to true to indicate that we're appending the new listing
-            createdListing, /// Set append to true to indicate that we're appending the new listing
-          )
-          // Provide user feedback
-          userFeedback("Your listing has been added!")
+          if (listingsContainer) {
+            console.log("Displaying filtered listings...")
+            displayFilteredListings(
+              [createdListing],
+              getProfile,
+              listingsContainer,
+              true,
+            )
+          }
         } catch (error) {
           console.error("Error creating listing:", error)
           userFeedback("Something went wrong. Please try again.")

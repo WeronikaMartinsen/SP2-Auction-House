@@ -6,7 +6,7 @@ function formatDateTime(date) {
     minute: "numeric",
     hour12: false, // Use 24-hour format
   }
-  return new Intl.DateTimeFormat("en-GB", options).format(date)
+  return new Intl.DateTimeFormat("en-US", options).format(date)
 }
 function formatEndDateTime(date) {
   const options = {

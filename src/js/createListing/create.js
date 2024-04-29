@@ -1,4 +1,4 @@
-import { API_BASE_URL, LISTINGS } from "../api/constants.js"
+import { API_BASE_URL, LISTINGS, API_KEY_NAME } from "../api/constants.js"
 import { load } from "../api/storage/storeToken.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
@@ -13,6 +13,7 @@ export async function createListing(newListing) {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
+        "X-Noroff-API-Key": API_KEY_NAME,
       },
       body: JSON.stringify(newListing),
     }
