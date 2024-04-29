@@ -24,6 +24,8 @@ export async function createNewListing() {
           const description = form.querySelector("#description").value
           const deadline = form.querySelector("#deadline").value
 
+          console.log("Deadline value:", deadline)
+
           const mediaInputs = Array.from(form.querySelectorAll(".media-input"))
           const media = mediaInputs
             .map((input) => {
@@ -32,16 +34,22 @@ export async function createNewListing() {
             })
             .filter((media) => media !== null)
 
+          const endsAt = new Date(deadline).toISOString()
+
           const newListing = {
             title,
             description,
             media,
-            endsAt: new Date(deadline).toISOString(),
+            endsAt,
             seller: { name: userName },
           }
 
           const createdListing = await createListing(newListing)
           console.log("Created Listing:", createdListing)
+
+          userFeedback("Your listing has been successfully added!.", () => {
+            location.reload()
+          })
 
           const listingsContainer = document.querySelector("#listings")
           if (listingsContainer) {

@@ -4,7 +4,7 @@ function formatDateTime(date) {
     month: "long",
     hour: "numeric",
     minute: "numeric",
-    hour12: false, // Use 24-hour format
+    hour12: false,
   }
   return new Intl.DateTimeFormat("en-US", options).format(date)
 }
