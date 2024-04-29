@@ -10,7 +10,9 @@ export async function displayListings() {
   try {
     console.log("Fetching listings...")
 
-    let allListings = await getListings()
+    const response = await getListings()
+    let allListings = response.data
+
     const getProfile = load("profile")
 
     if (!Array.isArray(allListings)) {

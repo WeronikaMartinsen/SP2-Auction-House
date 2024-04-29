@@ -43,14 +43,17 @@ export function createListingCard(listing) {
 
   const image = document.createElement("img")
   if (listing.media && listing.media.length > 0) {
-    image.src = listing.media[0]
+    // Access the first media object in the array
+    const media = listing.media[0]
+    if (media && media.url) {
+      image.src = media.url
+    } else {
+      image.src = "/images/defaultImage.png"
+    }
+    image.alt = media && media.alt ? media.alt : "Listing Image"
   } else {
     image.src = "/images/defaultImage.png"
-  }
-  image.alt = "Listing Image"
-
-  image.onerror = function () {
-    this.src = "/images/defaultImage.png"
+    image.alt = "Listing Image"
   }
   imageContainer.appendChild(image)
 
@@ -64,10 +67,11 @@ export function createListingCard(listing) {
 
   // Avatar
   const avatarImg = document.createElement("img")
-  avatarImg.src =
-    listing.seller && listing.seller.avatar
-      ? listing.seller.avatar
-      : "/images/avatar-bidme.png"
+  if (listing.seller && listing.seller.avatar && listing.seller.avatar.url) {
+    avatarImg.src = listing.seller.avatar.url
+  } else {
+    avatarImg.src = "/images/avatar-bidme.png"
+  }
   avatarImg.alt = "Avatar"
   avatarImg.classList.add("sellerAvatar")
 
@@ -167,13 +171,11 @@ export function createListingCard(listing) {
     const lastBidContainer = document.createElement("div")
     lastBidContainer.classList.add("last-bid-container")
 
-    const lastBidderName = document.createElement("a")
     const lastBidAmount = document.createElement("div")
     lastBidAmount.classList.add("d-flex", "gap-1")
-    lastBidAmount.innerHTML = `<h2 class="text-primary">${lastBid.amount},-</h2><span class="small-font-size">bidder:</span><a class="bidder small-font-size">${lastBid.bidderName}</a>`
+    lastBidAmount.innerHTML = `<h2 class="text-primary">${lastBid.amount},-</h2><span class="small-font-size">bidder:</span><a class="bidder small-font-size">${lastBid.bidder.name}</a>`
 
     lastBidContainer.appendChild(lastBidAmount)
-    lastBidContainer.appendChild(lastBidderName)
 
     bidsContainer.appendChild(lastBidContainer)
   }

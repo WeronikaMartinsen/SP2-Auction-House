@@ -1,4 +1,4 @@
-import { API_BASE_URL, LISTINGS } from "../api/constants.js"
+import { API_BASE_URL, LISTINGS, API_KEY_NAME } from "../api/constants.js"
 import { load, save } from "../api/storage/storeToken.js"
 import { showLoadingIndicator } from "../ui/loadingIndicator.js"
 import { hideLoadingIndicator } from "../ui/loadingIndicator.js"
@@ -15,6 +15,7 @@ export async function getListings() {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
+        "X-Noroff-API-Key": API_KEY_NAME,
       },
     })
     const listings = await response.json()
@@ -33,7 +34,7 @@ export async function getListings() {
 }
 
 export async function getListing(id) {
-  const getListingIdUrl = API_BASE_URL + LISTINGS + `/${id}?_seller=true`
+  const getListingIdUrl = API_BASE_URL + LISTINGS + `/` + id + `?_author=true`
   const token = load("token")
   try {
     showLoadingIndicator()
@@ -41,6 +42,7 @@ export async function getListing(id) {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
+        "X-Noroff-API-Key": API_KEY_NAME,
       },
     })
     const listingId = await response.json()

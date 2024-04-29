@@ -35,9 +35,11 @@ export async function login(user) {
         userAvatar: json.data.avatar,
         userWins: json.data.wins,
       })
+
       userFeedback("You are successfully logged in!", () => {
         window.location.href = "/html/listings/listings.html"
       })
+      return accessToken
     } else {
       const status = json.statusCode
       if (status === 401) {
