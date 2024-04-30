@@ -7,7 +7,23 @@ export async function updateListingDetails() {
 
     console.log("Retrieved Listing Data:", listing)
 
-    document.getElementById("title").innerText = listing.title || "N/A"
+    if (!listing) {
+      console.error("Listing data not found.")
+      return
+    }
+
+    // Check if the HTML elements are selected correctly
+    const titleElement = document.getElementById("title")
+    console.log("Title Element:", titleElement)
+
+    // Verify that the title element is selected
+    if (!titleElement) {
+      console.error("Title element not found.")
+      return
+    }
+
+    // Assign data to the title element
+    titleElement.innerText = listing.title || "N/A"
 
     // Format the created date
     const createdDate = listing.created ? new Date(listing.created) : new Date()
