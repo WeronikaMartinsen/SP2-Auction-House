@@ -3,10 +3,6 @@ import { load } from "../api/storage/storeToken.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { createListingCard } from "./listingCard.js"
-import {
-  showLoadingIndicator,
-  hideLoadingIndicator,
-} from "../ui/loadingIndicator.js"
 
 const LISTINGS_PER_PAGE = 10
 
@@ -54,11 +50,9 @@ export async function displayListings() {
       displayFilteredListings(allListings, getProfile, listingsContainer)
     })
     filterOptionTwo.addEventListener("click", function () {
-      showLoadingIndicator()
       console.log("Sorting listings from old to new...")
       sortListingsByCreationDateAsc(allListings)
       displayFilteredListings(allListings, getProfile, listingsContainer)
-      hideLoadingIndicator()
     })
 
     filterOptionThree.addEventListener("click", function () {
@@ -265,35 +259,30 @@ export function displayFilteredListings(
 ) {
   console.log("Displaying filtered listings...")
   if (!append) {
-    listingsContainer.innerHTML = "" // Clear the container if append is false
+    listingsContainer.innerHTML = ""
   }
 
-  console.log("Filtered Listings:", listings) // Log filtered listings
+  console.log("Filtered Listings:", listings)
 
-  // If append is true, check if newListing exists
   if (append) {
     if (newListing) {
-      // If newListing exists, append only the new listing
       console.log("Appending new listing...")
       const newListingCard = createListingCard(newListing, getProfile)
       listingsContainer.appendChild(newListingCard)
-      console.log("New listing appended:", newListingCard) // Add this line
+      console.log("New listing appended:", newListingCard)
     } else {
-      // If newListing does not exist, append all listings
       console.log("Appending all listings...")
       listings.forEach((listing) => {
         const card = createListingCard(listing, getProfile)
-        listingsContainer.appendChild(card) // Append each listing card to the container
-        console.log("Listing appended:", card) // Add this line
+        listingsContainer.appendChild(card)
+        console.log("Listing appended:", card)
       })
     }
   } else {
-    // If append is false, display all listings
     console.log("Displaying all listings...")
     listings.forEach((listing) => {
       const card = createListingCard(listing, getProfile)
-      listingsContainer.appendChild(card) // Append each listing card to the container
-      // Add this line
+      listingsContainer.appendChild(card)
     })
   }
 }
