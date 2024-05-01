@@ -3,7 +3,6 @@ import { handleError } from "../userFeedback/errorMessage.js"
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    // Call getProfileForm function when the DOM content is loaded
     console.log("DOM content loaded")
     await getProfileForm()
   } catch (error) {
@@ -20,7 +19,8 @@ export async function getProfileForm() {
     const sellerName = urlParams.get("name")
 
     // Fetch the profile of the user with the extracted sellerName
-    const profile = await getProfile(sellerName)
+    const response = await getProfile(sellerName)
+    const profile = response.data // Access the `data` object
 
     console.log("Profile fetched:", profile)
 
@@ -32,7 +32,7 @@ export async function getProfileForm() {
 
     userName.textContent = profile.name
     userEmail.textContent = profile.email
-    userAvatar.src = profile.avatar || "/images/avatar-bidme.png"
+    userAvatar.src = profile.avatar.url || "/images/avatar-bidme.png"
     userAvatar.alt = "User image."
     userCredits.textContent = profile.credits
 

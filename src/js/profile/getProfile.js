@@ -13,7 +13,7 @@ export async function getProfile() {
   // Check if the user profile is available and contains the seller name
   if (userProfile && userProfile.userName) {
     const sellerName = userProfile.userName
-    const getProfileURL = `${API_BASE_URL}${PROFILES}/${sellerName}`
+    const getProfileURL = `${API_BASE_URL}${PROFILES}/${sellerName}?_listings=true&_wins=true`
 
     try {
       // Fetch the user's profile

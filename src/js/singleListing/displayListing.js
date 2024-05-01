@@ -3,14 +3,16 @@ import { id } from "../api/constants.js"
 
 export async function updateListingDetails() {
   try {
-    const listing = await getListing(id)
+    const response = await getListing(id)
 
-    console.log("Retrieved Listing Data:", listing)
-
-    if (!listing) {
+    if (!response || !response.data) {
       console.error("Listing data not found.")
       return
     }
+
+    const listing = response.data
+
+    console.log("Retrieved Listing Data:", listing)
 
     // Check if the HTML elements are selected correctly
     const titleElement = document.getElementById("title")

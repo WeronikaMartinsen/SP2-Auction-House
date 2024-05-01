@@ -3,6 +3,10 @@ import { load } from "../api/storage/storeToken.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { createListingCard } from "./listingCard.js"
+import {
+  showLoadingIndicator,
+  hideLoadingIndicator,
+} from "../ui/loadingIndicator.js"
 
 const LISTINGS_PER_PAGE = 10
 
@@ -50,9 +54,11 @@ export async function displayListings() {
       displayFilteredListings(allListings, getProfile, listingsContainer)
     })
     filterOptionTwo.addEventListener("click", function () {
+      showLoadingIndicator()
       console.log("Sorting listings from old to new...")
       sortListingsByCreationDateAsc(allListings)
       displayFilteredListings(allListings, getProfile, listingsContainer)
+      hideLoadingIndicator()
     })
 
     filterOptionThree.addEventListener("click", function () {

@@ -1,13 +1,19 @@
 import { getProfile } from "./getProfile.js"
 
 export async function displayUserProfile() {
-  const userProfile = await getProfile()
-  if (userProfile) {
-    console.log("User Profile:", userProfile)
-    // Display user profile data on the frontend
-  } else {
-    console.log("User profile could not be fetched.")
-    // Handle error or display appropriate message to the user
+  try {
+    const response = await getProfile()
+
+    if (!response || !response.data) {
+      console.error("User profile data not found.")
+      return
+    }
+
+    const userProfile = response.data
+
+    console.log("Retrieved User Profile Data:", userProfile)
+  } catch (error) {
+    console.error("Error fetching user profile:", error)
   }
 }
 
