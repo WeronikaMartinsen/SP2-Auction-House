@@ -1,12 +1,12 @@
 import { getListingsByProfile } from "./getProfile.js"
 import { createListingCard } from "../listings/listingCard.js"
 
-export async function displayListingsByProfile(profileName) {
+export async function displayListingsByProfile(sellerName) {
   try {
     console.log("Fetching listings by profile...")
 
     // Fetch listings by profile
-    const response = await getListingsByProfile(profileName)
+    const response = await getListingsByProfile(sellerName)
 
     // Check if response contains data
     if (!response || !response.data || !Array.isArray(response.data)) {

@@ -52,23 +52,23 @@ export async function getProfile(sellerName) {
 }
 
 /**
- * Fetches the user's profile data from the server.
- * @param {string} sellerName The name of the seller whose profile to fetch.
- * @returns {Promise<Object|null>} A promise that resolves with the user's profile data if successful, or null if not found.
+ * Fetches listings by profile from the server.
+ * @param {string} sellerName The name of the profile whose listings to fetch.
+ * @returns {Promise<Object|null>} A promise that resolves with the fetched listings data if successful, or null if not found.
  */
 export async function getListingsByProfile(sellerName) {
   const token = load("token")
 
-  // Check if the seller name is provided
+  // Check if the profile name is provided
   if (!sellerName) {
-    console.error("Seller name is required.")
+    console.error("Profile name is required.")
     return null
   }
 
   const getProfileURL = `${API_BASE_URL}${PROFILES}/${sellerName}/${LISTINGS}?_listings=true&_wins=true`
 
   try {
-    // Fetch the user's profile
+    // Fetch listings by profile
     const response = await fetch(getProfileURL, {
       headers: {
         "Content-Type": "application/json",
@@ -79,18 +79,18 @@ export async function getListingsByProfile(sellerName) {
 
     // Check if the response is successful
     if (!response.ok) {
-      throw new Error(`Failed to fetch profile: ${response.status}`)
+      throw new Error(`Failed to fetch listings by profile: ${response.status}`)
     }
 
     // Parse the response JSON
-    const fetchedProfile = await response.json()
+    const fetchedListings = await response.json()
 
-    console.log("Profile fetched successfully:", fetchedProfile)
-    return fetchedProfile
+    console.log("Listings fetched successfully:", fetchedListings)
+    return fetchedListings
   } catch (error) {
     // Handle errors
-    console.error("Error fetching user profile:", error)
-    handleError(`Error fetching user profile: ${error.message}`)
+    console.error("Error fetching listings by profile:", error)
+    handleError(`Error fetching listings by profile: ${error.message}`)
     return null
   }
 }
