@@ -21,7 +21,7 @@ export async function getProfile(sellerName) {
     return null
   }
 
-  const getProfileURL = `${API_BASE_URL}${PROFILES}/${sellerName}?_listings=true&_wins=true`
+  const getProfileURL = `${API_BASE_URL}${PROFILES}/${sellerName}`
 
   try {
     // Fetch the user's profile

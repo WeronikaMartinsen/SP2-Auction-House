@@ -1,6 +1,7 @@
 import { createListing } from "./create.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
+import { sellerName } from "../api/constants.js"
 import { displayFilteredListings } from "../listings/displayListings.js"
 
 export async function createNewListing() {
@@ -13,9 +14,8 @@ export async function createNewListing() {
         console.log("Form submitted!")
 
         try {
-          // Fetch the user's profile to get the seller's name
           console.log("Fetching user profile...")
-          const userProfile = await getProfile()
+          const userProfile = await getProfile(sellerName)
           console.log("User profile fetched:", userProfile)
           const userName = userProfile.data.name
 
