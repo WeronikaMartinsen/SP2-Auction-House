@@ -1,21 +1,32 @@
 import { load } from "../api/storage/storeToken.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { API_BASE_URL, PROFILES, API_KEY_NAME } from "../api/constants.js"
+import {
+  showLoadingIndicator,
+  hideLoadingIndicator,
+} from "../ui/loadingIndicator.js"
+
+// Function to extract query parameter from URL
+function getQueryParam(name) {
+  const urlParams = new URLSearchParams(window.location.search)
+  return urlParams.get(name)
+}
 
 export async function getListingsByProfile() {
-  const token = load("token")
-  const getProfile = load("profile")
-  const userName = getProfile.userName
-  console.log(getProfile)
-  console.log(userName)
+  showLoadingIndicator()
+
+  // Get the profile name from the URL parameter
+  const sellerName = getQueryParam("name")
 
   // Check if the profile name is provided
-  if (!userName) {
+  if (!sellerName) {
     console.error("Profile name is required.")
+    hideLoadingIndicator()
     return null
   }
 
-  const getProfileURL = `${API_BASE_URL}${PROFILES}/${userName}/listings?_listings=true&_wins=true`
+  const token = load("token")
+  const getProfileURL = `${API_BASE_URL}${PROFILES}/${sellerName}/listings?_seller=true&_bids=true&`
 
   try {
     // Fetch listings by profile
@@ -34,6 +45,7 @@ export async function getListingsByProfile() {
 
     // Parse the response JSON
     const fetchedListings = await response.json()
+    hideLoadingIndicator()
 
     console.log("Listings fetched successfully:", fetchedListings)
     return fetchedListings
@@ -41,6 +53,7 @@ export async function getListingsByProfile() {
     // Handle errors
     console.error("Error fetching listings by profile:", error)
     handleError(`Error fetching listings by profile: ${error.message}`)
+    hideLoadingIndicator()
     return null
   }
 }

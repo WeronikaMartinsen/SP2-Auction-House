@@ -17,7 +17,7 @@ export async function displayListingsByProfile(sellerName) {
     const listings = response.data
 
     // Get the container element where listings will be displayed
-    const listingsContainer = document.getElementById("listings-profile")
+    const listingsContainer = document.getElementById("listings")
 
     // Verify that the listings container element is selected
     if (!listingsContainer) {
