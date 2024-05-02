@@ -12,22 +12,13 @@ function formatEndDateTime(date) {
   const options = {
     day: "numeric",
     month: "short",
-  }
-  const dateFormatted = new Intl.DateTimeFormat("en-US", options).format(date)
-
-  const hourOptions = {
     hour: "numeric",
     minute: "numeric",
     hour12: false,
   }
-  const time = new Intl.DateTimeFormat("en-US", hourOptions).format(date)
 
-  return {
-    date: dateFormatted,
-    time: time,
-  }
+  return new Intl.DateTimeFormat("en-US", options).format(date)
 }
-
 export function createListingCard(listing) {
   const card = document.createElement("div")
   card.classList.add("listing-card")
@@ -121,14 +112,10 @@ export function createListingCard(listing) {
   const endDate = new Date(listing.endsAt)
   const formattedEndDateTime = formatEndDateTime(endDate)
 
-  const dateElement = document.createElement("p")
-  dateElement.textContent = formattedEndDateTime.date
+  const dateTimeElement = document.createElement("p")
+  dateTimeElement.textContent = formattedEndDateTime
 
-  const timeElement = document.createElement("p")
-  timeElement.textContent = formattedEndDateTime.time
-
-  auctionsEnd.appendChild(timeElement)
-  auctionsEnd.appendChild(dateElement)
+  auctionsEnd.appendChild(dateTimeElement)
 
   // Title
   const title = document.createElement("h6")

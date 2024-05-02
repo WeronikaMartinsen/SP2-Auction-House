@@ -31,6 +31,10 @@ export async function createNewListing() {
 
           console.log("Deadline value:", deadline)
 
+          // Log the endsAt value
+          const endsAt = new Date(deadline).toISOString()
+          console.log("EndsAt value:", endsAt)
+
           const mediaInputs = Array.from(form.querySelectorAll(".media-input"))
           const media = mediaInputs
             .map((input) => {
@@ -39,8 +43,6 @@ export async function createNewListing() {
             })
             .filter((media) => media !== null)
 
-          const endsAt = new Date(deadline).toISOString()
-
           const newListing = {
             title,
             description,
@@ -48,6 +50,9 @@ export async function createNewListing() {
             endsAt,
             seller: { name: userName },
           }
+
+          // Log the newListing object
+          console.log("New Listing:", newListing)
 
           const createdListing = await createListing(newListing)
           console.log("Created Listing:", createdListing)
