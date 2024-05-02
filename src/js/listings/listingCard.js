@@ -160,7 +160,7 @@ export function createListingCard(listing) {
   bidsContainer.classList.add("bids-container")
 
   if (bidsCount > 0) {
-    const lastBid = listing.bids[listing.bids.length - 1]
+    const lastBid = listing.bids[listing.bids.length - 1] // Get the last bid
 
     const bidsCountElement = document.createElement("p")
     bidsCountElement.textContent = `Bids: ${bidsCount}`
@@ -174,11 +174,7 @@ export function createListingCard(listing) {
     const lastBidAmount = document.createElement("div")
     lastBidAmount.classList.add("d-flex", "gap-1")
     lastBidAmount.innerHTML = `<h2 class="text-primary">${lastBid.amount},-</h2><span class="small-font-size">bidder:</span><a class="bidder small-font-size">${lastBid.bidder.name}</a>`
-    lastBidContainer.addEventListener("click", () => {
-      if (lastBid.bidder.name) {
-        window.location.href = `/html/profiles/profile.html?name=${encodeURIComponent(lastBid.bidder.name)}`
-      }
-    })
+
     lastBidContainer.appendChild(lastBidAmount)
 
     bidsContainer.appendChild(lastBidContainer)

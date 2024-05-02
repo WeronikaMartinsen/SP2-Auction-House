@@ -1,7 +1,7 @@
 import { createListing } from "./create.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
-import { sellerName } from "../api/constants.js"
+import { loadProfile } from "../api/storage/storeToken.js"
 import { displayFilteredListings } from "../listings/displayListings.js"
 
 export async function createNewListing() {
@@ -15,9 +15,14 @@ export async function createNewListing() {
 
         try {
           console.log("Fetching user profile...")
-          const userProfile = await getProfile(sellerName)
-          console.log("User profile fetched:", userProfile)
-          const userName = userProfile.data.name
+          const profile = await loadProfile()
+          console.log("User profile fetched:", profile)
+          const userName = profile ? profile.userName : null
+
+          if (!userName) {
+            console.error("User profile not found or incomplete.")
+            return
+          }
 
           const form = event.target
           const title = form.querySelector("#title").value
