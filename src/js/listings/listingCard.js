@@ -217,7 +217,8 @@ export function createListingCard(listing) {
   card.appendChild(btnContainer)
 
   btnUpdate.addEventListener("click", () => {
-    const modalContent = createListingModalContent()
+    const listingId = listing.id // Assuming listing is accessible here
+    const modalContent = createListingModalContent(listingId)
     showModal("staticBackdrop", modalContent)
   })
 

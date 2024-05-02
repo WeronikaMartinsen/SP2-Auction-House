@@ -5,8 +5,10 @@ import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 
 export async function updateListingForm(id) {
   try {
+    // Retrieve the listing data including its ID
     const retrievedListing = await getListing(id)
 
+    // Set the form input values with the retrieved listing data
     document.getElementById("updateTitle").value = retrievedListing.title
     document.getElementById("updateDescription").value =
       retrievedListing.description
@@ -40,7 +42,8 @@ export async function updateListingForm(id) {
         }
 
         try {
-          await updateListing(id, newUpdatedListing)
+          // Pass the listing ID and the updated listing data to the updateListing function
+          await updateListing(retrievedListing.id, newUpdatedListing)
           userFeedback("Your post has been updated!", () => {
             location.reload()
             window.location.href = "/feed/index.html"

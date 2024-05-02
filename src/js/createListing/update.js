@@ -3,7 +3,7 @@ import { load } from "../api/storage/storeToken.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 
-export async function updateListing(id) {
+export async function updateListing(id, updatedListingData) {
   const updateListingURL = `${API_BASE_URL}${LISTINGS}/${id}?_seller=true&_bids=true`
   const token = load("token")
 
@@ -15,19 +15,18 @@ export async function updateListing(id) {
         Authorization: `Bearer ${token}`,
         "X-Noroff-API-Key": API_KEY_NAME,
       },
-      body: JSON.stringify(id),
+      body: JSON.stringify(updatedListingData),
     }
 
     const response = await fetch(updateListingURL, postData)
-    console.log(response)
 
     if (response.ok) {
-      const updateListing = await response.json()
-      return updateListing
+      const updatedListing = await response.json()
+      return updatedListing
     } else {
       // Handle error cases
       console.error("Error:", response.statusText)
-      handleError("Error adding listing. Please try again.")
+      handleError("Error updating listing. Please try again.")
       userFeedback("Something went wrong. Please, try again.", () => {
         // Callback function to execute after the timeout
         location.reload()
@@ -35,7 +34,7 @@ export async function updateListing(id) {
     }
   } catch (error) {
     console.error(error)
-    handleError("Error adding listing. Please try again.")
+    handleError("Error updating listing. Please try again.")
     userFeedback("Something went wrong. Please, try again.", () => {
       // Callback function to execute after the timeout
       location.reload()
