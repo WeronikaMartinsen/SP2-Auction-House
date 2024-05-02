@@ -232,8 +232,9 @@ p {
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 0.7em;
-  padding: 0.4em;
+  padding-left: 0.5em;
+  gap: 0.4em;
+
   cursor: pointer;
 }
 .sellerAvatar {

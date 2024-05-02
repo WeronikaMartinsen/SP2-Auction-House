@@ -1,3 +1,7 @@
+import { load } from "../api/storage/storeToken.js"
+
+const userProfile = load("profile")
+
 function formatDateTime(date) {
   const options = {
     day: "numeric",
@@ -50,6 +54,29 @@ export function createListingCard(listing) {
 
   card.appendChild(imageContainer)
 
+  const updateContainer = document.createElement("div")
+  updateContainer.classList.add("d-flex", "justify-content-end")
+  const btnsContainer = document.createElement("div")
+  btnsContainer.classList.add(
+    "gap-2",
+    "pe-auto",
+    "d-flex",
+    "justify-content-center",
+    "align-items-center",
+  )
+  const btnUpdate = document.createElement("a")
+  btnUpdate.textContent = ". . ."
+  const btnDelete = document.createElement("a")
+  btnDelete.classList.add("px-2")
+  btnDelete.classList.add("fa-solid", "fa-xmark", "pe-auto")
+
+  if (userProfile && userProfile.userName === listing.seller.name) {
+    card.appendChild(updateContainer)
+    updateContainer.appendChild(btnsContainer)
+    btnsContainer.appendChild(btnUpdate)
+    btnsContainer.appendChild(btnDelete)
+  }
+
   const sellerContainer = document.createElement("div")
   sellerContainer.classList.add("sellerContainer")
 
@@ -82,7 +109,7 @@ export function createListingCard(listing) {
     listing.seller && listing.seller.name
       ? listing.seller.name
       : "Unknown Seller"
-  sellerName.classList.add("h6", "text-dark")
+  sellerName.classList.add("h6", "text-dark", "m-0")
   sellerContainer.addEventListener("click", () => {
     if (listing.seller && listing.seller.name) {
       window.location.href = `/html/profiles/profile.html?name=${encodeURIComponent(listing.seller.name)}`
