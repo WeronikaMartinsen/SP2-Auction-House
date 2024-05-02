@@ -171,14 +171,6 @@ export function createListingCard(listing) {
     bidsContainer.appendChild(lastBidContainer)
   }
 
-  // SEE MORE (link to ID)
-
-  const seeMore = document.createElement("a")
-  seeMore.textContent = "SEE MORE"
-  seeMore.classList.add("seeMore")
-
-  card.appendChild(seeMore)
-
   const btnContainer = document.createElement("div")
   btnContainer.classList.add("btnContainer")
 

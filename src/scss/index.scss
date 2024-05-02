@@ -225,8 +225,8 @@ p {
   padding: 0.6em;
   margin: 0;
   display: flex;
+  gap: 1em;
   flex-direction: column;
-  justify-content: space-between;
 }
 .sellerContainer {
   display: flex;
@@ -268,9 +268,17 @@ p {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
+.tag {
+  font-style: italic;
+  color: $success;
+}
+.tagsContainer {
+  gap: 1em;
+}
 
 .seeMore {
   padding-left: 1em;
+  cursor: pointer;
 }
 .btnContainer {
   padding: 1em;
@@ -290,6 +298,7 @@ p {
   text-align: end;
   padding-top: 1em;
   opacity: 0.8;
+  cursor: pointer;
 }
 ///////////////////////////////LOADING INDICATOR
 
