@@ -4,7 +4,7 @@ import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 
 export async function updateListing(id) {
-  const createListingURL = `${API_BASE_URL}${LISTINGS}/${id}?_seller=true&_bids=true`
+  const updateListingURL = `${API_BASE_URL}${LISTINGS}/${id}?_seller=true&_bids=true`
   const token = load("token")
 
   try {
@@ -18,7 +18,7 @@ export async function updateListing(id) {
       body: JSON.stringify(id),
     }
 
-    const response = await fetch(createListingURL, postData)
+    const response = await fetch(updateListingURL, postData)
     console.log(response)
 
     if (response.ok) {

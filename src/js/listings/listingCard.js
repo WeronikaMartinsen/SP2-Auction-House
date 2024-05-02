@@ -1,4 +1,6 @@
 import { load } from "../api/storage/storeToken.js"
+import { showModal } from "../createListing/updateModal.js"
+import { createListingModalContent } from "../createListing/updateModal.js"
 
 const userProfile = load("profile")
 
@@ -72,6 +74,7 @@ export function createListingCard(listing) {
   )
   const btnUpdate = document.createElement("a")
   btnUpdate.textContent = ". . ."
+
   const btnDelete = document.createElement("a")
   btnDelete.classList.add("px-2")
   btnDelete.classList.add("fa-solid", "fa-xmark", "pe-auto")
@@ -212,6 +215,11 @@ export function createListingCard(listing) {
   btnContainer.appendChild(bidBtn)
 
   card.appendChild(btnContainer)
+
+  btnUpdate.addEventListener("click", () => {
+    const modalContent = createListingModalContent()
+    showModal("staticBackdrop", modalContent)
+  })
 
   return card
 }
