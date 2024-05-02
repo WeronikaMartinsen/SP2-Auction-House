@@ -1,4 +1,4 @@
-import { getListingsByProfile } from "./getProfile.js"
+import { getListingsByProfile } from "./getListingsByProfile.js"
 import { createListingCard } from "../listings/listingCard.js"
 
 export async function displayListingsByProfile(sellerName) {
