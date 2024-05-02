@@ -231,9 +231,11 @@ p {
 .sellerContainer {
   display: flex;
   justify-content: start;
+
   align-items: center;
   padding-left: 0.5em;
   gap: 0.4em;
+  margin-top: 0.4em;
 
   cursor: pointer;
 }

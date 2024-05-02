@@ -54,6 +54,12 @@ export function createListingCard(listing) {
 
   card.appendChild(imageContainer)
 
+  const sellerContainer = document.createElement("div")
+  sellerContainer.classList.add("sellerContainer")
+
+  // Append sellerContainer to card
+  card.appendChild(sellerContainer)
+
   const updateContainer = document.createElement("div")
   updateContainer.classList.add("d-flex", "justify-content-end")
   const btnsContainer = document.createElement("div")
@@ -76,12 +82,6 @@ export function createListingCard(listing) {
     btnsContainer.appendChild(btnUpdate)
     btnsContainer.appendChild(btnDelete)
   }
-
-  const sellerContainer = document.createElement("div")
-  sellerContainer.classList.add("sellerContainer")
-
-  // Append sellerContainer to card
-  card.appendChild(sellerContainer)
 
   // Avatar
   const avatarImg = document.createElement("img")
