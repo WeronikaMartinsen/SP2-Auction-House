@@ -112,7 +112,7 @@ export function createListingCard(listing) {
   const endDate = new Date(listing.endsAt)
   const formattedEndDateTime = formatEndDateTime(endDate)
 
-  const dateTimeElement = document.createElement("p")
+  const dateTimeElement = document.createElement("span")
   dateTimeElement.textContent = formattedEndDateTime
 
   auctionsEnd.appendChild(dateTimeElement)
@@ -161,7 +161,11 @@ export function createListingCard(listing) {
     const lastBidAmount = document.createElement("div")
     lastBidAmount.classList.add("d-flex", "gap-1")
     lastBidAmount.innerHTML = `<h2 class="text-primary">${lastBid.amount},-</h2><span class="small-font-size">bidder:</span><a class="bidder small-font-size">${lastBid.bidder.name}</a>`
-
+    lastBidAmount.addEventListener("click", () => {
+      if (lastBid.bidder.name && lastBid.bidder.name) {
+        window.location.href = `/html/profiles/profile.html?name=${encodeURIComponent(lastBid.bidder.name)}`
+      }
+    })
     lastBidContainer.appendChild(lastBidAmount)
 
     bidsContainer.appendChild(lastBidContainer)
