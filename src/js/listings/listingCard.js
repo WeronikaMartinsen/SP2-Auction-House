@@ -1,7 +1,5 @@
 import { load } from "../api/storage/storeToken.js"
-import { showModal } from "../createListing/updateModal.js"
-import { createListingModalContent } from "../createListing/updateModal.js"
-import { updateListingForm } from "../createListing/updateForm.js"
+import { showModal } from "../createListing/modalUpdate.js"
 
 const userProfile = load("profile")
 
@@ -15,7 +13,8 @@ function formatDateTime(date) {
   }
   return new Intl.DateTimeFormat("en-US", options).format(date)
 }
-function formatEndDateTime(date) {
+function formatEndDateTime(dateString) {
+  const date = new Date(dateString)
   const options = {
     day: "numeric",
     month: "short",
@@ -76,12 +75,18 @@ export function createListingCard(listing) {
   const btnUpdate = document.createElement("button")
   btnUpdate.textContent = ". . ."
   btnUpdate.classList.add("pe-auto")
+  btnUpdate.setAttribute("data-bs-toggle", "modal")
+  btnUpdate.setAttribute("data-bs-target", "#updateListingModal")
+  btnUpdate.addEventListener("click", showModal)
 
   const btnDelete = document.createElement("button")
   btnDelete.classList.add("px-2")
   btnDelete.classList.add("fa-solid", "fa-xmark", "pe-auto")
 
-  if (userProfile && userProfile.userName === listing.seller.name) {
+  if (
+    userProfile &&
+    userProfile.userName === (listing.seller ? listing.seller.name : undefined)
+  ) {
     card.appendChild(updateContainer)
     updateContainer.appendChild(btnsContainer)
     btnsContainer.appendChild(btnUpdate)
@@ -217,22 +222,6 @@ export function createListingCard(listing) {
   btnContainer.appendChild(bidBtn)
 
   card.appendChild(btnContainer)
-
-  btnUpdate.addEventListener("click", async () => {
-    try {
-      const modalContent = createListingModalContent()
-
-      showModal("staticBackdropLabel", modalContent)
-
-      if (listing.id) {
-        await updateListingForm(listing.id)
-      } else {
-        console.error("Listing ID is undefined.")
-      }
-    } catch (error) {
-      console.error("Error fetching or populating modal:", error)
-    }
-  })
 
   return card
 }

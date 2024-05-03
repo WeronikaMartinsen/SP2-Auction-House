@@ -29,11 +29,14 @@ export async function createNewListing() {
           const description = form.querySelector("#description").value
           const deadline = form.querySelector("#deadline").value
 
-          console.log("Deadline value:", deadline)
+          const deadlineTimestamp = Date.parse(deadline)
+          if (isNaN(deadlineTimestamp)) {
+            throw new Error(
+              "Invalid date format for deadline. Please use ISO 8601 format.",
+            )
+          }
 
-          // Log the endsAt value
-          const endsAt = new Date(deadline).toISOString()
-          console.log("EndsAt value:", endsAt)
+          const endsAt = new Date(deadlineTimestamp).toISOString()
 
           const mediaInputs = Array.from(form.querySelectorAll(".media-input"))
           const media = mediaInputs
