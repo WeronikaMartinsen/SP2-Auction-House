@@ -1,6 +1,7 @@
 import { load } from "../api/storage/storeToken.js"
 import { showModal } from "../createListing/updateModal.js"
 import { createListingModalContent } from "../createListing/updateModal.js"
+import { getListing } from "./getListings.js"
 
 const userProfile = load("profile")
 
@@ -216,10 +217,17 @@ export function createListingCard(listing) {
 
   card.appendChild(btnContainer)
 
-  btnUpdate.addEventListener("click", () => {
-    const listingId = listing.id // Assuming listing is accessible here
-    const modalContent = createListingModalContent(listingId)
-    showModal("staticBackdrop", modalContent)
+  btnUpdate.addEventListener("click", async () => {
+    try {
+      const listingId = listing.id
+      const retrievedListing = await getListing(listingId)
+
+      const modalContent = createListingModalContent(retrievedListing)
+
+      showModal("staticBackdrop", modalContent)
+    } catch (error) {
+      console.error("Error fetching or populating modal:", error)
+    }
   })
 
   return card

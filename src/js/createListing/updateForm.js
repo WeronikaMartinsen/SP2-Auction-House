@@ -44,12 +44,11 @@ export async function updateListingForm(id) {
         try {
           // Pass the listing ID and the updated listing data to the updateListing function
           await updateListing(retrievedListing.id, newUpdatedListing)
-          userFeedback("Your post has been updated!", () => {
+          userFeedback("You have successfully updated listing!", () => {
             location.reload()
-            window.location.href = "/feed/index.html"
           })
         } catch (error) {
-          handleError("Error updating post.")
+          handleError("Error updating listing.")
           userFeedback("Something went wrong. Please try again.", () => {
             location.reload()
           })
@@ -57,7 +56,7 @@ export async function updateListingForm(id) {
       })
     }
   } catch (error) {
-    handleError("Error editing post.")
+    handleError("Error updating listing.")
     userFeedback("Something went wrong. Please try again.", () => {
       location.reload()
     })
