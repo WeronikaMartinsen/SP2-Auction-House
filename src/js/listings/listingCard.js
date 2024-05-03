@@ -1,7 +1,6 @@
 import { load } from "../api/storage/storeToken.js"
 import { showModal } from "../createListing/updateModal.js"
 import { createListingModalContent } from "../createListing/updateModal.js"
-import { getListing } from "./getListings.js"
 
 const userProfile = load("profile")
 
@@ -219,10 +218,7 @@ export function createListingCard(listing) {
 
   btnUpdate.addEventListener("click", async () => {
     try {
-      const listingId = listing.id
-      const retrievedListing = await getListing(listingId)
-
-      const modalContent = createListingModalContent(retrievedListing)
+      const modalContent = createListingModalContent()
 
       showModal("staticBackdrop", modalContent)
     } catch (error) {
