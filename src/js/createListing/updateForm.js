@@ -2,9 +2,8 @@ import { updateListing } from "./update.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { getListing } from "../listings/getListings.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
-import { id } from "../api/constants.js"
 
-export async function updateListingForm() {
+export async function updateListingForm(id) {
   try {
     // Retrieve the listing data including its ID
     const retrievedListing = await getListing(id)

@@ -1,6 +1,7 @@
 import { load } from "../api/storage/storeToken.js"
-import { showModal } from "../createListing/updateModal.js"
+/* import { showModal } from "../createListing/updateModal.js"
 import { createListingModalContent } from "../createListing/updateModal.js"
+import { updateListingForm } from "../createListing/updateForm.js" */
 
 const userProfile = load("profile")
 
@@ -28,7 +29,7 @@ function formatEndDateTime(date) {
 export function createListingCard(listing) {
   const card = document.createElement("div")
   card.classList.add("listing-card")
-  const listingId = listing && listing.id ? listing.id : "Unknown ID"
+  const listingId = listing.id || "Unknown ID"
 
   // Image
   const imageContainer = document.createElement("div")
@@ -215,16 +216,23 @@ export function createListingCard(listing) {
   btnContainer.appendChild(bidBtn)
 
   card.appendChild(btnContainer)
-
+  /* 
   btnUpdate.addEventListener("click", async () => {
     try {
       const modalContent = createListingModalContent()
 
       showModal("staticBackdrop", modalContent)
+
+      if (listing.id) {
+        // Check if listing.id is defined
+        await updateListingForm(listing.id)
+      } else {
+        console.error("Listing ID is undefined.")
+      }
     } catch (error) {
       console.error("Error fetching or populating modal:", error)
     }
   })
-
+ */
   return card
 }
