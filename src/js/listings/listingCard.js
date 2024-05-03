@@ -1,7 +1,7 @@
 import { load } from "../api/storage/storeToken.js"
-/* import { showModal } from "../createListing/updateModal.js"
+import { showModal } from "../createListing/updateModal.js"
 import { createListingModalContent } from "../createListing/updateModal.js"
-import { updateListingForm } from "../createListing/updateForm.js" */
+import { updateListingForm } from "../createListing/updateForm.js"
 
 const userProfile = load("profile")
 
@@ -73,10 +73,11 @@ export function createListingCard(listing) {
     "justify-content-center",
     "align-items-center",
   )
-  const btnUpdate = document.createElement("a")
+  const btnUpdate = document.createElement("button")
   btnUpdate.textContent = ". . ."
+  btnUpdate.classList.add("pe-auto")
 
-  const btnDelete = document.createElement("a")
+  const btnDelete = document.createElement("button")
   btnDelete.classList.add("px-2")
   btnDelete.classList.add("fa-solid", "fa-xmark", "pe-auto")
 
@@ -216,15 +217,14 @@ export function createListingCard(listing) {
   btnContainer.appendChild(bidBtn)
 
   card.appendChild(btnContainer)
-  /* 
+
   btnUpdate.addEventListener("click", async () => {
     try {
       const modalContent = createListingModalContent()
 
-      showModal("staticBackdrop", modalContent)
+      showModal("staticBackdropLabel", modalContent)
 
       if (listing.id) {
-        // Check if listing.id is defined
         await updateListingForm(listing.id)
       } else {
         console.error("Listing ID is undefined.")
@@ -233,6 +233,6 @@ export function createListingCard(listing) {
       console.error("Error fetching or populating modal:", error)
     }
   })
- */
+
   return card
 }

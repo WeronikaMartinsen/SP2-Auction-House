@@ -6,7 +6,7 @@ import { displayFilteredListings } from "../listings/displayListings.js"
 
 export async function createNewListing() {
   try {
-    const getForm = document.getElementById("createListing")
+    const getForm = document.getElementById("createListingModal")
 
     if (getForm) {
       getForm.addEventListener("submit", async (event) => {

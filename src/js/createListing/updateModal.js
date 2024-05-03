@@ -1,7 +1,7 @@
 export function showModal(modalId, modalContent) {
-  const modal = document.getElementById(modalId)
+  const modal = document.getElementById("staticBackdropLabel")
   const modalBody = modal.querySelector(".modal-body")
-  modalBody.innerHTML = modalContent // Set the innerHTML of the modal body
+  modalBody.innerHTML = modalContent
 
   const modalInstance = new bootstrap.Modal(modal)
   modalInstance.show()
@@ -15,10 +15,10 @@ export function hideModal(modalId) {
 
 export function createListingModalContent() {
   return `
-    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+    <h1 class="modal-title fs-5">
       Update Listing
     </h1>
-    <div class="modal-body gap-3">
+    <div class="modal-body gap-3" id="staticBackdropLabel">
     <form id="updateListing">
     <label for="title" class="d-none"></label>
     <input
