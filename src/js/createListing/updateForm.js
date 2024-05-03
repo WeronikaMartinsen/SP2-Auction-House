@@ -1,4 +1,4 @@
-import { updateListing } from "./update.js"
+import { showModal } from "./modalUpdate.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { getListing } from "../listings/getListings.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
@@ -12,8 +12,8 @@ export async function updateListingForm(id) {
     document.getElementById("updateTitle").value = retrievedListing.title
     document.getElementById("updateDescription").value =
       retrievedListing.description
-    document.getElementById("updateDeadline").value = retrievedListing.endsAt
 
+    // Set media URLs
     const mediaInputs = document.querySelectorAll(".media-input")
     retrievedListing.media.forEach((media, index) => {
       if (index < mediaInputs.length) {
@@ -21,44 +21,25 @@ export async function updateListingForm(id) {
       }
     })
 
-    const updateForm = document.querySelector("#updateListing")
+    // Set deadline
+    document.getElementById("updateDeadline").value = formatDeadline(
+      retrievedListing.endsAt,
+    )
 
-    if (updateForm) {
-      updateForm.addEventListener("submit", async (event) => {
-        event.preventDefault()
-        const form = event.target
-
-        const title = form.updateTitle.value
-        const description = form.updateDescription.value
-        const mediaInputs = Array.from(form.querySelectorAll(".media-input"))
-        const media = mediaInputs.map((input) => ({ url: input.value }))
-        const deadline = form.updateDeadline.value
-
-        const newUpdatedListing = {
-          title,
-          description,
-          media,
-          deadline,
-        }
-
-        try {
-          // Pass the listing ID and the updated listing data to the updateListing function
-          await updateListing(retrievedListing.id, newUpdatedListing)
-          userFeedback("You have successfully updated listing!", () => {
-            location.reload()
-          })
-        } catch (error) {
-          handleError("Error updating listing.")
-          userFeedback("Something went wrong. Please try again.", () => {
-            location.reload()
-          })
-        }
-      })
-    }
+    // Show the modal
+    showModal()
   } catch (error) {
     handleError("Error updating listing.")
     userFeedback("Something went wrong. Please try again.", () => {
       location.reload()
     })
   }
+}
+
+// Format deadline in the correct format for input[type=datetime-local]
+function formatDeadline(dateString) {
+  const date = new Date(dateString)
+  // Format the date as YYYY-MM-DDTHH:MM
+  const formattedDate = date.toISOString().slice(0, 16)
+  return formattedDate
 }
