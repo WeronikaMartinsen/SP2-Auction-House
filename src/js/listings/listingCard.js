@@ -1,30 +1,10 @@
 import { load } from "../api/storage/storeToken.js"
 import { showModal } from "../createListing/modalUpdate.js"
+import { formatDateTime } from "./formatDate.js"
+import { formatEndDateTime } from "./formatDate.js"
 
 const userProfile = load("profile")
 
-function formatDateTime(date) {
-  const options = {
-    day: "numeric",
-    month: "long",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false,
-  }
-  return new Intl.DateTimeFormat("en-US", options).format(date)
-}
-function formatEndDateTime(dateString) {
-  const date = new Date(dateString)
-  const options = {
-    day: "numeric",
-    month: "short",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false,
-  }
-
-  return new Intl.DateTimeFormat("en-US", options).format(date)
-}
 export function createListingCard(listing) {
   const card = document.createElement("div")
   card.classList.add("listing-card")
@@ -135,22 +115,24 @@ export function createListingCard(listing) {
   const formattedDate = formatDateTime(createdDate)
   details.textContent = `${formattedDate}`
 
-  // Append details to avatarAndDate
+  // Append details (deadline) to avatarAndDate
   avatarAndDate.appendChild(details)
 
   const contentContainer = document.createElement("div")
   contentContainer.classList.add("contentContainer")
   card.appendChild(contentContainer)
 
+  // Auctions End
+
   const auctionsEnd = document.createElement("div")
   auctionsEnd.classList.add("auctionEnds")
   card.appendChild(auctionsEnd)
 
-  const endDate = new Date(listing.endsAt)
-  const formattedEndDateTime = formatEndDateTime(endDate)
+  // Format the end date using formatEndDateTime function
+  const endDate = formatEndDateTime(listing.endsAt)
 
   const dateTimeElement = document.createElement("span")
-  dateTimeElement.textContent = formattedEndDateTime
+  dateTimeElement.textContent = endDate
 
   auctionsEnd.appendChild(dateTimeElement)
 
