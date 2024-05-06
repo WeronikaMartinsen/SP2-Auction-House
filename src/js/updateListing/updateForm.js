@@ -1,14 +1,29 @@
-import { showModal } from "./modalUpdate.js"
+/* import { showModal } from "./modalUpdate.js"
 import { handleError } from "../userFeedback/errorMessage.js"
-import { getListing } from "../listings/getListings.js"
+import { getListing, getListing } from "../listings/getListings.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
+import { updateListing } from "./update.js"
+import { id } from "../api/constants.js"
 
+
+export async function updateListingForm() {
+  try {
+    const getListing = await getListing(id)
+    console.log(getListing)
+  }
+}
+
+
+ */
+
+/* 
 export async function updateListingForm(id) {
   try {
     // Retrieve the listing data including its ID
     const retrievedListing = await getListing(id)
+    console.log(retrievedListing)
+    const getForm = document.querySelector("#updateListing")
 
-    // Set the form input values with the retrieved listing data
     document.getElementById("updateTitle").value = retrievedListing.title
     document.getElementById("updateDescription").value =
       retrievedListing.description
@@ -42,4 +57,4 @@ function formatDeadline(dateString) {
   // Format the date as YYYY-MM-DDTHH:MM
   const formattedDate = date.toISOString().slice(0, 16)
   return formattedDate
-}
+} */

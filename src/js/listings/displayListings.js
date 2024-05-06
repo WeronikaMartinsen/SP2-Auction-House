@@ -264,20 +264,20 @@ export function displayFilteredListings(
 
   console.log("Filtered Listings:", listings)
 
+  if (newListing) {
+    console.log("Appending new listing...")
+    const newListingCard = createListingCard(newListing, getProfile)
+    listingsContainer.appendChild(newListingCard)
+    console.log("New listing appended:", newListingCard)
+  }
+
   if (append) {
-    if (newListing) {
-      console.log("Appending new listing...")
-      const newListingCard = createListingCard(newListing, getProfile)
-      listingsContainer.appendChild(newListingCard)
-      console.log("New listing appended:", newListingCard)
-    } else {
-      console.log("Appending all listings...")
-      listings.forEach((listing) => {
-        const card = createListingCard(listing, getProfile)
-        listingsContainer.appendChild(card)
-        console.log("Listing appended:", card)
-      })
-    }
+    console.log("Appending all listings...")
+    listings.forEach((listing) => {
+      const card = createListingCard(listing, getProfile)
+      listingsContainer.appendChild(card)
+      console.log("Listing appended:", card)
+    })
   } else {
     console.log("Displaying all listings...")
     listings.forEach((listing) => {
