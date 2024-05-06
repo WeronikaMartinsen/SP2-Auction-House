@@ -1,7 +1,6 @@
 import { load } from "../api/storage/storeToken.js"
 import { showModal } from "../createListing/modalUpdate.js"
-import { formatDateTime } from "./formatDate.js"
-import { formatEndDateTime } from "./formatDate.js"
+import { startCountdown } from "./countDown.js"
 
 const userProfile = load("profile")
 
@@ -111,29 +110,32 @@ export function createListingCard(listing) {
 
   const details = document.createElement("div")
   details.classList.add("details")
-  const createdDate = new Date(listing.created)
-  const formattedDate = formatDateTime(createdDate)
-  details.textContent = `${formattedDate}`
 
-  // Append details (deadline) to avatarAndDate
+  // Format the created date
+  const createdDate = new Date(listing.created)
+  const formattedDate = createdDate.toLocaleString()
+
+  details.textContent = formattedDate
+
   avatarAndDate.appendChild(details)
 
   const contentContainer = document.createElement("div")
   contentContainer.classList.add("contentContainer")
   card.appendChild(contentContainer)
 
+  // Append the formatted date to the avatarAndDate container
+  avatarAndDate.appendChild(details)
+
   // Auctions End
 
   const auctionsEnd = document.createElement("div")
   auctionsEnd.classList.add("auctionEnds")
+  startCountdown(listing, auctionsEnd)
   card.appendChild(auctionsEnd)
 
-  // Format the end date using formatEndDateTime function
-  const endDate = formatEndDateTime(listing.endsAt)
-
+  // Display the raw endsAt value without formatting
   const dateTimeElement = document.createElement("span")
-  dateTimeElement.textContent = endDate
-
+  dateTimeElement.textContent = listing.endsAt
   auctionsEnd.appendChild(dateTimeElement)
 
   // Title
@@ -161,11 +163,12 @@ export function createListingCard(listing) {
   }
 
   // Bids
-  const bidsCount = listing._count.bids || 0 // Get the count of bids
+  const bidsCount =
+    listing._count && listing._count.bids ? listing._count.bids : 0 // Get the count of bids
   const bidsContainer = document.createElement("div")
   bidsContainer.classList.add("bids-container")
 
-  if (bidsCount > 0) {
+  if (bidsCount > 0 && listing.bids) {
     const lastBid = listing.bids[listing.bids.length - 1] // Get the last bid
 
     const bidsCountElement = document.createElement("p")

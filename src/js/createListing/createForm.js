@@ -29,6 +29,17 @@ export async function createNewListing() {
           const description = form.querySelector("#description").value
           const deadline = form.querySelector("#deadline").value
 
+          const parsedDeadline = new Date(deadline)
+
+          if (isNaN(parsedDeadline)) {
+            // Invalid date format, handle error
+            console.error("Invalid deadline format:", deadline)
+            return
+          }
+
+          // Convert the parsed deadline into the desired format (e.g., ISO 8601)
+          const formattedDeadline = parsedDeadline.toISOString()
+
           const mediaInputs = Array.from(form.querySelectorAll(".media-input"))
           const media = mediaInputs
             .map((input) => {
@@ -41,7 +52,7 @@ export async function createNewListing() {
             title,
             description,
             media,
-            endsAt: deadline,
+            endsAt: formattedDeadline,
             seller: { name: userName },
           }
 

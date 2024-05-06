@@ -1,5 +1,7 @@
 import { getListing } from "../listings/getListings.js"
 import { id } from "../api/constants.js"
+import { formatDateTime } from "../listings/formatDate.js"
+import { startCountdown } from "../listings/countDown.js"
 
 export async function updateListingDetails() {
   try {
@@ -18,13 +20,11 @@ export async function updateListingDetails() {
     const titleElement = document.getElementById("title")
     console.log("Title Element:", titleElement)
 
-    // Verify that the title element is selected
     if (!titleElement) {
       console.error("Title element not found.")
       return
     }
 
-    // Assign data to the title element
     titleElement.innerText = listing.title || "N/A"
 
     // Format the created date
@@ -50,27 +50,9 @@ export async function updateListingDetails() {
     const endsAtElement = document.getElementById("endsAt")
     endsAtElement.textContent = listing.endsAt || "Auction ends"
 
-    // Start countdown if endsAt is provided
+    // Start countdown if listing endsAt is available
     if (listing.endsAt) {
-      const endsAt = new Date(listing.endsAt).getTime()
-      const countdownInterval = setInterval(() => {
-        const now = new Date().getTime()
-        const distance = endsAt - now
-        if (distance < 0) {
-          clearInterval(countdownInterval)
-          endsAtElement.textContent = "Auction ended"
-        } else {
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-          const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-          )
-          const minutes = Math.floor(
-            (distance % (1000 * 60 * 60)) / (1000 * 60),
-          )
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-          endsAtElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`
-        }
-      }, 1000)
+      startCountdown(listing, endsAtElement)
     }
 
     // Update media
@@ -122,14 +104,4 @@ export async function updateListingDetails() {
   } catch (error) {
     console.error("Error fetching listing:", error)
   }
-}
-function formatDateTime(date) {
-  const options = {
-    day: "numeric",
-    month: "long",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false,
-  }
-  return new Intl.DateTimeFormat("en-US", options).format(date)
 }
