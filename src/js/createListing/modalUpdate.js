@@ -61,7 +61,7 @@ const modalContent = `
                     <input
                         name="updateDeadline"
                         id="updateDeadline"
-                        type="datetime-local"
+                        type="text"
                         placeholder="Deadline date*"
                         class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
                         required

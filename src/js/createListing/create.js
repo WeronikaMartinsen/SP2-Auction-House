@@ -23,7 +23,8 @@ export async function createListing(newListing) {
 
     if (response.ok) {
       const resultNewListing = await response.json()
-
+      // Display user feedback for successful response
+      userFeedback("Listing added successfully!", () => {})
       return resultNewListing
     } else {
       // Handle error cases
