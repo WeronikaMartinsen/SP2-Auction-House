@@ -1,49 +1,40 @@
-/* import { showModal } from "./modalUpdate.js"
 import { handleError } from "../userFeedback/errorMessage.js"
-import { getListing, getListing } from "../listings/getListings.js"
+import { getListing } from "../listings/getListings.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { updateListing } from "./update.js"
 import { id } from "../api/constants.js"
 
-
 export async function updateListingForm() {
   try {
-    const getListing = await getListing(id)
-    console.log(getListing)
-  }
-}
+    const retrievedListing = await fetchListingById(id)
+    if (!retrievedListing) {
+      handleError("Error: Listing not found.")
+      return
+    }
 
+    populateFormFields(retrievedListing)
 
- */
-
-/* 
-export async function updateListingForm(id) {
-  try {
-    // Retrieve the listing data including its ID
-    const retrievedListing = await getListing(id)
-    console.log(retrievedListing)
     const getForm = document.querySelector("#updateListing")
 
-    document.getElementById("updateTitle").value = retrievedListing.title
-    document.getElementById("updateDescription").value =
-      retrievedListing.description
-
-    // Set media URLs
-    const mediaInputs = document.querySelectorAll(".media-input")
-    retrievedListing.media.forEach((media, index) => {
-      if (index < mediaInputs.length) {
-        mediaInputs[index].value = media.url
-      }
-    })
-
-    // Set deadline
-    document.getElementById("updateDeadline").value = formatDeadline(
-      retrievedListing.endsAt,
-    )
-
-    // Show the modal
-    showModal()
+    if (getForm) {
+      getForm.addEventListener("submit", (event) => {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        const updatedListing = {
+          title: formData.get("updateTitle"),
+          description: formData.get("updateDescription"),
+          media: [
+            formData.get("updateMedia1"),
+            formData.get("updateMedia2"),
+            formData.get("updateMedia3"),
+          ],
+          endsAt: formData.get("updateDeadline"),
+        }
+        updateListing(updatedListing)
+      })
+    }
   } catch (error) {
+    console.error(error)
     handleError("Error updating listing.")
     userFeedback("Something went wrong. Please try again.", () => {
       location.reload()
@@ -51,10 +42,19 @@ export async function updateListingForm(id) {
   }
 }
 
-// Format deadline in the correct format for input[type=datetime-local]
-function formatDeadline(dateString) {
-  const date = new Date(dateString)
-  // Format the date as YYYY-MM-DDTHH:MM
-  const formattedDate = date.toISOString().slice(0, 16)
-  return formattedDate
-} */
+async function fetchListingById(id) {
+  const response = await getListing(id)
+  if (!response.ok) {
+    throw new Error("Error fetching listing.")
+  }
+  return await response.json()
+}
+
+function populateFormFields(listing) {
+  document.getElementById("updateTitle").value = listing.title
+  document.getElementById("updateDescription").value = listing.description
+  document.getElementById("updateMedia1").value = listing.media[0] || ""
+  document.getElementById("updateMedia2").value = listing.media[1] || ""
+  document.getElementById("updateMedia3").value = listing.media[2] || ""
+  document.getElementById("updateDeadline").value = listing.endsAt
+}

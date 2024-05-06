@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore detailed information and images of listing on our single listing page. Discover key features, specifications, and pricing, aiding in informed decision-making. Browse user reviews and ratings to ensure satisfaction before purchase or engagement."
+    />
+
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/b515e79b0f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script defer type="module" src="/src/js/ui/navbar.js"></script>
+    <script defer type="module" src="/src/js/ui/footer.js"></script>
+    <script defer type="module" src="/src/js/updateListing/index.js"></script>
+
+    <title>Auction House | Update Listing</title>
+  </head>
+  <body class="vh-100 bg-light">
+    <div class="navbar-custom sticky-top"></div>
+    <section>
+      <div class="container-fluid bg-white shadow-sm">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div
+            class="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center"
+          >
+            <div class="d-flex flex-column gap-2">
+              <h2 class="p-0 m-0 mt-5">Welcome to Auction House!</h2>
+              <div
+                class="d-flex justify-content-center align-items-center gap-3 text-center"
+              >
+                <h4 class="text-center text-wrap text-primary">
+                  add your auction here!
+                </h4>
+                <i
+                  class="fa-solid fa-plus text-white border rounded-circle p-2 bg-primary"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-12 col-sm-6 d-flex justify-content-center align-items-center"
+          >
+            <img
+              src="/images/img-5.png"
+              alt="Hero image describing art."
+              class="custom-hero-size"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container-fluid d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center bg-white rounded">
+          <div class="loaderContainer">
+            <div id="loader"></div>
+          </div>
+        </div>
+      </section>
+      <div id="updateListingModal">
+      
+        
+                <div class="m-2 p-2">
+                    <h1 class="fs-5" id="staticBackdropLabel">
+                        Update Listing
+                    </h1>
+                    
+                </div>
+                <div class="gap-3">
+                    <form  class="p-2" id="updateListing">
+                    <label for="updateTitle" class="d-none"></label>
+                    <input
+                        name="updateTitle"
+                        id="updateTitle"
+                        type="text"
+                        placeholder="Title*"
+                        class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                        required
+                    />
+                    <label for="updateDescription" class="d-none"></label>
+                    <textarea
+                        name="updateDescription"
+                        id="updateDescription"
+                        type="text-area"
+                        placeholder="Description*"
+                        class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                        required
+                    ></textarea>
+
+                    <label for="updateMedia1" class="d-none">Media URL 1:</label>
+                    <input
+                        name="updateMedia1"
+                        id="updateMedia1"
+                        type="url"
+                        placeholder="Media Url*"
+                        class="media-input form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                        required
+                    />
+
+                    <label for="updateMedia2" class="d-none">Media URL 2:</label>
+                    <input
+                        name="updateMedia2"
+                        id="updateMedia2"
+                        type="url"
+                        placeholder="Media Url"
+                        class="media-input form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                    />
+
+                    <label for="updateMedia3" class="d-none">Media URL 3:</label>
+                    <input
+                        name="updateMedia3"
+                        id="updateMedia3"
+                        type="url"
+                        placeholder="Media Url"
+                        class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1 media-input"
+                    />
+
+                    <label for="updateDeadline" class="d-none"></label>
+                    <input
+                        name="updateDeadline"
+                        id="updateDeadline"
+                        type="text"
+                        placeholder="Deadline date*"
+                        class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                        required
+                    />
+                    
+                </div>
+                <div class="float-right">
+                    <button type="submit" class="btn btn-primary text-white">Submit</button>
+                </div>
+              </form>
+           
+        </div>
+  
+
+    <footer>
+      <div class="footer-custom"></div>
+    </footer>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 import { load } from "../api/storage/storeToken.js"
-import { showModal } from "../updateListing/modalUpdate.js"
+
 import { startCountdown } from "./countDown.js"
 
 const userProfile = load("profile")
@@ -54,20 +54,9 @@ export function createListingCard(listing) {
   const btnUpdate = document.createElement("button")
   btnUpdate.textContent = ". . ."
   btnUpdate.classList.add("pe-auto")
-  btnUpdate.setAttribute("data-bs-toggle", "modal")
-  btnUpdate.setAttribute("data-bs-target", "#updateListingModal")
-  btnUpdate.addEventListener("click", showModal)
-  btnUpdate.addEventListener("click", (event) => {
-    event.preventDefault()
-
-    const listingId = event.currentTarget.dataset.listingId
-
-    showModal(listingId)
+  btnUpdate.addEventListener("click", () => {
+    window.location.href = `/html/listings/updateListing.html?id=${listingId}`
   })
-
-  // Set the listing ID as a data attribute on the update button
-  btnUpdate.dataset.listingId = listing.id
-
   const btnDelete = document.createElement("button")
   btnDelete.classList.add("px-2")
   btnDelete.classList.add("fa-solid", "fa-xmark", "pe-auto")
