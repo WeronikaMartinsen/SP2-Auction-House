@@ -44,7 +44,7 @@ export function confirmDelateListing(message, listingId) {
   yesBtn.addEventListener("click", async () => {
     try {
       console.log("Attempting to delete listing with id:", listingId)
-      await deleteListing(listingId) // Pass the correct listingId here
+      await deleteListing(listingId)
       document.body.removeChild(overlay)
       console.log("Listing deleted successfully.")
       userFeedback("Your post has been successfully deleted!", async () => {
