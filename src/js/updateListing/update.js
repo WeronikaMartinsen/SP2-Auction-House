@@ -20,11 +20,9 @@ export async function updateListing(editedListing) {
     }
 
     const response = await fetch(updateListingURL, postData)
-    const result = await response.json()
 
     if (response.ok) {
-      window.href
-        .location`../listings/listings.html?id=${result.data.id}&title=${result.data.title}`
+      window.location.href = "../listings/listings.html"
     } else {
       // Handle error cases
       console.error("Error:", response.statusText)
