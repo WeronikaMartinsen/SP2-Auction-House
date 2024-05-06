@@ -1,5 +1,5 @@
 import { load } from "../api/storage/storeToken.js"
-
+import { confirmDelateListing } from "../deleteListing/confirmDelate.js"
 import { startCountdown } from "./countDown.js"
 
 const userProfile = load("profile")
@@ -60,6 +60,9 @@ export function createListingCard(listing) {
   const btnDelete = document.createElement("button")
   btnDelete.classList.add("px-2")
   btnDelete.classList.add("fa-solid", "fa-xmark", "pe-auto")
+  btnDelete.addEventListener("click", () => {
+    confirmDelateListing(listingId)
+  })
 
   if (
     userProfile &&
