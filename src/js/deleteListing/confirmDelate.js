@@ -3,6 +3,7 @@ import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 
 export function confirmDelateListing(message, listingId) {
+  console.log("Attempting to delete listing with id:", listingId)
   const overlay = document.createElement("div")
   overlay.classList.add("overlayConfirmDelate", "border")
 
@@ -42,13 +43,16 @@ export function confirmDelateListing(message, listingId) {
   yesBtn.classList.add("btn", "btn-secondary", "custom-shadow")
   yesBtn.addEventListener("click", async () => {
     try {
-      await deleteListing(listingId)
+      console.log("Attempting to delete listing with id:", listingId)
+      await deleteListing(listingId) // Pass the correct listingId here
       document.body.removeChild(overlay)
+      console.log("Listing deleted successfully.")
       userFeedback("Your post has been successfully deleted!", async () => {
         location.reload()
       })
     } catch (error) {
-      handleError("Error delating listing.")
+      console.error("Error deleting listing:", error)
+      handleError("Error deleting listing.")
     }
   })
 

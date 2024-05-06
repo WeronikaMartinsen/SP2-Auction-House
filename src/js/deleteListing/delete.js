@@ -4,6 +4,7 @@ import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 
 export async function deleteListing(id) {
+  console.log("Attempting to delete listing with id:", id)
   const token = load("token")
   try {
     if (!id) {
