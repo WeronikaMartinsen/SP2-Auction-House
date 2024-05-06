@@ -136,6 +136,7 @@ export function createListingCard(listing) {
   // Display the raw endsAt value without formatting
   const dateTimeElement = document.createElement("span")
   dateTimeElement.textContent = listing.endsAt
+
   auctionsEnd.appendChild(dateTimeElement)
 
   // Title

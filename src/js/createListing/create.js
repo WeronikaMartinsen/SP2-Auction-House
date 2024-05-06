@@ -23,10 +23,7 @@ export async function createListing(newListing) {
 
     if (response.ok) {
       const resultNewListing = await response.json()
-      userFeedback("Something went wrong. Please, try again.", () => {
-        // Callback function to execute after the timeout
-        location.reload()
-      })
+
       return resultNewListing
     } else {
       // Handle error cases
