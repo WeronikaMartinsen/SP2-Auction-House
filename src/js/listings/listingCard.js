@@ -61,7 +61,10 @@ export function createListingCard(listing) {
   btnDelete.classList.add("px-2")
   btnDelete.classList.add("fa-solid", "fa-xmark", "pe-auto")
   btnDelete.addEventListener("click", () => {
-    confirmDelateListing(listingId)
+    confirmDelateListing(
+      "Are you sure you want to delate your listing?",
+      listingId,
+    )
   })
 
   if (
