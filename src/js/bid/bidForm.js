@@ -1,8 +1,8 @@
 import { bidOnListing } from "./bidOn.js"
 
-export function bidForm() {
+export function bidForm(listingId) {
   console.log("Bid form initialized")
-  const form = form.querySelector("#newBid")
+  const form = document.querySelector("#newBid")
   if (form) {
     form.addEventListener("submit", async (event) => {
       event.preventDefault()
@@ -31,8 +31,15 @@ export function bidForm() {
         // Handle error, maybe show a user feedback message
       }
     })
+
+    // Dynamically set the href attribute of the submit button
+    const submitButton = form.querySelector("#submit-btn")
+    if (submitButton) {
+      submitButton.href = `/html/listings/singleListing.html?id=${listingId}/bids`
+    }
   }
 }
+
 export function updateLastBid(bidAmount) {
   const lastBidElement = document.querySelector("#last-bid")
   if (lastBidElement) {
