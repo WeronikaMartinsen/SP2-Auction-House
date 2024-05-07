@@ -14,4 +14,4 @@ export const LOGIN = "/auth/login"
 export const LISTINGS = "/auction/listings"
 export const LISTING = "/auction/listings/" + id
 export const PROFILES = "/auction/profiles"
-export const PLACE_BID = "/listings/id"
+export const PLACE_BID = "/bids"
