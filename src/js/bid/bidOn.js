@@ -30,6 +30,10 @@ export async function bidOnListing(newBid) {
     const result = await response.json()
 
     if (response.ok) {
+      userFeedback("You have successfully added bid.", () => {
+        // Callback function to execute after the timeout
+        location.reload()
+      })
       return result
     }
     if (result.statusCode === 400) {

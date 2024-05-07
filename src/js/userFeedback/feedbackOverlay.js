@@ -23,6 +23,7 @@ export function userFeedback(message, callback) {
     "align-item-end",
     "fa-xmark",
     "text-end",
+    "userFeedback",
   )
 
   closeBtn.addEventListener("click", () => {
