@@ -16,6 +16,11 @@ export async function updateListingDetails() {
 
     console.log("Retrieved Listing Data:", listing)
 
+    const lastBid =
+      listing.bids && listing.bids.length > 0
+        ? listing.bids[listing.bids.length - 1]
+        : null
+
     // Check if the HTML elements are selected correctly
     const titleElement = document.getElementById("title")
     console.log("Title Element:", titleElement)
@@ -31,8 +36,10 @@ export async function updateListingDetails() {
     const createdDate = listing.created ? new Date(listing.created) : new Date()
     document.getElementById("created").innerText = formatDateTime(createdDate)
 
-    document.getElementById("count-bids").innerText =
-      listing._count?.bids || "Bids"
+    document.getElementById("last-bid").innerText = lastBid
+      ? lastBid.amount
+      : "No Bids"
+
     document.getElementById("description").innerText =
       listing.description || "Description"
 
