@@ -271,7 +271,7 @@ export function displayFilteredListings(
 
   console.log("Filtered Listings:", listings)
 
-  if (newListing) {
+  if (newListing !== null) {
     console.log("Appending new listing...")
     const newListingCard = createListingCard(newListing, getProfile)
     listingsContainer.appendChild(newListingCard)
