@@ -11,8 +11,7 @@ export function confirmDelateListing(message, listingId) {
   messageBox.classList.add("messageBox")
 
   const content = document.createElement("span")
-  content.classList.add("text-center")
-  content.classList.add("text-wrap")
+  content.classList.add("text-center", "text-wrap", "mb-4")
 
   content.textContent = message
 
@@ -40,7 +39,7 @@ export function confirmDelateListing(message, listingId) {
 
   const yesBtn = document.createElement("button")
   yesBtn.textContent = "Delete"
-  yesBtn.classList.add("btn", "btn-secondary", "custom-shadow")
+  yesBtn.classList.add("btn", "btn-primary", "custom-shadow", "text-white")
   yesBtn.addEventListener("click", async () => {
     try {
       console.log("Attempting to delete listing with id:", listingId)

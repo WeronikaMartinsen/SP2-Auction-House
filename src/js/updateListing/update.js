@@ -22,7 +22,10 @@ export async function updateListing(editedListing) {
     const response = await fetch(updateListingURL, postData)
 
     if (response.ok) {
-      window.location.href = "../listings/listings.html"
+      userFeedback("You have successfully updated your listing.", () => {
+        // Callback function to execute after the timeout
+        window.location.href = "../listings/listings.html"
+      })
     } else {
       // Handle error cases
       console.error("Error:", response.statusText)
