@@ -26,7 +26,7 @@ export async function displayListings() {
 
     const searchInput = document.querySelector("#search")
     const listingsContainer = document.querySelector("#listings")
-    const filterOptionOne = document.querySelector("#new-to-old")
+
     const filterOptionTwo = document.querySelector("#old-to-new")
     const filterOptionThree = document.querySelector("#all-listings")
     const filterOptionFour = document.querySelector("#active-listings")
@@ -44,11 +44,6 @@ export async function displayListings() {
 
     let currentPage = 1
 
-    filterOptionOne.addEventListener("click", function () {
-      console.log("Sorting listings from new to old...")
-      sortListingsByCreationDateDesc(allListings)
-      displayFilteredListings(allListings, getProfile, listingsContainer)
-    })
     filterOptionTwo.addEventListener("click", function () {
       console.log("Sorting listings from old to new...")
       sortListingsByCreationDateAsc(allListings)
