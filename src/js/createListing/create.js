@@ -27,16 +27,16 @@ export async function createListing(newListing) {
       const resultNewListing = await response.json()
       // Display user feedback for successful response
       userFeedback("Listing added successfully!", () => {
-        // Callback function to execute after the timeout
-        setTimeout(() => {
+        setTimeout(async () => {
           // Reload the page after a delay
           location.reload()
+
+          // Fetch updated listings after a short delay
+          await new Promise((resolve) => setTimeout(resolve, 1000)) // Adjust delay as needed
+          const updatedListings = await getListings()
+          displayListings(updatedListings, resultNewListing)
         }, 2000) // Adjust the delay time as needed (in milliseconds)
       })
-
-      const updatedListings = await getListings()
-
-      displayListings(updatedListings, resultNewListing)
 
       return resultNewListing
     } else {
