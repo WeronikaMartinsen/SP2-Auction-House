@@ -25,6 +25,7 @@ export function bidForm() {
 
         bidInput.value = ""
         updateLastBid(placeBid)
+        location.reload()
       } catch (error) {
         console.error("Error submitting bid:", error)
         // Handle error, maybe show a user feedback message

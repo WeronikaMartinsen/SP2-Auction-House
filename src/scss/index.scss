@@ -129,6 +129,10 @@ p {
 ///////////////////////////////* PROFILE *////////////////////////////////////////
 /* PROFILE */
 
+.custom-wrapper-banner {
+  max-width: 30em;
+}
+
 .custom-avatar-wrapper {
   width: 12em;
   height: 12em;
@@ -386,6 +390,8 @@ p {
 .buttons-confirm {
   display: flex;
   gap: 2em;
+  padding-bottom: 4em;
+  margin-bottom: 2em;
 }
 .userFeedback {
   z-index: 1000;
