@@ -22,6 +22,8 @@ export async function displayListings() {
 
     console.log("Listings fetched successfully:", allListings)
 
+    sortListingsByCreationDateDesc(allListings)
+
     allListings.sort((a, b) => new Date(b.created) - new Date(a.created))
 
     const searchInput = document.querySelector("#search")
@@ -260,7 +262,11 @@ export function displayFilteredListings(
   newListing = null,
 ) {
   console.log("Displaying filtered listings...")
+  console.log("Append:", append)
+  console.log("New Listing:", newListing)
+  console.log("Displaying filtered listings...")
   if (!append) {
+    console.log("Clearing listings container...")
     listingsContainer.innerHTML = ""
   }
 

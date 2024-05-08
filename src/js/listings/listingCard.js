@@ -132,17 +132,27 @@ export function createListingCard(listing) {
   avatarAndDate.appendChild(details)
 
   // Auctions End
-
   const auctionsEnd = document.createElement("div")
-  auctionsEnd.classList.add("auctionEnds")
+  auctionsEnd.classList.add("auctionEnds", "rounded-4")
+
+  // Create clock icon
+  const clockIcon = document.createElement("i")
+  clockIcon.classList.add("fa-solid", "fa-clock", "text-white")
+
+  // Append clock icon to auctionsEnd
+  auctionsEnd.appendChild(clockIcon)
+
+  // Append auctionsEnd to card
+
+  // Start Countdown after appending clock icon
   startCountdown(listing, auctionsEnd)
-  card.appendChild(auctionsEnd)
 
   // Display the raw endsAt value without formatting
   const dateTimeElement = document.createElement("span")
   dateTimeElement.textContent = listing.endsAt
-
   auctionsEnd.appendChild(dateTimeElement)
+
+  card.appendChild(auctionsEnd)
 
   // Title
   const title = document.createElement("h6")
