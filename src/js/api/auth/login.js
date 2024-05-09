@@ -2,6 +2,7 @@ import { API_BASE_URL, LOGIN } from "../constants.js"
 import { save } from "../storage/storeToken.js"
 import { userFeedback } from "../../userFeedback/feedbackOverlay.js"
 import { handleError } from "../../userFeedback/errorMessage.js"
+import { load } from "../storage/storeToken.js"
 
 export async function login(user) {
   const loginURL = API_BASE_URL + LOGIN
@@ -35,9 +36,11 @@ export async function login(user) {
         userAvatar: json.data.avatar,
         userWins: json.data.wins,
       })
+      const getProfileFromToken = load("profile")
+      const user = getProfileFromToken.userName
 
       userFeedback("You are successfully logged in!", () => {
-        window.location.href = "/html/listings/listings.html"
+        window.location.href = `/html/listings/listings.html?name=${user}`
       })
       return accessToken
     } else {

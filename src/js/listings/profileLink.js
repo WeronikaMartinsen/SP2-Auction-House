@@ -12,9 +12,13 @@ export function profileLink() {
   const user = getProfileFromToken.userName
 
   const getProfileLink = document.querySelector("#profile")
+  const getProfileLinkLogo = document.querySelector("#profile-logo")
 
   if (getProfileLink) {
     getProfileLink.href = `/html/profiles/profile.html?name=${user}`
+  }
+  if (getProfileLinkLogo) {
+    getProfileLinkLogo.href = `/html/listings/listings.html?name=${user}`
   }
 }
 

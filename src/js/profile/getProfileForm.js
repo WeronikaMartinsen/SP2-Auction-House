@@ -34,8 +34,9 @@ export async function getProfileForm() {
     userName.textContent = profile.name
     userEmail.textContent = profile.email
     userAvatar.src = profile.avatar.url || "/images/avatar-bidme.png"
-    userAvatarNavbar.src = profile.avatar.url || "/images/avatar-bidme.png"
     userAvatar.alt = "User image."
+    userAvatarNavbar.src = profile.avatar.url || "/images/avatar-bidme.png"
+    userAvatarNavbar.alt = "User image."
     userCredits.textContent = profile.credits
 
     return profile
