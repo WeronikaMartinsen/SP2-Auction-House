@@ -1,0 +1,371 @@
+.custom-bg {
+  background-image: url("/images/img-4.png");
+  background-size: 100% auto;
+  background-position: center;
+}
+a {
+  text-decoration: none;
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+.custom-logo-size {
+  width: 10em;
+}
+.custom-logo-size-feed {
+  width: 7em;
+}
+.custom-letter-spacing {
+  letter-spacing: 0.1em;
+}
+
+.custom-avatar-size {
+  width: 1.8em;
+  height: auto;
+}
+
+/* Navbar */
+
+.navbar-collapse.collapse.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: height 0.3s ease;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0px 5px 5px -5px dark;
+  font-size: 1.7em;
+  padding: 1.2em;
+  height: 12em;
+}
+
+.custom-height-pre-navbar {
+  height: 2em;
+}
+
+.custom-toggler {
+  border: none;
+}
+
+/* Dropdown */
+
+.dropdown-menu.show {
+  min-width: 6em;
+  margin-right: 5em;
+  left: -16px;
+  background-color: light;
+  border: none;
+  text-align: center;
+}
+
+.dropdown-item {
+  display: inline-block;
+  padding: 0.3em;
+}
+.dropdown-item:hover,
+.dropdown-item:active {
+  background-color: primary;
+  color: white;
+}
+.li.nav-item.show {
+  padding: 0;
+}
+
+.custom-hero-size {
+  width: 15em;
+}
+.custom-width-inputs {
+  max-width: 30em;
+}
+
+.custom-input-size {
+  max-width: 120em;
+}
+
+.custom-small-font {
+  font-size: 0.8em;
+}
+
+.searchbar {
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  width: 800px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 10px;
+}
+.custom-hover-search:hover,
+.custom-hover-search:active,
+.custom-hover-search:focus {
+  outline: none;
+}
+
+/* Profile */
+
+.custom-wrapper-banner {
+  max-width: 30em;
+}
+
+.custom-avatar-wrapper {
+  width: 12em;
+  height: 12em;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 6em;
+  min-height: 6em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.custom-hero-size-profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Feedback message */
+
+.messageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-height: 10em;
+}
+
+.overlayUserFeedback,
+.overlayConfirmDelate {
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 8em;
+  text-align: center;
+  padding: 1em;
+  border-radius: 15px;
+  max-width: 35em;
+  min-width: 20em;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Listing card */
+
+#listings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
+  gap: 2em;
+  align-items: stretch;
+}
+
+.listing-card {
+  position: relative;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.image-container img {
+  width: 100%;
+  height: 12em;
+  display: block;
+  object-fit: cover;
+}
+.contentContainer {
+  padding: 0.6em;
+  margin: 0;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+.sellerContainer {
+  display: flex;
+  justify-content: start;
+
+  align-items: center;
+  padding-left: 0.5em;
+  gap: 0.4em;
+  margin-top: 0.4em;
+
+  cursor: pointer;
+}
+.sellerAvatar {
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+}
+.avatarAndDate {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.details {
+  font-size: 0.7em;
+  opacity: 0.8;
+}
+.auctionEnds {
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  width: 8em;
+  height: 3em;
+  background-color: dark;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.tag {
+  font-style: italic;
+  color: success;
+}
+.tagsContainer {
+  gap: 1em;
+}
+
+.seeMore {
+  padding-left: 1em;
+  cursor: pointer;
+}
+.btnContainer {
+  padding: 1em;
+}
+.bids-container {
+  margin-top: 2em;
+  border: 1px solid light;
+}
+
+.seeMore {
+  font-size: 0.9em;
+  color: dark;
+}
+
+.small-font-size {
+  font-size: 0.8em;
+  text-align: end;
+  padding-top: 1em;
+  opacity: 0.8;
+  cursor: pointer;
+}
+/* Loader */
+
+#loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid primary;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#new-to-old,
+#all-listings,
+#old-to-new {
+  cursor: pointer;
+}
+
+#new-to-old:hover,
+#new-to-old:active,
+#old-to-new:hover,
+#old-to-new:active,
+#all-listings:hover,
+#all-listings:active {
+  color: primary;
+  transition: color 0.3s ease;
+}
+/* Feedback */
+
+.messageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-height: 10em;
+}
+
+.overlayUserFeedback,
+.overlayConfirmDelate {
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 8em;
+  text-align: center;
+  padding: 1em;
+  border-radius: 15px;
+  max-width: 35em;
+  min-width: 20em;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Single Listing */
+
+.custome-size-width-image-gallery {
+  width: 100%;
+  height: 5em;
+  width: auto;
+  padding: 0;
+}
+.custome-width-image-gallery-main {
+  max-width: 40em;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+.custom-width-col {
+  max-width: 35em;
+  min-width: 20em;
+}
+.text-break {
+  word-wrap: break-word;
+  text-wrap: wrap;
+}
+#updateListingModal {
+  max-width: 40em;
+}
+.overlayConfirmDelate {
+  height: 10em;
+}
+.buttons-confirm {
+  display: flex;
+  gap: 2em;
+  padding-bottom: 4em;
+  margin-bottom: 2em;
+}
+.userFeedback {
+  z-index: 1000;
+}
