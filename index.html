@@ -33,12 +33,15 @@
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script>
-    <script defer type="module" src="/src/js/ui/navbar-homepage.js"></script>
+    <script defer type="module" src="./src/js/ui/navbar.js"></script>
     <script defer type="module" src="/src/js/ui/footer.js"></script>
-    <script defer type="module" src="/src/js/homepage/index.js"></script>
-    <title>Auction House - Homepage</title>
+    <script defer type="module" src="/src/js/listings/index.js"></script>
+    <script defer type="module" src="/src/js/createListing/index.js"></script>
+
+
+    <title>Auction House | Listings</title>
   </head>
-  <body class="bg-light">
+  <body class="vh-100 bg-light">
     <div class="navbar-custom sticky-top"></div>
     <section>
       <div class="container-fluid bg-white shadow-sm">
@@ -46,18 +49,135 @@
           <div
             class="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center"
           >
-            <div class="d-flex flex-column gap-2">
-              <h2 class="p-0 m-0 mt-5">Welcome to the Grand Auction House!</h2>
-              <h3>Discover Rare Finds Today!</h3>
+            <div class="d-flex flex-column gap-2 flex-column text-center">
+              <h5 class="p-0 m-0 mt-5">Welcome to Auction House!</h5>
+              <h4 class="text-wrap text-dark mt-2">
+                Ready to Sell? Create Your Auction Now!
+              </h4>
               <div
-                class="d-flex justify-content-center align-items-center gap-3 text-center"
+                class="d-flex justify-content-center align-items-center gap-3"
               >
-                <h4 class="text-center text-wrap text-primary">
-                  add your auction here!
-                </h4>
+                <!-- Button trigger modal -->
+                <h2 class="text-primary">Add you auction here:</h2>
                 <i
-                  class="fa-solid fa-plus text-white border rounded-circle p-2 bg-primary"
-                ></i>
+                  type="button"
+                  class="fa-solid fa-plus btn btn-primary text-white rounded-circle p-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#createListingModal"
+                >
+                </i>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="createListingModal"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                          Create Listing
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body gap-3">
+                        <form id="createListing">
+                          <label for="title" class="d-none"></label>
+                          <input
+                            name="title"
+                            id="title"
+                            type="text"
+                            placeholder="Title*"
+                            class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                            required
+                          />
+                          <label for="description" class="d-none"></label>
+                          <textarea
+                            name="description"
+                            id="description"
+                            type="text-area"
+                            placeholder="Description*"
+                            class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                            required
+                          ></textarea>
+
+                          <label for="media1" class="d-none"
+                            >Media URL 1:</label
+                          >
+                          <input
+                            name="media1"
+                            
+                            type="url"
+                            placeholder="Media Url*"
+                            class="media-input form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                            required
+                          />
+
+                          <label for="media2" class="d-none"
+                            >Media URL 2:</label
+                          >
+                          <input
+                            name="media2"
+                            
+                            type="url"
+                            placeholder="Media Url"
+                            class="media-input form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                          />
+
+                          <label for="media3" class="d-none"
+                            >Media URL 3:</label
+                          >
+                          <input
+                            name="media3"
+                            for="media3"
+                            type="url"
+                            placeholder="Media Url"
+                            class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1 media-input"
+                          />
+
+                          <label for="date" class="d-none"></label>
+                          <input
+                            name="deadline"
+                            for="deadline"
+                            id="deadline"
+                            type="text"
+                            placeholder="Deadline date*"
+                            class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
+                            required
+                          />
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button
+                          type="submit"
+                          class="btn btn-primary text-white"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  
+                  </div>
+                
+                </div>
+              </form>
               </div>
             </div>
           </div>
@@ -77,50 +197,71 @@
       <div class="d-flex justify-content-center h-100">
         <div class="searchbar shadow">
           <input
-          id="search"
-            class="border-0 mt-1 px-2 custom-hover-search"
+            class="border-0 mt-1 px-2 custom-hover-search w-100"
             type="text"
             name=""
             placeholder="Search..."
+            id="search"
           />
-          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+     
         </div>
       </div>
     </section>
 
     <section>
-      <div class="container bg-white custom-max-width-listings-cont">
-        <h4>Online auctions</h4>
+      <div class="container custom-max-width-listings-cont">
+        <div class="d-flex gap-3 text-dark">
+          <h6 class="custom-cursor" id="all-listings">All auctions</h6>
+          <span>|</span>
+ 
+          <h6 class="custom-cursor" id="old-to-new">Oldest</h6>
+          <span>|</span>
+          <h6 class="custom-cursor" id="active-listings">Active</h6>
+        </div>
         <div class="d-flex justify-content-end align-items-center gap-1">
           <div class="btn-group">
             <button
-              class="btn btn-light text-dark btn-sm dropdown-toggle rounded"
+              class="btn btn-outline-success text-dark btn-sm dropdown-toggle rounded"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Show
+              Filter by price
             </button>
             <ul class="dropdown-menu">
-              ...
+              <li class="dropdown-item" id="bid-less-than-100">
+                Less then 100
+              </li>
+              <li class="dropdown-item" id="bid-less-than-200">
+                Less then 200
+              </li>
+              <li class="dropdown-item" id="bid-less-than-300">
+                200 - 300
+              </li>
+              <li class="dropdown-item" id="bid-less-than-400">
+                300 - 400
+              </li>
+              <li class="dropdown-item" id="bid-less-than-500">
+                400 - 500
+              </li>
+              <li class="dropdown-item" id="bid-less-than-600">
+                500 - 600
+              </li>
+              <li class="dropdown-item" id="bid-less-than-700">
+                600 - 700
+              </li>
+              <li class="dropdown-item" id="bid-less-than-800">
+                700 - 800
+              </li>
+              <li class="dropdown-item" id="bid-less-than-900">
+                800 - 900
+              </li>
+              <li class="dropdown-item" id="bid-less-than-1000">
+                900 - 1000
+              </li>
             </ul>
           </div>
-          <div class="btn-group">
-            <button
-              class="btn btn-secondary btn-sm dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Filter
-            </button>
-            <ul class="dropdown-menu">
-              <li id="new-to-old">Recently added</li>
-              <li id="all-listings">All listings</li>
-              <li id="old-to-new">Oldest</li>
-              <li id="active-listings">Active</li>
-            </ul>
-          </div>
+         
         </div>
         <div class="d-flex justify-content-center align-items-center">
           <div class="loaderContainer">
@@ -133,8 +274,6 @@
             Load more
           </button>
         </div>
-      </div>
-    </section>
       </div>
     </section>
 

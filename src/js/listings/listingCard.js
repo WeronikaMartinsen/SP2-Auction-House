@@ -1,5 +1,6 @@
 import { load } from "../api/storage/storeToken.js"
 import { confirmDelateListing } from "../deleteListing/confirmDelate.js"
+import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { startCountdown } from "./countDown.js"
 
 const userProfile = load("profile")
@@ -217,7 +218,14 @@ export function createListingCard(listing) {
   bidBtn.classList.add("btn", "btn-primary", "text-white")
   bidBtn.href = `/html/listings/singleListing.html?id=${listingId}`
   bidBtn.addEventListener("click", () => {
-    window.location.href = imageContainer.href
+    if (!userProfile) {
+      userFeedback("You need to be logged in to bid on the listing!.", () => {
+        window.location.href = `/html/login/index.html`
+      })
+    } else {
+      // If user is logged in, proceed with bid action
+      window.location.href = `/html/listings/singleListing.html?id=${listingId}`
+    }
   })
 
   btnContainer.appendChild(bidBtn)
