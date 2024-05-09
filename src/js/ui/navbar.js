@@ -47,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="dropdown-center px-3">
               <a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img
-                  class="custom-avatar-size"
+                id="avatar-navbar"
+                  class="custom-avatar-size sellerAvatar"
                   src="/images/avatar-bidme.png"
                   alt="Avatar."
                 />
