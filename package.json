@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "sass src/scss:dist/css",
-    "watch": "sass src/scss:dist/css --watch",
+    "watch": "sass src/scss:dist/css live-server",
     "start": "live-server",
     "dev": "npm-run-all --parallel watch start",
     "lint": "eslint src/**/*.js",
