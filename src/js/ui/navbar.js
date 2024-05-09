@@ -1,8 +1,10 @@
 import { logout } from "../api/auth/logout.js"
 import { profileLink } from "../listings/profileLink.js"
+import { getAvatar } from "../profile/getAvatar.js"
 
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar-custom")
+
   navbar.innerHTML = `
     <div class="container-fluid custom-height-pre-navbar bg-dark d-flex justify-content-end align-items-center">
   </div>
@@ -45,10 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
               <a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img
                 id="avatar-navbar"
-                  class="custom-avatar-size sellerAvatar"
+                  class="custom-avatar-size sellerAvatar avatar-img"
                   src="/images/avatar-bidme.png"
                   alt="Avatar."
                 />
+                <span id="name-navbar"></span>
+                <span id="credits-navbar"></span>
               </a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" id="profile" href="#">Profile</a>
@@ -63,4 +67,5 @@ document.addEventListener("DOMContentLoaded", function () {
   `
   logout()
   profileLink()
+  getAvatar()
 })
