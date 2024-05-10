@@ -1,4 +1,4 @@
-import { update } from "./update.js"
+/* import { update } from "./update.js"
 import { load } from "../api/storage/storeToken"
 import { toggleAvatarForm } from "./toggleAvatar"
 
@@ -47,3 +47,4 @@ document.addEventListener("DOMContentLoaded", async function () {
     })
   }
 })
+ */

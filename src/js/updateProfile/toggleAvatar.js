@@ -1,3 +1,5 @@
+/* import { userFeedback } from "../userFeedback/feedbackOverlay.js"
+
 export function toggleAvatarForm() {
   document.addEventListener("DOMContentLoaded", function () {
     const toggleAvatarFormButton = document.getElementById("toggleAvatarForm")
@@ -19,3 +21,4 @@ export function toggleAvatarForm() {
     })
   })
 }
+ */

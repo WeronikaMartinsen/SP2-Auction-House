@@ -1,8 +1,6 @@
-import { deleteListing } from "./delete.js"
-import { handleError } from "../userFeedback/errorMessage.js"
+/* import { handleError } from "../userFeedback/errorMessage.js"
 
-export function confirmDelateListing(message, listingId) {
-  console.log("Attempting to delete listing with id:", listingId)
+export function updateAvatarModal(message, user) {
   const overlay = document.createElement("div")
   overlay.classList.add("overlayConfirmDelate", "border")
 
@@ -42,7 +40,7 @@ export function confirmDelateListing(message, listingId) {
   yesBtn.addEventListener("click", async () => {
     try {
       console.log("Attempting to delete listing with id:", listingId)
-      await deleteListing(listingId)
+      await update(avatar)
       document.body.removeChild(overlay)
     } catch (error) {
       console.error("Error deleting listing:", error)
@@ -50,16 +48,6 @@ export function confirmDelateListing(message, listingId) {
     }
   })
 
-  const noBtn = document.createElement("button")
-  noBtn.classList.add("btn", "border-secondary", "custom-shadow")
-
-  noBtn.textContent = "Close"
-  noBtn.addEventListener("click", () => {
-    deleteListing(false)
-    document.body.removeChild(overlay)
-  })
-
-  buttonsContainer.append(noBtn)
   buttonsContainer.append(yesBtn)
 
   containerForCloseBtn.append(deleteButton)
@@ -70,3 +58,4 @@ export function confirmDelateListing(message, listingId) {
   document.body.append(overlay)
   overlay.append(messageBox)
 }
+ */
