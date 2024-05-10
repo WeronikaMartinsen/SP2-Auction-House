@@ -138,15 +138,6 @@ export function createListingCard(listing) {
   const auctionsEnd = document.createElement("div")
   auctionsEnd.classList.add("auctionEnds", "rounded-4")
 
-  // Create clock icon
-  const clockIcon = document.createElement("i")
-  clockIcon.classList.add("fa-solid", "fa-clock", "text-white")
-
-  // Append clock icon to auctionsEnd
-  auctionsEnd.appendChild(clockIcon)
-
-  // Append auctionsEnd to card
-
   // Start Countdown after appending clock icon
   startCountdown(listing, auctionsEnd)
 
