@@ -6,6 +6,8 @@ import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 export async function deleteListing(id) {
   console.log("Attempting to delete listing with id:", id)
   const token = load("token")
+  const getProfileFromToken = load("profile")
+  const user = getProfileFromToken.userName
   try {
     if (!id) {
       throw new Error("Delete requires a listing ID.")
@@ -23,7 +25,7 @@ export async function deleteListing(id) {
     if (response.ok) {
       userFeedback("You have successfully deleted your listing.", () => {
         // Callback function to execute after the timeout
-        location.reload()
+        window.location.href = `/html/listings/listings.html?name=${user}`
       })
     }
   } catch (error) {

@@ -1,5 +1,5 @@
 import { deleteListing } from "./delete.js"
-import { userFeedback } from "../userFeedback/feedbackOverlay.js"
+
 import { handleError } from "../userFeedback/errorMessage.js"
 
 export function confirmDelateListing(message, listingId) {
@@ -45,10 +45,6 @@ export function confirmDelateListing(message, listingId) {
       console.log("Attempting to delete listing with id:", listingId)
       await deleteListing(listingId)
       document.body.removeChild(overlay)
-      console.log("Listing deleted successfully.")
-      userFeedback("Your post has been successfully deleted!", async () => {
-        location.reload()
-      })
     } catch (error) {
       console.error("Error deleting listing:", error)
       handleError("Error deleting listing.")

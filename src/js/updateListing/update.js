@@ -7,6 +7,8 @@ import { id } from "../api/constants.js"
 export async function updateListing(editedListing) {
   const updateListingURL = `${API_BASE_URL}${LISTINGS}/${id}`
   const token = load("token")
+  const getProfileFromToken = load("profile")
+  const user = getProfileFromToken.userName
 
   try {
     const postData = {
@@ -23,8 +25,7 @@ export async function updateListing(editedListing) {
 
     if (response.ok) {
       userFeedback("You have successfully updated your listing.", () => {
-        // Callback function to execute after the timeout
-        window.location.href = "../listings/listings.html"
+        window.location.href = `/html/profiles/profile.html?name=${user}`
       })
     } else {
       // Handle error cases

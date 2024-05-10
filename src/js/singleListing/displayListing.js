@@ -2,10 +2,13 @@ import { getListing } from "../listings/getListings.js"
 import { id } from "../api/constants.js"
 import { formatDateTime } from "../listings/formatDate.js"
 import { startCountdown } from "../listings/countDown.js"
+import { load } from "../api/storage/storeToken.js"
+import { confirmDelateListing } from "../deleteListing/confirmDelate.js"
 
 export async function updateListingDetails() {
   try {
     const response = await getListing(id)
+    const userProfile = load("profile")
 
     if (!response || !response.data) {
       console.error("Listing data not found.")
@@ -20,6 +23,59 @@ export async function updateListingDetails() {
       listing.bids && listing.bids.length > 0
         ? listing.bids[listing.bids.length - 1]
         : null
+
+    if (
+      userProfile &&
+      userProfile.userName ===
+        (listing.seller ? listing.seller.name : undefined)
+    ) {
+      // Create update and delete buttons container
+      const updateContainer = document.createElement("div")
+      updateContainer.classList.add("d-flex", "justify-content-end")
+      const btnsContainer = document.createElement("div")
+      btnsContainer.classList.add(
+        "gap-2",
+        "pe-auto",
+        "d-flex",
+        "justify-content-center",
+        "align-items-center",
+      )
+
+      // Create update button
+      const btnUpdate = document.createElement("a")
+      btnUpdate.textContent = ". . ."
+      btnUpdate.classList.add("pe-auto", "text-dark", "getProfileLinkUpdate")
+      btnUpdate.addEventListener("click", () => {
+        window.location.href = `/html/listings/updateListing.html?name=${encodeURIComponent(listing.seller.name)}&id=${listing.id}`
+      })
+
+      // Create delete button
+      const btnDelete = document.createElement("a")
+      btnDelete.classList.add(
+        "px-2",
+        "fa-solid",
+        "fa-xmark",
+        "pe-auto",
+        "text-dark",
+      )
+      btnDelete.addEventListener("click", () => {
+        confirmDelateListing(
+          "Are you sure you want to delete your listing?",
+          listing.id,
+        )
+      })
+
+      // Append buttons to the container
+      btnsContainer.appendChild(btnUpdate)
+      btnsContainer.appendChild(btnDelete)
+
+      // Append container to the card element
+      const card = document.getElementById("card")
+      if (card) {
+        updateContainer.appendChild(btnsContainer)
+        card.appendChild(updateContainer)
+      }
+    }
 
     // Check if the HTML elements are selected correctly
     const titleElement = document.getElementById("title")
@@ -100,13 +156,6 @@ export async function updateListingDetails() {
       smallMediaElements.forEach((element) => {
         element.style.display = "none"
       })
-    }
-    /// Update tags
-    const tagsElement = document.getElementById("tags")
-    if (listing.tags && Array.isArray(listing.tags)) {
-      tagsElement.innerText = listing.tags.join(", ")
-    } else {
-      tagsElement.innerText = "No tags available"
     }
   } catch (error) {
     console.error("Error fetching listing:", error)
