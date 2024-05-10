@@ -340,6 +340,32 @@ p {
   transition: box-shadow 0.3s ease-in-out;
 }
 
+.custom-width-overlay-change-avatar {
+  min-height: 10em;
+  max-width: 40em;
+  min-width: 18em;
+}
+
+.overlayConfirmDelate {
+  height: 12em;
+}
+
+.buttons-confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  margin-top: 2em;
+}
+
+.custom-max-width {
+  max-width: 100em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 /* Single Listing */
 
 .custome-size-width-image-gallery {

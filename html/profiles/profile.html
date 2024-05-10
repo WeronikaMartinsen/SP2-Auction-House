@@ -47,22 +47,41 @@
             class="col-12 col-sm-6 d-flex justify-content-center align-items-center"
           >
             
-              <div class="custom-avatar-wrapper position-relative">
+              <div class="custom-avatar-wrapper">
                 <img
                   id="avatar"
                   src="/images/avatar-bidme.png"
                   alt="Avatar."
                   class="custom-hero-size-profile"
                 />
-                <button class="position-absolute bottom-0 start-0 z-index-3 btn border bg-primary rounded-circle shadow" id="toggleAvatarForm"><i class="fa-solid fa-camera text-primary"></i></button>
+              
               
             </div>
           </div>
           <div class="col-12 col-sm-6 d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column px-2 w-100 text-white">
               <h2 id="name">Name</h2>
-              <span id="email">Email</span>
-              <span id="credits">Credits</span>
+              <div class="d-flex justify-content-start align-items-center gap-2"><i class="fa-solid fa-envelope"></i><span id="email">Email</span></div>
+              <div class="d-flex justify-content-start align-items-center gap-2"><i class="fa-solid fa-coins"></i><span id="credits">Credits</span></div>
+              <form id="updateProfileBtn">
+              <button id="toggleAvatarForm" class="btn-sm w-50 rounded-4 mt-2"><i class="fa-solid fa-pen-to-square"></i>  Edit</button>
+              <div id="avatarUploadForm" class="d-none gap-2 p-2 d-flex flex-column border overlayUserFeedback custom-width-overlay-change-avatar">
+               
+                <div class="d-flex justify-content-end align-items-end">
+            
+                  <i id="close-btn"class="fa-solid fa-xmark text-primary"></i>
+                
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                 
+                 <label for="avatar">Add/Change avatar:</label>
+                 <input class="border border-primary rounded-2 w-100" type="url" id="avatarInput" name="avatar">
+                 <a id="profileMedia" href="/profile" class="btn btn-secondary border border-primary" type="submit">Upload</a>
+                </div>
+                 </div>
+               
+               </div>
+             </form>
             </div>
           </div>
           
