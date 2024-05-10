@@ -14,18 +14,26 @@ p {
   width: 10em;
 }
 .custom-logo-size-feed {
-  width: 7em;
+  width: 6em;
+}
+.navbar-brand {
+  margin: 0;
+  padding: 0;
 }
 .custom-letter-spacing {
   letter-spacing: 0.1em;
 }
 
 .custom-avatar-size {
-  width: 1.8em;
+  width: 2em;
   height: auto;
 }
 
 /* Navbar */
+
+.custom-padding-logout-btn {
+  padding-left: 1.4em;
+}
 
 .navbar-collapse.collapse.show {
   display: flex;

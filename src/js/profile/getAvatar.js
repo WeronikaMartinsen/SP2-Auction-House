@@ -34,7 +34,7 @@ export async function getAvatar() {
     userAvatar.src = profile.avatar.url || "/images/avatar-bidme.png"
     userAvatar.alt = "User image."
 
-    userCredits.textContent = profile.credits
+    userCredits.textContent = `Credits: ` + profile.credits
 
     return profile
   } catch (error) {

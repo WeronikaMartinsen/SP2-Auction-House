@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <header class="bg-light sticky-top">
       <nav class="navbar navbar-expand-sm text-white p-0">
         <div class="container-fluid d-flex align-items-center p-1 border border-bottom shadow-sm">
-          <div class="float-left px-3">
+          <div class="float-left px-2">
             <a class="navbar-brand" id="profile-logo" href="#">
               <img
                 class="custom-logo-size-feed"
@@ -36,33 +36,32 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarTogglerDemo02">
             <ul class="navbar-nav mb-lg-0 text-center">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="listings.html">Auctions</a>
-              </li>
-              <li class="nav-item">
               <a class="nav-link" href="#">Sell items</a>
             </li>
+            <li class="nav-item"> 
+            <a class="nav-link" id="profile" href="#">Profile</a></li>
             </ul>
           
-            <div class="dropdown-center px-3 gap-2 d-flex justify-content-center align-items-center">
-            <div class="d-flex flex-column">
-               
-            <span id="name-navbar" class="text-dark"></span>
-            <span id="credits-navbar" class="text-dark"></span></div>
-              <div>
-              <a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-              <img
-              id="avatar-navbar"
-                class="custom-avatar-size sellerAvatar avatar-img"
-                src="/images/avatar-bidme.png"
-                alt="Avatar."
-              />
-              
-              </div>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" id="profile" href="#">Profile</a>
-                <a class="dropdown-item" id="logout" href="#">Log out</a>
-              </div>
+            <div class="px-3 d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column px-2">
+                <a id="name-navbar" href="#" class="text-primary text-end"></a>
+                <span id="credits-navbar" class="text-dark"></span>
             </div>
+            <div>
+                <a id="avatar-small-navbar">
+                <img
+                    id="avatar-navbar"
+                    class="custom-avatar-size sellerAvatar avatar-img shadow"
+                    src="/images/avatar-bidme.png"
+                    alt="Avatar."
+                />
+                </a>
+                
+            </div>
+            <div class="custom-padding-logout-btn"> 
+            <a class="btn btn-outline-dark rounded-4 text-dark shadow-sm" id="logout" href="#">Log out</a></div>     
+        </div>
+        
             
           </div>
         </div>

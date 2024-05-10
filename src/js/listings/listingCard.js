@@ -54,7 +54,7 @@ export function createListingCard(listing) {
   )
   const btnUpdate = document.createElement("a")
   btnUpdate.textContent = ". . ."
-  btnUpdate.classList.add("pe-auto", "text-dark")
+  btnUpdate.classList.add("pe-auto", "text-dark", "getProfileLinkUpdate")
   btnUpdate.addEventListener("click", () => {
     window.location.href = `/html/listings/updateListing.html?id=${listingId}`
   })
