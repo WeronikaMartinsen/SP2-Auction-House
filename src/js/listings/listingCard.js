@@ -13,7 +13,7 @@ export function createListingCard(listing) {
   // Image
   const imageContainer = document.createElement("div")
   imageContainer.classList.add("image-container")
-  imageContainer.href = `/html/listings/singleListing.html?name=${encodeURIComponent(listing.seller.name)}&id=${listingId}`
+  imageContainer.href = `/html/listings/singleListing.html?name=${listing.seller && listing.seller.name ? encodeURIComponent(listing.seller.name) : ""}&id=${listingId}`
   imageContainer.addEventListener("click", () => {
     window.location.href = imageContainer.href
   })
@@ -56,7 +56,7 @@ export function createListingCard(listing) {
   btnUpdate.textContent = ". . ."
   btnUpdate.classList.add("pe-auto", "text-dark", "getProfileLinkUpdate")
   btnUpdate.addEventListener("click", () => {
-    window.location.href = `/html/listings/updateListing.html?name=${encodeURIComponent(listing.seller.name)}&id=${listingId}`
+    window.location.href = `/html/listings/updateListing.html?name=${listing.seller && listing.seller.name ? encodeURIComponent(listing.seller.name) : ""}&id=${listingId}`
   })
   const btnDelete = document.createElement("a")
   btnDelete.classList.add("px-2")
@@ -107,7 +107,7 @@ export function createListingCard(listing) {
   sellerName.classList.add("h6", "text-dark", "m-0")
   sellerContainer.addEventListener("click", () => {
     if (listing.seller && listing.seller.name) {
-      window.location.href = `/html/profiles/profile.html?name=${encodeURIComponent(listing.seller.name)}`
+      window.location.href = `/html/profiles/profile.html?name=${listing.seller && listing.seller.name ? encodeURIComponent(listing.seller.name) : ""}&id=${listingId}`
     }
   })
 
