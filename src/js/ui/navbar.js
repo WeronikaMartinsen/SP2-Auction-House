@@ -43,22 +43,25 @@ document.addEventListener("DOMContentLoaded", function () {
             </li>
             </ul>
           
-            <div class="dropdown-center px-3 d-dlex">
-              <div><a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-center px-3 gap-2 d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column">
+               
+            <span id="name-navbar" class="text-dark"></span>
+            <span id="credits-navbar" class="text-dark"></span></div>
+              <div>
+              <a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               <img
               id="avatar-navbar"
                 class="custom-avatar-size sellerAvatar avatar-img"
                 src="/images/avatar-bidme.png"
                 alt="Avatar."
-              /></div>
-               <div class="d-flex flex-column"><div d-flex justify-content-center flex-column align-items-center> <span id="name-navbar"></span>
-               <span id="credits-navbar"></span></div>
-
-              </a>
+              />
+              
+              </div>
               <div class="dropdown-menu">
                 <a class="dropdown-item" id="profile" href="#">Profile</a>
                 <a class="dropdown-item" id="logout" href="#">Log out</a>
-              </div></div>
+              </div>
             </div>
             
           </div>
