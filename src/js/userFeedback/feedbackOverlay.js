@@ -11,7 +11,7 @@ export function userFeedback(message, callback) {
   content.textContent = message
 
   const containerForCloseBtn = document.createElement("div")
-  containerForCloseBtn.classList.add("ms-auto", "mb-2")
+  containerForCloseBtn.classList.add("ms-auto", "mb-5")
 
   const closeBtn = document.createElement("i")
   closeBtn.classList.add(
@@ -23,7 +23,6 @@ export function userFeedback(message, callback) {
     "align-item-end",
     "fa-xmark",
     "text-end",
-    "userFeedback",
   )
 
   closeBtn.addEventListener("click", () => {
