@@ -109,7 +109,7 @@ export function createListingCard(listing) {
   sellerName.classList.add("h6", "text-dark", "m-0")
   sellerContainer.addEventListener("click", () => {
     if (listing.seller && listing.seller.name) {
-      window.location.href = `/html/profiles/profile.html?name=${user}&id=${listingId}`
+      window.location.href = `/html/profiles/profile.html?name=${listing.seller.name}`
     }
   })
 

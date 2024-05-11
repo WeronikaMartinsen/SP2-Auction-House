@@ -341,9 +341,9 @@ p {
 }
 
 .custom-width-overlay-change-avatar {
-  min-height: 10em;
+  min-height: 12em;
   max-width: 40em;
-  min-width: 18em;
+  min-width: 25em;
 }
 
 .overlayConfirmDelate {
@@ -367,19 +367,14 @@ p {
 }
 
 /* Single Listing */
-
+.custome-width-image-gallery-main,
 .custome-size-width-image-gallery {
   width: 100%;
   height: 5em;
   width: auto;
   padding: 0;
 }
-.custome-width-image-gallery-main {
-  max-width: 40em;
-  width: 100%;
-  height: auto;
-  padding: 0;
-}
+
 .custom-width-col {
   max-width: 35em;
   min-width: 20em;

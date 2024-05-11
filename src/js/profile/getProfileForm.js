@@ -29,14 +29,12 @@ export async function getProfileForm() {
     const userEmail = document.querySelector("#email")
     const userAvatar = document.querySelector("#avatar")
     const userCredits = document.querySelector("#credits")
-    const userAvatarNavbar = document.querySelector("#avatar-navbar")
 
     userName.textContent = profile.name
     userEmail.textContent = profile.email
     userAvatar.src = profile.avatar.url || "/images/avatar-bidme.png"
     userAvatar.alt = "User image."
-    userAvatarNavbar.src = profile.avatar.url || "/images/avatar-bidme.png"
-    userAvatarNavbar.alt = "User image."
+
     userCredits.textContent = profile.credits
 
     return profile
