@@ -1,4 +1,4 @@
-/* import { API_BASE_URL, PROFILES, API_KEY_NAME } from "../api/constants.js"
+import { API_BASE_URL, PROFILES, API_KEY_NAME } from "../api/constants.js"
 import { load } from "../api/storage/storeToken.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
@@ -44,4 +44,3 @@ export async function updateProfile(editedProfile) {
     })
   }
 }
- */
