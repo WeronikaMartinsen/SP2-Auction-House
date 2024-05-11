@@ -1,6 +1,5 @@
 import { getListing } from "../listings/getListings.js"
 import { id } from "../api/constants.js"
-import { formatDateTime } from "../listings/formatDate.js"
 import { startCountdown } from "../listings/countDown.js"
 import { load } from "../api/storage/storeToken.js"
 import { confirmDelateListing } from "../deleteListing/confirmDelate.js"
@@ -88,9 +87,13 @@ export async function updateListingDetails() {
 
     titleElement.innerText = listing.title || "N/A"
 
-    // Format the created date
-    const createdDate = listing.created ? new Date(listing.created) : new Date()
-    document.getElementById("created").innerText = formatDateTime(createdDate)
+    // Function to format date and time
+    const createdDate = new Date(listing.created)
+    const options = { year: "numeric", month: "short", day: "numeric" }
+    const formattedDate = createdDate.toLocaleDateString(undefined, options)
+
+    // Display the formatted date
+    document.getElementById("created").innerText = formattedDate
 
     document.getElementById("last-bid").innerText = lastBid
       ? lastBid.amount

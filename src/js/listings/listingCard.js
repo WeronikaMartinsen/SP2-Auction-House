@@ -119,9 +119,10 @@ export function createListingCard(listing) {
   const details = document.createElement("div")
   details.classList.add("details")
 
-  // Format the created date
+  // Format the created date to display only the date
   const createdDate = new Date(listing.created)
-  const formattedDate = createdDate.toLocaleString()
+  const options = { year: "numeric", month: "short", day: "numeric" }
+  const formattedDate = createdDate.toLocaleDateString(undefined, options)
 
   details.textContent = formattedDate
 
@@ -136,7 +137,7 @@ export function createListingCard(listing) {
 
   // Auctions End
   const auctionsEnd = document.createElement("div")
-  auctionsEnd.classList.add("auctionEnds", "rounded-4")
+  auctionsEnd.classList.add("auctionEnds", "rounded-4", "bg-opacity-75")
 
   // Start Countdown after appending clock icon
   startCountdown(listing, auctionsEnd)
