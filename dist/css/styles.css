@@ -323,8 +323,7 @@ p {
 
 .custom-width-overlay-change-avatar {
   min-height: 12em;
-  max-width: 40em;
-  min-width: 25em;
+  width: 100%;
 }
 
 .overlayConfirmDelate {
