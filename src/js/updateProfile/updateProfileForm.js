@@ -4,19 +4,10 @@ import { load } from "../api/storage/storeToken.js"
 export function initializeAvatarUpdate() {
   document.addEventListener("DOMContentLoaded", async function () {
     const avatarInput = document.getElementById("avatarInput")
-    const userAvatar = load("profile").userAvatar
-    const form = document.querySelector("#updateProfileBtn")
+    const form = document.getElementById("updateProfileBtn")
 
-    // Check if userAvatar exists and set it as the defaultValue of avatarInput
-    if (userAvatar) {
-      avatarInput.value = userAvatar.url
-    }
-
-    form.addEventListener("click", async function (event) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault()
-
-      const avatarImage = document.getElementById("avatar")
-      const avatarImageNav = document.getElementById("avatar-navbar")
 
       const newAvatarUrl = avatarInput.value
       const userProfile = load("profile")
@@ -24,11 +15,15 @@ export function initializeAvatarUpdate() {
 
       if (user) {
         if (newAvatarUrl) {
-          avatarImage.src = newAvatarUrl
-          avatarImageNav.src = newAvatarUrl
-
           try {
-            await updateProfile(newAvatarUrl, user)
+            // Update the avatar URL in the profile
+            await updateProfile({ avatar: { url: newAvatarUrl } })
+
+            // Update the avatar image
+            const avatarImage = document.getElementById("avatar")
+            const avatarImageNav = document.getElementById("avatar-navbar")
+            avatarImage.src = newAvatarUrl
+            avatarImageNav.src = newAvatarUrl
           } catch (error) {
             console.error("Error updating avatar:", error)
           }

@@ -4,10 +4,10 @@ import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 
 export async function updateProfile(editedProfile) {
-  const updateProfileURL = `${API_BASE_URL}${PROFILES}/${user}`
   const token = load("token")
   const getProfileFromToken = load("profile")
   const user = getProfileFromToken.userName
+  const updateProfileURL = `${API_BASE_URL}${PROFILES}/${user}`
 
   try {
     const postData = {
@@ -21,26 +21,21 @@ export async function updateProfile(editedProfile) {
     }
 
     const response = await fetch(updateProfileURL, postData)
+    const result = await response.json()
 
     if (response.ok) {
-      userFeedback("You have successfully updated your profile.", () => {
-        window.location.href = `/html/profiles/profile.html?name=${user}`
-      })
-    } else {
-      // Handle error cases
-      console.error("Error:", response.statusText)
-      handleError("Error updating listing. Please try again.")
-      userFeedback("Something went wrong. Please, try again.", () => {
-        // Callback function to execute after the timeout
-        location.reload()
-      })
+      location.reload()
+    } else if (response.status === 500) {
+      userFeedback("There is a problem on our end. Please try again later.")
+    } else if (response.status === 400) {
+      userFeedback(
+        "An error has occurred. Please make sure image URL is working and publicly accessible.",
+      )
     }
+
+    return result
   } catch (error) {
     console.error(error)
-    handleError("Error updating listing. Please try again.")
-    userFeedback("Something went wrong. Please, try again.", () => {
-      // Callback function to execute after the timeout
-      location.reload()
-    })
+    handleError("Error updating profile. Please try again later.")
   }
 }
