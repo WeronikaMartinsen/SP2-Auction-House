@@ -1,6 +1,6 @@
 # SP2-Auction-House
 
-**Live:** [Netlify]()
+**Live:** [Netlify](https://bidme-auctionhouse.netlify.app/)
 
 ## "Bidme-Auction House"
 
@@ -44,7 +44,7 @@ To get started with this project, follow these steps:
 
 ```bash
 
-   git clone https://github.com/WeronikaMartinsen/SP2-Auction-House
+git clone https://github.com/WeronikaMartinsen/SP2-Auction-House
 
 ```
 
