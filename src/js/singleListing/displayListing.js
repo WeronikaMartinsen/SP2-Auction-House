@@ -99,6 +99,18 @@ export async function updateListingDetails() {
       ? lastBid.amount
       : "No Bids"
 
+    const bidderElement = document.getElementById("bidder")
+    if (lastBid) {
+      const bidderName = lastBid.bidder.name || "Unknown Bidder"
+      const bidderProfileLink = document.createElement("a")
+      bidderProfileLink.href = `/html/profiles/profile.html?name=${encodeURIComponent(bidderName)}`
+      bidderProfileLink.textContent = bidderName
+      bidderElement.innerHTML = "" // Clear previous content
+      bidderElement.appendChild(bidderProfileLink)
+    } else {
+      bidderElement.innerText = "You can be first one!"
+    }
+
     document.getElementById("description").innerText =
       listing.description || "Description"
 
