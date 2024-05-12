@@ -113,6 +113,11 @@ p {
 }
 
 /* Profile */
+.custom-mw {
+  width: 100%;
+  max-width: 60em;
+  padding: 1em;
+}
 
 .custom-wrapper-banner {
   max-width: 30em;
@@ -356,14 +361,15 @@ p {
 }
 .custome-width-image-gallery-main {
   width: 100%;
-  max-width: 30em;
+  max-width: 25em;
   min-width: 10em;
   height: auto;
 }
 
 .custom-width-col {
-  max-width: 35em;
+  max-width: 30em;
   min-width: 20em;
+  min-height: 20em;
 }
 .text-break {
   word-wrap: break-word;

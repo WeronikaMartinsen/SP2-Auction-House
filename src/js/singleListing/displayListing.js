@@ -153,9 +153,7 @@ export async function updateListingDetails() {
         }
       })
     } else {
-      mediaElement.src = "/images/defaultImage.png"
-      mediaElement.alt = "Default Image"
-
+      mediaElement.style.display = "none"
       smallMediaElements.forEach((element) => {
         element.style.display = "none"
       })
