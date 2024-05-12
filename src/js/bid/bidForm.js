@@ -7,8 +7,8 @@ export function bidForm() {
     form.addEventListener("submit", async (event) => {
       event.preventDefault()
 
-      const bidInput = form.querySelector("#bidInput") // Select the input field with id bidInput
-      console.log("Bid Input Value:", bidInput.value) // Log the value to verify it
+      const bidInput = form.querySelector("#bidInput")
+      console.log("Bid Input Value:", bidInput.value)
       const bid = parseFloat(bidInput.value)
 
       const bidAmount = {
