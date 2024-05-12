@@ -1,3 +1,3 @@
-import { updateLastBid } from "./bidForm.js"
+import { bidForm } from "./bidForm.js"
 
-updateLastBid()
+bidForm()
