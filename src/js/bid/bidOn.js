@@ -48,12 +48,7 @@ export async function bidOnListing(bidAmount) {
       }, 2000)
       return result
     } else if (result.statusCode === 400) {
-      if (
-        result.errors &&
-        result.errors.some((error) => error.message === "Auction has ended")
-      ) {
-        userFeedback("Your bid must be higher than the current bid.")
-      }
+      userFeedback("Your bid must be higher than the current bid.")
     }
   } catch (error) {
     console.error("Error placing bid:", error)

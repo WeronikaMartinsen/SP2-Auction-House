@@ -2,54 +2,42 @@ document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar-custom")
   navbar.innerHTML = `
     <div class="container-fluid custom-height-pre-navbar bg-dark d-flex justify-content-end align-items-center">
-  </div>
-    <header class="bg-light sticky-top">
-      <nav class="navbar navbar-expand-sm text-white p-0">
-        <div class="container-fluid d-flex align-items-center p-1 border border-bottom shadow-sm">
-          <div class="float-left px-3">
-            <a class="navbar-brand" href="#">
-              <img
-                class="custom-logo-size-feed"
-                src="/images/logo-bidme.png"
-                alt="Logo of the website - Bidme."
-              />
-            </a>
-          </div>
-          
-          <button
-            class="navbar-toggler custom-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="fa-solid fa-bars"></span>
-          </button>
-
-          <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mb-lg-0 text-center">
-            
-            </ul>
-          
-            <div class="dropdown-center px-3">
-              <a class="dropdown-toggle btn-sm" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <img
-                  class="custom-avatar-size"
-                  src="/images/avatar-bidme.png"
-                  alt="Avatar."
-                />
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="/html/login/index.html">Log in</a>
-                <a class="dropdown-item" href="/html/register/register.html">Sign up</a>
-              </div>
-            </div>
-            
-          </div>
+    </div>
+    <nav class="navbar bg-light">
+      <div class="navbar-logo">
+        <a href="#" id="profile-logo">
+          <img src="/images/logo-bidme.png" alt="Logo of the website - Bidme." class="custom-logo-size-feed">
+        </a>
+      </div>
+      <div class="navbar-toggler">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="navbar-additional-content bg-light" id="navbarAdditionalContent">
+        <div class="navbar-content-item d-flex flex-column">
+          <a href="#" id="name-navbar" class="text-primary text-end"></a>
+          <span id="credits-navbar" class="text-dark text-end"></span>
         </div>
-      </nav>
-    </header>
+       
+        <div class="d-flex">  
+        <div class="navbar-content-item custom-padding-logout-btn">
+    <a href="/html/login/index.html" id="logout" class="btn btn-primary rounded-4 text-white px-4 shadow-sm">Log in</a>
+  </div>
+  <div class="navbar-content-item custom-padding-logout-btn">
+    <a href="/html/register/register.html" id="logout" class="btn btn-light rounded-4 text-dark border border-dark px-4 shadow-sm">Register</a>
+  </div></div>
+      </div>
+    </nav>
   `
+
+  const navbarToggle = document.querySelector(".navbar-toggler")
+  navbarToggle.addEventListener("click", () => {
+    const navbarAdditionalContent = document.querySelector(
+      "#navbarAdditionalContent",
+    )
+    if (navbarAdditionalContent.style.display === "block") {
+      navbarAdditionalContent.style.display = "none"
+    } else {
+      navbarAdditionalContent.style.display = "block"
+    }
+  })
 })
