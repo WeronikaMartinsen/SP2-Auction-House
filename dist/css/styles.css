@@ -278,13 +278,18 @@ p {
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.bids-container,
 .btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 1em;
 }
 .bids-container {
   margin-top: 2em;
   border: 1px solid light;
+  border-radius: 15px;
 }
 
 .small-font-size {

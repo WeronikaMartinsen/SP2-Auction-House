@@ -196,7 +196,7 @@ export function createListingCard(listing) {
 
   const bidBtn = document.createElement("button")
   bidBtn.textContent = "BID"
-  bidBtn.classList.add("btn", "btn-primary", "text-white")
+  bidBtn.classList.add("btn", "btn-primary", "text-white", "rounded-4", "px-4")
   bidBtn.href = `/html/listings/singleListing.html?id=${listingId}`
   bidBtn.addEventListener("click", () => {
     if (!userProfile) {
