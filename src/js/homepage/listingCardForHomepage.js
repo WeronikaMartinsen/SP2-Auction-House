@@ -1,57 +1,39 @@
-function formatDateTime(date) {
-  const options = {
-    day: "numeric",
-    month: "long",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false, // Use 24-hour format
-  }
-  return new Intl.DateTimeFormat("en-GB", options).format(date)
-}
-function formatEndDateTime(date) {
-  const options = {
-    day: "numeric",
-    month: "short",
-  }
-  const dateFormatted = new Intl.DateTimeFormat("en-US", options).format(date)
-
-  const hourOptions = {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false,
-  }
-  const time = new Intl.DateTimeFormat("en-US", hourOptions).format(date)
-
-  return {
-    date: dateFormatted,
-    time: time,
-  }
-}
+import { startCountdown } from "../listings/countDown.js"
+import { showModal } from "../userFeedback/modalMessage.js"
 
 export function createListingCard(listing) {
   const card = document.createElement("div")
   card.classList.add("listing-card")
-  const listingId = listing && listing.id ? listing.id : "Unknown ID"
 
   // Image
   const imageContainer = document.createElement("div")
   imageContainer.classList.add("image-container")
-  imageContainer.href = `/html/listings/singleListing.html?id=${listingId}`
-  imageContainer.addEventListener("click", () => {
-    window.location.href = imageContainer.href
-  })
 
   const image = document.createElement("img")
   if (listing.media && listing.media.length > 0) {
-    image.src = listing.media[0]
+    // Access the first media object in the array
+    const media = listing.media[0]
+    if (media && media.url) {
+      image.src = media.url
+    } else {
+      image.src = "/images/defaultImage.png"
+    }
+    image.alt = media && media.alt ? media.alt : "Listing Image"
   } else {
     image.src = "/images/defaultImage.png"
+    image.alt = "Listing Image"
   }
-  image.alt = "Listing Image"
+  imageContainer.addEventListener("click", () => {
+    // Define the message content
+    const message = "You must have an account to see the listing details!"
 
-  image.onerror = function () {
-    this.src = "/images/defaultImage.png"
-  }
+    // Define the title
+    const title = "Login Required"
+
+    // Call the showModal function with the defined title and message
+    showModal(title, message)
+  })
+
   imageContainer.appendChild(image)
 
   card.appendChild(imageContainer)
@@ -64,10 +46,11 @@ export function createListingCard(listing) {
 
   // Avatar
   const avatarImg = document.createElement("img")
-  avatarImg.src =
-    listing.seller && listing.seller.avatar
-      ? listing.seller.avatar
-      : "/images/avatar-bidme.png"
+  if (listing.seller && listing.seller.avatar && listing.seller.avatar.url) {
+    avatarImg.src = listing.seller.avatar.url
+  } else {
+    avatarImg.src = "/images/avatar-bidme.png"
+  }
   avatarImg.alt = "Avatar"
   avatarImg.classList.add("sellerAvatar")
 
@@ -87,45 +70,43 @@ export function createListingCard(listing) {
     listing.seller && listing.seller.name
       ? listing.seller.name
       : "Unknown Seller"
-  sellerName.classList.add("h6", "text-dark")
-  sellerContainer.addEventListener("click", () => {
-    if (listing.seller && listing.seller.name) {
-      window.location.href = `/html/profiles/profile.html?name=${encodeURIComponent(listing.seller.name)}`
-    }
-  })
+  sellerName.classList.add("h6", "text-dark", "m-0")
 
   // Append sellerName to avatarAndDate
   avatarAndDate.appendChild(sellerName)
 
   const details = document.createElement("div")
   details.classList.add("details")
-  const createdDate = new Date(listing.created)
-  const formattedDate = formatDateTime(createdDate)
-  details.textContent = `${formattedDate}`
 
-  // Append details to avatarAndDate
+  // Format the created date to display only the date
+  const createdDate = new Date(listing.created)
+  const options = { year: "numeric", month: "short", day: "numeric" }
+  const formattedDate = createdDate.toLocaleDateString(undefined, options)
+
+  details.textContent = formattedDate
+
   avatarAndDate.appendChild(details)
 
   const contentContainer = document.createElement("div")
   contentContainer.classList.add("contentContainer")
   card.appendChild(contentContainer)
 
+  // Append the formatted date to the avatarAndDate container
+  avatarAndDate.appendChild(details)
+
+  // Auctions End
   const auctionsEnd = document.createElement("div")
-  auctionsEnd.classList.add("auctionEnds")
+  auctionsEnd.classList.add("auctionEnds", "rounded-4", "bg-opacity-75")
+
+  // Start Countdown after appending clock icon
+  startCountdown(listing, auctionsEnd)
+
+  // Display the raw endsAt value without formatting
+  const dateTimeElement = document.createElement("span")
+  dateTimeElement.textContent = listing.endsAt
+  auctionsEnd.appendChild(dateTimeElement)
+
   card.appendChild(auctionsEnd)
-
-  const endDate = new Date(listing.endsAt)
-  const formattedEndDateTime = formatEndDateTime(endDate)
-
-  const dateElement = document.createElement("p")
-  dateElement.textContent = formattedEndDateTime.date
-
-  const timeElement = document.createElement("p")
-  timeElement.textContent = formattedEndDateTime.time
-
-  auctionsEnd.appendChild(timeElement)
-  auctionsEnd.appendChild(dateElement)
-
   // Title
   const title = document.createElement("h6")
   title.textContent = listing.title
@@ -136,27 +117,6 @@ export function createListingCard(listing) {
   const description = document.createElement("p")
   description.textContent = listing.description
   contentContainer.appendChild(description)
-
-  // Tags
-  if (listing.tags && listing.tags.length > 0) {
-    const tagsContainer = document.createElement("div")
-    tagsContainer.classList.add("tags-container")
-    listing.tags.forEach((tag) => {
-      const tagElement = document.createElement("span")
-      tagElement.classList.add("tag")
-      tagElement.textContent = tag
-      tagsContainer.appendChild(tagElement)
-    })
-    contentContainer.appendChild(tagsContainer)
-  }
-
-  // SEE MORE (link to ID)
-
-  const seeMore = document.createElement("a")
-  seeMore.textContent = "SEE MORE"
-  seeMore.classList.add("seeMore")
-
-  card.appendChild(seeMore)
 
   return card
 }

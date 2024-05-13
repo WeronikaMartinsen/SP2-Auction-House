@@ -26,7 +26,7 @@ export async function displayListings() {
 
     const searchInput = document.querySelector("#search")
     const listingsContainer = document.querySelector("#listings")
-    const filterOptionOne = document.querySelector("#new-to-old")
+
     const filterOptionTwo = document.querySelector("#old-to-new")
     const filterOptionThree = document.querySelector("#all-listings")
     const filterOptionFour = document.querySelector("#active-listings")
@@ -34,11 +34,6 @@ export async function displayListings() {
 
     let currentPage = 1
 
-    filterOptionOne.addEventListener("click", function () {
-      console.log("Sorting listings from new to old...")
-      sortListingsByCreationDateDesc(allListings)
-      displayFilteredListings(allListings, getProfile, listingsContainer)
-    })
     filterOptionTwo.addEventListener("click", function () {
       console.log("Sorting listings from old to new...")
       sortListingsByCreationDateAsc(allListings)
@@ -53,9 +48,16 @@ export async function displayListings() {
 
     filterOptionFour.addEventListener("click", function () {
       console.log("Filtering for active listings...")
-      const activeListings = allListings.filter(
-        (listing) => listing.active === true,
-      )
+
+      const currentDate = new Date() // Get the current date and time
+
+      const activeListings = allListings.filter((listing) => {
+        const endDate = new Date(listing.endsAt) // Convert the end date of the listing to a Date object
+
+        // Check if the listing is active based on the end date
+        return endDate > currentDate
+      })
+
       displayFilteredListings(activeListings, getProfile, listingsContainer)
     })
 
