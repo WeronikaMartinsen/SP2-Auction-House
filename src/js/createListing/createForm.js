@@ -2,7 +2,7 @@ import { createListing } from "./create.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
 import { loadProfile } from "../api/storage/storeToken.js"
-import { displayFilteredListings } from "../listings/displayListings.js"
+import { displayAllListings } from "../listings/displayListings.js"
 
 export async function createNewListing() {
   try {
@@ -69,7 +69,7 @@ export async function createNewListing() {
           const listingsContainer = document.querySelector("#listings")
           if (listingsContainer) {
             console.log("Displaying filtered listings...")
-            displayFilteredListings(
+            displayAllListings(
               [createdListing],
               getProfile,
               listingsContainer,

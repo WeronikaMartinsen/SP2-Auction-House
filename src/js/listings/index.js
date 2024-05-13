@@ -1,7 +1,7 @@
-import { displayListings } from "./displayListings.js"
+import { displayAllListings } from "./displayListings.js"
 
 import { getApiKey } from "../api/auth/apiKey.js"
 
-displayListings()
+displayAllListings()
 
 getApiKey()

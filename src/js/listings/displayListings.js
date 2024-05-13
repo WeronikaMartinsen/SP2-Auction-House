@@ -6,10 +6,8 @@ import { createListingCard } from "./listingCard.js"
 
 const LISTINGS_PER_PAGE = 10
 
-export async function displayListings() {
+export async function displayAllListings() {
   try {
-    console.log("Fetching listings...")
-
     const response = await getListings()
     let allListings = response.data
 
@@ -20,15 +18,12 @@ export async function displayListings() {
       return
     }
 
-    console.log("Listings fetched successfully:", allListings)
-
     sortListingsByCreationDateDesc(allListings)
 
     allListings.sort((a, b) => new Date(b.created) - new Date(a.created))
 
     const searchInput = document.querySelector("#search")
     const listingsContainer = document.querySelector("#listings")
-
     const filterOptionTwo = document.querySelector("#old-to-new")
     const filterOptionThree = document.querySelector("#all-listings")
     const filterOptionFour = document.querySelector("#active-listings")
@@ -61,12 +56,10 @@ export async function displayListings() {
     filterOptionFour.addEventListener("click", function () {
       console.log("Filtering for active listings...")
 
-      const currentDate = new Date() // Get the current date and time
-
+      const currentDate = new Date()
       const activeListings = allListings.filter((listing) => {
-        const endDate = new Date(listing.endsAt) // Convert the end date of the listing to a Date object
+        const endDate = new Date(listing.endsAt)
 
-        // Check if the listing is active based on the end date
         return endDate > currentDate
       })
 
@@ -224,7 +217,6 @@ export async function displayListings() {
       const nextListings = allListings.slice(startIndex, endIndex)
       displayFilteredListings(nextListings, getProfile, listingsContainer, true)
 
-      // Disable the button if there are no more listings to load
       if (endIndex >= allListings.length) {
         loadMoreBtn.disabled = true
       }
@@ -261,27 +253,16 @@ export function displayFilteredListings(
   append = false,
   newListing = null,
 ) {
-  console.log("Displaying filtered listings...")
-  console.log("Append:", append)
-  console.log("New Listing:", newListing)
-
-  // If append is false, clear the listings container
   if (!append) {
     console.log("Clearing listings container...")
     listingsContainer.innerHTML = ""
   }
 
-  console.log("Filtered Listings:", listings)
-
-  // If a new listing is provided, append it to the listings container
   if (newListing !== null) {
-    console.log("Appending new listing...")
     const newListingCard = createListingCard(newListing, getProfile)
     listingsContainer.appendChild(newListingCard)
-    console.log("New listing appended:", newListingCard)
   }
 
-  // Append all listings to the container if append is true
   if (append) {
     console.log("Appending all listings...")
     listings.forEach((listing) => {
@@ -290,7 +271,6 @@ export function displayFilteredListings(
       console.log("Listing appended:", card)
     })
   } else {
-    // Otherwise, display all listings
     console.log("Displaying all listings...")
     listings.forEach((listing) => {
       const card = createListingCard(listing, getProfile)
