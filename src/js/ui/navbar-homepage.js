@@ -30,15 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarTogglerDemo02">
             <ul class="navbar-nav mb-lg-0 text-center">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="listings.html">Auctions</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="#">Sell items</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Contact us</a>
-          </li>
+            
             </ul>
           
             <div class="dropdown-center px-3">
