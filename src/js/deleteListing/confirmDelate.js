@@ -10,7 +10,7 @@ export function confirmDelateListing(message, listingId) {
   messageBox.classList.add("messageBox")
 
   const content = document.createElement("span")
-  content.classList.add("text-center", "text-wrap", "mb-4")
+  content.classList.add("text-center", "text-wrap", "mt-2")
 
   content.textContent = message
 

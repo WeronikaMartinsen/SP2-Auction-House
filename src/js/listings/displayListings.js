@@ -264,7 +264,8 @@ export function displayFilteredListings(
   console.log("Displaying filtered listings...")
   console.log("Append:", append)
   console.log("New Listing:", newListing)
-  console.log("Displaying filtered listings...")
+
+  // If append is false, clear the listings container
   if (!append) {
     console.log("Clearing listings container...")
     listingsContainer.innerHTML = ""
@@ -272,6 +273,7 @@ export function displayFilteredListings(
 
   console.log("Filtered Listings:", listings)
 
+  // If a new listing is provided, append it to the listings container
   if (newListing !== null) {
     console.log("Appending new listing...")
     const newListingCard = createListingCard(newListing, getProfile)
@@ -279,6 +281,7 @@ export function displayFilteredListings(
     console.log("New listing appended:", newListingCard)
   }
 
+  // Append all listings to the container if append is true
   if (append) {
     console.log("Appending all listings...")
     listings.forEach((listing) => {
@@ -287,6 +290,7 @@ export function displayFilteredListings(
       console.log("Listing appended:", card)
     })
   } else {
+    // Otherwise, display all listings
     console.log("Displaying all listings...")
     listings.forEach((listing) => {
       const card = createListingCard(listing, getProfile)

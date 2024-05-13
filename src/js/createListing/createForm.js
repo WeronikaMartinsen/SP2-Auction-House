@@ -74,6 +74,7 @@ export async function createNewListing() {
               getProfile,
               listingsContainer,
               true,
+              createdListing,
             )
           }
         } catch (error) {
