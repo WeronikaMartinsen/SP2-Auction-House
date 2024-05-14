@@ -2,7 +2,6 @@ import { API_BASE_URL, LISTINGS, API_KEY_NAME } from "../api/constants.js"
 import { load } from "../api/storage/storeToken.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
-import { displayAllListings } from "../listings/displayListings.js"
 
 export async function createListing(newListing) {
   const createListingURL = API_BASE_URL + LISTINGS
@@ -21,11 +20,11 @@ export async function createListing(newListing) {
 
     const response = await fetch(createListingURL, postData)
     console.log(response)
+    const result = await response.json()
 
     if (response.ok) {
-      const resultNewListing = await response.json()
-      displayAllListings()
-      return resultNewListing
+      // Redirect to the single listing page if the response is successful
+      window.location.href = `../single-listing/index.html?id=${result.data.id}&title=${result.data.title}`
     } else {
       // Handle error cases
       console.error("Error:", response.statusText)
@@ -34,9 +33,6 @@ export async function createListing(newListing) {
   } catch (error) {
     console.error(error)
     handleError("Error adding listing. Please try again.")
-    userFeedback("Something went wrong. Please, try again.", () => {
-      // Callback function to execute after the timeout
-      location.reload()
-    })
+    userFeedback("Something went wrong. Please try again.")
   }
 }

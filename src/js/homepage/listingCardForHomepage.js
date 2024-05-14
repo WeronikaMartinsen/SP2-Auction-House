@@ -113,10 +113,10 @@ export function createListingCard(listing) {
   title.classList.add("mt-1")
   contentContainer.appendChild(title)
 
-  // Description
+  /*   // Description
   const description = document.createElement("p")
   description.textContent = listing.description
-  contentContainer.appendChild(description)
+  contentContainer.appendChild(description) */
 
   return card
 }

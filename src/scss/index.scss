@@ -7,12 +7,11 @@ $danger: #f3033c;
 
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
-$body-font-family: $rubik-font-family;
-$headings-font-family: $rubik-font-family;
+$rubik-font-family: "Rubik", sans-serif;
+
 $rubik-font-weight-light: 300;
 $rubik-font-weight-normal: 400;
 $rubik-font-weight-bold: 700;
-$rubik-font-family: "Rubik", sans-serif;
 
 // Import Bootstrap SCSS
 @import "../../node_modules/bootstrap/scss/functions";
@@ -20,3 +19,8 @@ $rubik-font-family: "Rubik", sans-serif;
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/buttons";
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+$body-font-family: $rubik-font-family;
+$headings-font-family: $rubik-font-family;
+
+$rubik-font-family: "Rubik", sans-serif;
