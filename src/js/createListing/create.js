@@ -2,6 +2,7 @@ import { API_BASE_URL, LISTINGS, API_KEY_NAME } from "../api/constants.js"
 import { load } from "../api/storage/storeToken.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
+import { displayAllListings } from "../listings/displayListings.js"
 
 export async function createListing(newListing) {
   const createListingURL = API_BASE_URL + LISTINGS
@@ -23,7 +24,7 @@ export async function createListing(newListing) {
 
     if (response.ok) {
       const resultNewListing = await response.json()
-
+      displayAllListings()
       return resultNewListing
     } else {
       // Handle error cases

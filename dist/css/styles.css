@@ -73,6 +73,7 @@ p {
     padding: 2em;
     transition: right 0.3s ease;
     z-index: 1001;
+    border-bottom-left-radius: 7%;
   }
 
   .navbar-toggler.show {

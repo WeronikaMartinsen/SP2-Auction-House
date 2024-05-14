@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </a>
     </div>
     <div class="navbar-content-item custom-padding-logout-btn">
-      <a href="#" id="logout" class="btn btn-light rounded-4 text-dark border border-dark px-4 shadow-sm">Logout</a>
+      <a href="#" id="logout" class="btn btn-dark rounded-4 text-white px-4 shadow-sm">Logout</a>
     </div>
   </div>
 </nav>
