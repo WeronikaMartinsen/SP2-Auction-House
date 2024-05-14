@@ -26,8 +26,9 @@ p {
 }
 
 .custom-avatar-size {
-  width: 2em;
-  height: auto;
+  width: 3em;
+  height: 3em;
+  border-radius: 100%;
 }
 
 /* Navbar */

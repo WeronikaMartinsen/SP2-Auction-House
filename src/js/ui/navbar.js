@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
   <div class="navbar-additional-content bg-light" id="navbarAdditionalContent">
     <div class="navbar-content-item d-flex flex-column">
-      <a href="#" id="name-navbar" class="text-primary text-end"></a>
-      <span id="credits-navbar" class="text-dark text-end"></span>
+      <a href="#" id="name-navbar" class="text-primary text-end h5 p-0"></a>
+      <div class="d-flex gap-1"><i class="fa-solid fa-coins"></i><span id="credits-navbar" class="text-dark text-end small-font-size p-0"></span></div>
     </div>
     <div class="navbar-content-item">
       <a href="#" id="avatar-small-navbar">
-        <img src="/images/avatar-bidme.png" alt="Avatar." id="avatar-navbar" class="custom-avatar-size sellerAvatar avatar-img shadow">
+        <img src="/images/avatar-bidme.png" alt="Avatar." id="avatar-navbar" class="custom-avatar-size avatar-img shadow">
       </a>
     </div>
     <div class="navbar-content-item custom-padding-logout-btn">
