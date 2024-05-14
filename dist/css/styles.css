@@ -233,9 +233,7 @@ p {
 
 #listings {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
   gap: 2em;
-  align-items: stretch;
 }
 
 .listing-card {
@@ -243,12 +241,12 @@ p {
   background-color: white;
   display: flex;
   flex-direction: column;
-
   justify-content: space-between;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   word-wrap: break-word;
+  height: 100%;
 }
 
 .image-container {
