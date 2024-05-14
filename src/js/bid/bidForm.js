@@ -8,7 +8,7 @@ export function bidForm() {
       event.preventDefault()
 
       const bidInput = form.querySelector("#bidInput")
-      console.log("Bid Input Value:", bidInput.value)
+
       const bid = parseFloat(bidInput.value)
 
       const bidAmount = {

@@ -1,7 +1,6 @@
 import { API_BASE_URL, LISTING, API_KEY_NAME } from "../api/constants.js"
 import { load } from "../api/storage/storeToken.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
-import { handleError } from "../userFeedback/errorMessage.js"
 
 export async function bidOnListing(bidAmount) {
   const token = load("token")
@@ -23,36 +22,25 @@ export async function bidOnListing(bidAmount) {
         Authorization: `Bearer ${token}`,
         "X-Noroff-API-Key": API_KEY_NAME,
       },
-      body: JSON.stringify({
-        amount: bidAmount.amount,
-      }),
+      body: JSON.stringify(bidAmount),
     }
 
     console.log("Post Data:", postData)
 
     const response = await fetch(bidOnListingURL, postData)
-    console.log("Response:", response)
     const result = await response.json()
 
-    console.log("Result:", result)
-
     if (response.ok) {
-      userFeedback("You have successfully placed a bid.")
-
-      const bidAmount = result.data._count.bids // Extract the bid amount from the response data
-
-      // Update the "last-bid" element with the bid amount
-      bidOnListing(bidAmount)
-      setTimeout(() => {
+      userFeedback("You have successfully added a bid!")
+      setTimeout(function () {
         location.reload()
-      }, 2000)
+      }, 1000)
       return result
-    } else if (result.statusCode === 400) {
-      userFeedback("Your bid must be higher than the current bid.")
+    }
+    if (result.statusCode === 400) {
+      userFeedback("Your bid must be higher than current bid!")
     }
   } catch (error) {
-    console.error("Error placing bid:", error)
-    handleError("Something went wrong. Please try again.")
-    return null
+    console.error(error)
   }
 }

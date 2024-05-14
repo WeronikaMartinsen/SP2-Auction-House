@@ -44,6 +44,20 @@ document.addEventListener("DOMContentLoaded", function () {
       navbarAdditionalContent.style.display = "block"
     }
   })
+  function resetNavbarDisplay() {
+    const navbarAdditionalContent = document.querySelector(
+      "#navbarAdditionalContent",
+    )
+    if (window.innerWidth > 500) {
+      navbarAdditionalContent.style.display = "flex"
+    } else {
+      navbarAdditionalContent.style.display = "none"
+    }
+  }
+  resetNavbarDisplay()
+
+  // Add event listener for window resize
+  window.addEventListener("resize", resetNavbarDisplay)
 
   logout()
   profileLink()

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <span id="credits-navbar" class="text-dark text-end"></span>
         </div>
        
-        <div class="d-flex">  
+        <div class="d-flex homepage">  
         <div class="navbar-content-item custom-padding-logout-btn">
     <a href="/html/login/index.html" id="logout" class="btn btn-primary rounded-4 text-white px-4 shadow-sm">Log in</a>
   </div>
