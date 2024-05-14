@@ -59,6 +59,7 @@ export function showModal(title, modalMessage) {
 
   // Message
   const messageElement = document.createElement("p")
+  messageElement.classList.add("text-center")
   messageElement.textContent = modalMessage // Use the function parameter here
   messageContainer.appendChild(messageElement)
 
