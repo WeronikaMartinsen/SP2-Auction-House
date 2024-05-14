@@ -155,11 +155,42 @@ export function createListingCard(listing) {
   title.classList.add("mt-1")
   contentContainer.appendChild(title)
 
-  // Description
+  /*   // Description
   const description = document.createElement("p")
-  description.textContent = listing.description
-  contentContainer.appendChild(description)
+  const maxDescriptionLength = 100 // Maximum length of the description to display initially
 
+  if (listing.description.length > maxDescriptionLength) {
+    // If description length exceeds the maximum length, truncate it
+    const truncatedDescription = `${listing.description.substring(0, maxDescriptionLength)}...`
+    description.textContent = truncatedDescription
+    const readMoreBtn = document.createElement("a")
+    readMoreBtn.textContent = "Read more"
+    readMoreBtn.classList.add(
+      "text-dark",
+      "small-font-size",
+      "text-start",
+      "p-0",
+      "m-0",
+    )
+    let isDescriptionExpanded = false
+    readMoreBtn.addEventListener("click", () => {
+      isDescriptionExpanded = !isDescriptionExpanded
+      if (isDescriptionExpanded) {
+        description.textContent = listing.description
+        readMoreBtn.textContent = "Read less"
+      } else {
+        description.textContent = truncatedDescription
+        readMoreBtn.textContent = "Read more"
+      }
+    })
+    contentContainer.appendChild(description)
+
+    contentContainer.appendChild(readMoreBtn)
+  } else {
+    // If description length doesn't exceed the maximum length, display it without truncation
+    description.textContent = listing.description
+  }
+ */
   // Bids
   const bidsCount =
     listing._count && listing._count.bids ? listing._count.bids : 0 // Get the count of bids
