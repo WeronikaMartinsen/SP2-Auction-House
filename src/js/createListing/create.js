@@ -24,7 +24,7 @@ export async function createListing(newListing) {
 
     if (response.ok) {
       // Redirect to the single listing page if the response is successful
-      window.location.href = `../single-listing/index.html?id=${result.data.id}&title=${result.data.title}`
+      window.location.href = `/html/listings/singleListing.html?id=${result.data.id}&title=${result.data.title}`
     } else {
       // Handle error cases
       console.error("Error:", response.statusText)
