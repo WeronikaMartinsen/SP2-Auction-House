@@ -37,71 +37,66 @@
   </head>
   <body class="vh-100 bg-light">
     <div class="navbar-custom sticky-top"></div>
-    <section>
-      <div class="container-fluid bg-white shadow-sm">
+    <section class="bg-white">
+      <div class="container bg-white shadow-sm">
         <div class="row d-flex justify-content-center align-items-center">
-          <div
-            class="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center"
-          >
+          <div class="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center">
             <div class="d-flex flex-column gap-2 flex-column text-center">
               <h5 class="p-0 m-0 mt-5">Welcome to Auction House!</h5>
               <h4 class="text-wrap text-dark mt-2">
                 Ready to Sell? Create Your Auction Now!
               </h4>
-              <div
-                class="d-flex justify-content-center align-items-center gap-3"
-              >
-                 <!-- Button trigger modal -->
-                 <h2 class="text-primary">Add you auction here:</h2>
-                 <i
-                   type="button"
-                   class="fa-solid fa-plus btn btn-primary text-white rounded-circle p-2"
-                   data-bs-toggle="modal"
-                   data-bs-target="#createListingModal"
-                 >
-                 </i>
- 
-                 <!-- Modal -->
-                 <div
-                   class="modal fade"
-                   id="createListingModal"
-                   data-bs-backdrop="static"
-                   data-bs-keyboard="false"
-                   tabindex="-1"
-                   aria-labelledby="staticBackdropLabel"
-                   aria-hidden="true"
-                 >
-                   <div class="modal-dialog modal-dialog-centered">
-                     <div class="modal-content">
-                       <div class="modal-header">
-                         
-                         <button
-                           type="button"
-                           class="btn-close"
-                           data-bs-dismiss="modal"
-                           aria-label="Close"
-                         ></button>
-                       </div>
-                       <div class="modal-body gap-3">
-                         <div class="d-flex justify-content-center align-items-center flex-column gap-3">
-                           <h3 class="fs-5" id="staticBackdropLabel">
-                             You must to have an account to add a listing!
-                           </h3>
-                            <div class="d-flex justify-content-center align-items-center gap-3">
-                             <a class='btn btn-primary text-white' href='/html/login/'>Login</a>
+              <div class="d-flex justify-content-center align-items-center gap-3 mb-3">
+                <!-- Button trigger modal -->
+                <h5 class="text-primary">Add your auction here:</h5>
+                <button
+                  type="button"
+                  class="fa-solid fa-plus btn btn-primary text-white rounded-circle p-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#createListingModal"
+                ></button>
+    
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="createListingModal"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body gap-3">
+                        <div class="d-flex justify-content-center align-items-center flex-column gap-3">
+                          <h3 class="fs-5" id="staticBackdropLabel">
+                            You must have an account to add a listing!
+                          </h3>
+                          <div class="d-flex justify-content-center align-items-center gap-3">
+                            <a class='btn btn-primary text-white' href='/html/login/'>Login</a>
                             <a class='btn btn-outline-primary text-dark' href='/html/register/register'>Register</a>
-                            </div>
-                         </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            class="col-12 col-sm-6 d-flex justify-content-center align-items-center"
-          >
+          <!-- Second column for hero image -->
+          <div class="col-12 col-sm-6 d-flex justify-content-center align-items-center">
             <img
-              src="/images/img-5.png"
+              src="/images/img-6.png"
               alt="Hero image describing art."
               class="custom-hero-size"
             />
@@ -109,6 +104,7 @@
         </div>
       </div>
     </section>
+    
     <section class="p-4">
       <div class="d-flex justify-content-center h-100">
         <div class="searchbar shadow">
