@@ -214,7 +214,7 @@ export function createListingCard(listing) {
     lastBidAmount.innerHTML = `<h2 class="text-primary">${lastBid.amount},-</h2><span class="small-font-size">bidder:</span><a class="bidder small-font-size">${lastBid.bidder.name}</a>`
     lastBidAmount.addEventListener("click", () => {
       if (lastBid.bidder.name && lastBid.bidder.name) {
-        window.location.href = `/html/profiles/profile.html?name=${user}&id=${listingId}`
+        window.location.href = `/html/profiles/profile.html?name=${lastBid.bidder.name}&id=${listingId}`
       }
     })
     lastBidContainer.appendChild(lastBidAmount)
