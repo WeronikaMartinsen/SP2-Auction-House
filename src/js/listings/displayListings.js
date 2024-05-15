@@ -4,7 +4,7 @@ import { handleError } from "../userFeedback/errorMessage.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { createListingCard } from "./listingCard.js"
 
-const LISTINGS_PER_PAGE = 10
+const LISTINGS_PER_PAGE = 3
 
 export async function displayAllListings() {
   try {

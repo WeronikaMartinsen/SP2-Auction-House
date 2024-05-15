@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   function resetNavbarDisplay() {
-    if (window.innerWidth > 600) {
+    if (window.innerWidth > 665) {
       navbarAdditionalContent.classList.remove("show")
     }
   }

@@ -46,27 +46,31 @@
     <div class="navbar-custom sticky-top"></div>
     <section>
       <div class="container-fluid bg-white shadow-sm">
-        <div class="row d-flex justify-content-center align-items-center">
+        <div class="row d-flex justify-content-end align-items-center">
           <div
-            class="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center"
+            class="col-12 col-sm-6 d-flex justify-content-center align-items-center"
           >
-            <div class="d-flex flex-column gap-2 flex-column text-center">
-              <h5 class="p-0 m-0 mt-5">Welcome to Auction House!</h5>
-              <h4 class="text-wrap text-dark mt-2">
-                Ready to Sell? Create Your Auction Now!
-              </h4>
+            <div class="d-flex flex-column gap-2 flex-column text-end">
+              <h3 class="p-0 m-0 mt-5">Welcome to Auction House!</h3>
+              <span class="title-animation display-6"></span>
+              
+              <h3 class="text-wrap text-dark mt-2 fw-light">
+                are <span class="text-success fw-bolder">YOU</span> ready to <span class="underline-text-decoration">Sell</span>?
+              </h3>
+
+              
               <div
-                class="d-flex justify-content-center align-items-center gap-3"
+                class="d-flex justify-content-end align-items-center gap-3"
               >
                 <!-- Button trigger modal -->
-                <h2 class="text-primary">Add your auction here:</h2>
+           
                 <button
                 aria-label="Button"
                   type="button"
-                  class="fa-solid fa-plus btn btn-primary text-white rounded-circle p-2"
+                  class="btn btn-primary text-white px-4 rounded-4 fw-light"
                   data-bs-toggle="modal"
                   data-bs-target="#createListingModal"
-                ></button>
+                >Sell item</button>
 
                 <!-- Modal -->
                 <div
@@ -175,7 +179,7 @@
             </div>
           </div>
           <div
-            class="col-12 col-sm-6 d-flex justify-content-center align-items-center"
+            class="col-12 col-sm-6 d-flex justify-content-start align-items-center"
           >
             <img
               src="/images/img-5.png"
@@ -246,7 +250,7 @@
           </div>
         </div>
         <div id="listings" class="mt-4"></div>
-        <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center m-5">
           <button class="btn btn-outline-dark m-3" id="loadMore">
             Load more
           </button>

@@ -146,7 +146,7 @@ p {
 }
 
 .custom-hero-size {
-  width: 15em;
+  width: 18em;
 }
 .custom-width-inputs {
   max-width: 30em;
@@ -176,6 +176,7 @@ p {
 }
 
 /* Profile */
+
 .custom-mw {
   width: 100%;
   max-width: 60em;

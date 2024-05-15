@@ -19,9 +19,7 @@ export function registerUser() {
       const email = form.email.value
       const password = form.password.value
       const avatarUrl = form.avatar.value
-      const avatar = avatarUrl
-        ? { url: avatarUrl, alt: "Avatar alt text" }
-        : null
+      const avatar = avatarUrl ? { url: avatarUrl, alt: "Avatar alt text" } : {}
 
       const user = {
         name,
