@@ -68,6 +68,9 @@ p {
   #logout {
     display: block;
   }
+  #logout-nav {
+    display: none;
+  }
 
   .navbar-additional-content {
     position: fixed;

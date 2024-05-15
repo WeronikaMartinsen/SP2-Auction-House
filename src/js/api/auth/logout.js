@@ -9,8 +9,19 @@ import { userFeedback } from "../../userFeedback/feedbackOverlay.js"
 
 export function logout() {
   const logoutBtn = document.querySelector("#logout")
+  const logoutBtnNav = document.querySelector("#logout-nav")
 
   logoutBtn.addEventListener("click", (event) => {
+    event.preventDefault()
+    console.log("Logout button clicked")
+    remove("token")
+    remove("profile")
+    remove("apiKey")
+    userFeedback("Your have successfully log out now!", () => {
+      window.location.href = "/html/login/index.html"
+    })
+  })
+  logoutBtnNav.addEventListener("click", (event) => {
     event.preventDefault()
     console.log("Logout button clicked")
     remove("token")

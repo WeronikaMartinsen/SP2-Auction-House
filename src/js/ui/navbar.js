@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   navbar.innerHTML = `
     <div class="container-fluid custom-height-pre-navbar bg-dark d-flex justify-content-end align-items-center">
     </div>
-    <nav class="navbar bg-white text-dark justify-content-between align-items-center">
+    <nav class="navbar bg-white text-dark justify-content-between align-items-center shadow-sm">
       <div class="navbar-logo">
         <a href="#" id="profile-logo">
           <img src="/images/logo-bidme.png" alt="Logo of the website - Bidme." class="custom-logo-size-feed">
@@ -20,10 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="navbar-content-item">
       <a href="#" id="getHomepage" class="nav-link display-1">Listings</a>
     </div>
- 
+  
     <div class="navbar-content-item">
       <a href="#" id="profile" class="nav-link display-1">Profile</a>
-    </div></div>
+    </div>
+    <div class="navbar-content-item">
+    <a href="#" id="logout-nav" class="nav-link display-1 text-decoration-underline">Logout</a>
+  </div>
+    </div>
+    
       
        
        <div class="navbar-content-item custom-padding-logout-btn">
