@@ -61,6 +61,7 @@
                 <!-- Button trigger modal -->
                 <h2 class="text-primary">Add your auction here:</h2>
                 <button
+                aria-label="Button"
                   type="button"
                   class="fa-solid fa-plus btn btn-primary text-white rounded-circle p-2"
                   data-bs-toggle="modal"
@@ -111,11 +112,8 @@
                             class="form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
                             required
                           ></textarea>
-
-                          <label for="media1" class="d-none"
-                            >Media URL 1:</label
-                          >
                           <input
+                          aria-label="Media1"
                             name="media1"
                             type="url"
                             placeholder="Media Url*"
@@ -123,20 +121,16 @@
                             required
                           />
 
-                          <label for="media2" class="d-none"
-                            >Media URL 2:</label
-                          >
                           <input
+                          aria-label="Media2"
                             name="media2"
                             type="url"
                             placeholder="Media Url"
                             class="media-input form-label w-100 rounded border border-light shadow-sm mb-3 p-1"
                           />
 
-                          <label for="media3" class="d-none"
-                            >Media URL 3:</label
-                          >
                           <input
+                          aria-label="Media3"
                             name="media3"
                             for="media3"
                             type="url"
@@ -196,6 +190,7 @@
       <div class="d-flex justify-content-center h-100">
         <div class="searchbar shadow">
           <input
+          aria-label="Search"
             class="border-0 mt-1 px-2 custom-hover-search w-100"
             type="text"
             name=""
