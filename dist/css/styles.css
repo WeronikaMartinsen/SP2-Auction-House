@@ -15,7 +15,7 @@ p {
   width: 10em;
 }
 .custom-logo-size-feed {
-  width: 6em;
+  width: 8em;
 }
 .navbar-brand {
   margin: 0;
@@ -39,13 +39,13 @@ p {
   padding: 10px 20px;
 }
 
-.navbar-logo img {
-  width: 120px;
-}
-
 .navbar-toggler-custome {
   display: none;
   cursor: pointer;
+  font-size: 1.5em;
+}
+.navbar-middle-content {
+  margin-right: 4em;
 }
 
 #logout {
@@ -60,7 +60,7 @@ p {
   margin-left: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 665px) {
   .navbar-toggler-custome {
     display: block;
   }
@@ -72,9 +72,10 @@ p {
   .navbar-additional-content {
     position: fixed;
     flex-direction: column-reverse;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
-    top: 82px;
+    text-align: center;
+    top: 73px;
     right: -1px;
     width: 13em;
     height: 30em;
@@ -82,7 +83,6 @@ p {
     margin: 0;
     transition: right 0.3s ease;
     z-index: 1001;
-    border-bottom-left-radius: 7%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-top: none;
     transform: translateX(100%);
@@ -92,19 +92,29 @@ p {
   .navbar-additional-content.show {
     transform: translateX(0);
   }
-
-  .homepage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .navbar-middle-content {
     flex-direction: column;
-    display: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .custom-name {
+    margin-bottom: 1em;
+    font-weight: 600;
   }
 
   .navbar-content-item {
     font-size: 1.5em;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
     padding: 0.7em 0.7em 0 0;
+  }
+  .avatar-custom-media {
+    padding: 0;
+    margin: 0;
   }
 }
 
