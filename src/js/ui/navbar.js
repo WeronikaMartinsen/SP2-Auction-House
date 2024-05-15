@@ -18,13 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="navbar-additional-content bg-white d-flex justify-content-center align-items-center text-dark" id="navbarAdditionalContent">
       <div class="navbar-middle-content d-flex justify-content-center align-items-center gap-2">
       <div class="navbar-content-item">
-      <a href="#" class="nav-link display-1">Listings</a>
+      <a href="#" id="getHomepage" class="nav-link display-1">Listings</a>
     </div>
+ 
     <div class="navbar-content-item">
-      <a href="#" class="nav-link display-1">Sell item</a>
-    </div>
-    <div class="navbar-content-item">
-      <a href="#" class="nav-link display-1">Profile</a>
+      <a href="#" id="profile" class="nav-link display-1">Profile</a>
     </div></div>
       
        

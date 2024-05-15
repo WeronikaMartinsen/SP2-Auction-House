@@ -14,6 +14,7 @@ export function profileLink() {
   const getProfileLink = document.querySelector("#profile")
   const getProfileNameLink = document.querySelector("#name-navbar")
   const getProfileLinkLogo = document.querySelector("#profile-logo")
+  const getHomePage = document.querySelector("#getHomepage")
   const getAvatarNavbar = document.querySelector("#avatar-small-navbar")
 
   if (getProfileLink) {
@@ -24,6 +25,9 @@ export function profileLink() {
   }
   if (getProfileLinkLogo) {
     getProfileLinkLogo.href = `/html/listings/listings.html?name=${user}`
+  }
+  if (getHomePage) {
+    getHomePage.href = `/html/listings/listings.html?name=${user}`
   }
   if (getAvatarNavbar) {
     getAvatarNavbar.href = `/html/profiles/profile.html?name=${user}`
