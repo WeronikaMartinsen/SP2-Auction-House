@@ -67,7 +67,7 @@
                 <button
                 aria-label="Button"
                   type="button"
-                  class="btn btn-primary text-white px-4 rounded-4 fw-light"
+                  class="btn btn-primary text-white px-4 fw-light"
                   data-bs-toggle="modal"
                   data-bs-target="#createListingModal"
                 >Sell item</button>
@@ -157,14 +157,14 @@
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary rounded-4"
+                          class="btn btn-secondary"
                           data-bs-dismiss="modal"
                         >
                           Close
                         </button>
                         <button
                           type="submit"
-                          class="btn btn-primary text-white rounded-4"
+                          class="btn btn-primary text-white"
                         >
                           Submit
                         </button>
@@ -191,17 +191,17 @@
       </div>
     </section>
     <section class="p-4">
-      <div class="d-flex justify-content-center h-100">
-        <div class="searchbar shadow">
+      <div class="container d-flex justify-content-center h-100">
+        
           <input
             aria-label="Search"
-            class="border-0 mt-1 px-2 custom-hover-search w-100"
+            class="border-0 mt-1 px-2 custom-hover-search w-100 rounded-5 form-control-lg fw-light shadow"
             type="text"
-            name=""
+            name="searchbar"
             placeholder="Search..."
             id="search"
           />
-        </div>
+      
       </div>
     </section>
 
@@ -219,7 +219,7 @@
         <div class="d-flex justify-content-end align-items-center gap-1">
           <div class="btn-group">
             <button
-              class="btn btn-outline-success text-dark dropdown-toggle rounded-4"
+              class="btn btn-outline-success text-dark dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"

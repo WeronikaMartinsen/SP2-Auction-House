@@ -41,22 +41,23 @@ export async function updateListingDetails() {
       )
 
       // Create update button
-      const btnUpdate = document.createElement("a")
-      btnUpdate.textContent = ". . ."
-      btnUpdate.classList.add("pe-auto", "text-dark", "getProfileLinkUpdate")
+      const btnUpdate = document.createElement("button")
+      btnUpdate.textContent = "Edit"
+      btnUpdate.classList.add(
+        "btn",
+        "border",
+        "border-success",
+        "px-3",
+        "getProfileLinkUpdate",
+      )
       btnUpdate.addEventListener("click", () => {
         window.location.href = `/html/listings/updateListing.html?name=${encodeURIComponent(listing.seller.name)}&id=${listing.id}`
       })
 
       // Create delete button
-      const btnDelete = document.createElement("a")
-      btnDelete.classList.add(
-        "px-2",
-        "fa-solid",
-        "fa-xmark",
-        "pe-auto",
-        "text-dark",
-      )
+      const btnDelete = document.createElement("button")
+      btnDelete.classList.add("btn", "text-dark", "border", "px-2")
+      btnDelete.textContent = "Delete"
       btnDelete.addEventListener("click", () => {
         confirmDelateListing(
           "Are you sure you want to delete your listing?",

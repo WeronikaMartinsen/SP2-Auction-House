@@ -8,6 +8,16 @@
   background-size: 100% auto;
   background-position: center;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+}
 
 a {
   text-decoration: none;
@@ -222,13 +232,14 @@ p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-height: 10em;
 }
 
 .overlayUserFeedback,
 .overlayConfirmDelate {
   background-color: white;
   position: fixed;
+  justify-content: center;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -255,7 +266,6 @@ p {
   background-color: white;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   word-wrap: break-word;
@@ -301,6 +311,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: start;
+  gap: 0.3em;
 }
 .details {
   font-size: 0.7em;
@@ -322,8 +333,8 @@ p {
 .bids-container,
 .btnContainer {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 

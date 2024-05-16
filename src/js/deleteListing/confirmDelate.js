@@ -10,31 +10,12 @@ export function confirmDelateListing(message, listingId) {
   messageBox.classList.add("messageBox")
 
   const content = document.createElement("span")
-  content.classList.add("text-center", "text-wrap", "mt-2")
+  content.classList.add("text-center", "text-wrap", "mt-3", "mb-4")
 
   content.textContent = message
 
-  const containerForCloseBtn = document.createElement("div")
-  containerForCloseBtn.classList.add("ms-auto")
-
-  const deleteButton = document.createElement("i")
-
-  deleteButton.classList.add(
-    "d-flex",
-    "align-items-center",
-    "btn",
-    "fa-solid",
-    "justify-content-end",
-    "align-item-end",
-    "fa-xmark",
-  )
-
-  deleteButton.addEventListener("click", () => {
-    document.body.removeChild(overlay)
-  })
-
   const buttonsContainer = document.createElement("div")
-  buttonsContainer.classList.add("buttons-confirm")
+  buttonsContainer.classList.add("p-0", "m-0", "d-flex", "gap-2")
 
   const yesBtn = document.createElement("button")
   yesBtn.textContent = "Delete"
@@ -62,8 +43,6 @@ export function confirmDelateListing(message, listingId) {
   buttonsContainer.append(noBtn)
   buttonsContainer.append(yesBtn)
 
-  containerForCloseBtn.append(deleteButton)
-  overlay.append(containerForCloseBtn)
   messageBox.append(content)
   messageBox.append(buttonsContainer)
 

@@ -139,7 +139,7 @@ export function createListingCard(listing) {
 
   // Auctions End
   const auctionsEnd = document.createElement("div")
-  auctionsEnd.classList.add("auctionEnds", "rounded-4", "bg-opacity-75")
+  auctionsEnd.classList.add("auctionEnds", "rounded-5", "bg-opacity-75")
 
   // Start Countdown after appending clock icon
   startCountdown(listing, auctionsEnd)
@@ -229,7 +229,7 @@ export function createListingCard(listing) {
 
   const bidBtn = document.createElement("button")
   bidBtn.textContent = "BID"
-  bidBtn.classList.add("btn", "btn-primary", "text-white", "rounded-4", "px-4")
+  bidBtn.classList.add("btn", "btn-primary", "text-white", "px-5")
   bidBtn.href = `/html/listings/singleListing.html?id=${listingId}`
   bidBtn.addEventListener("click", () => {
     if (!userProfile) {
