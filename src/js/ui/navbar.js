@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="border-light w-100 border-bottom mt-4 custom-border-width"></div>
      </div>
      <div class="navbar-content-item d-flex flex-column">
-       <a href="#" id="name-navbar" class="text-primary text-end h4 p-0 fw-light custom-name"></a>
+       <a href="#" id="name-navbar" class="text-primary text-end h6 p-0 fw-light custom-name"></a>
        <div class="d-flex gap-1">
          <i class="fa-solid fa-coins"></i>
          <span id="credits-navbar" class="text-dark text-end small-font-size p-0 fw-light"></span>
