@@ -393,7 +393,7 @@ p {
   align-items: center;
   flex-direction: column;
 }
-
+.custom-width-overlay-change-avatar,
 .overlayUserFeedback,
 .overlayConfirmDelate {
   background-color: white;
@@ -405,16 +405,13 @@ p {
   text-align: center;
   padding: 1em;
   border-radius: 15px;
-  max-width: 35em;
+  max-width: 25em;
   min-width: 20em;
+  min-height: 11em;
+  width: 100%;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
-}
-
-.custom-width-overlay-change-avatar {
-  min-height: 12em;
-  width: 100%;
 }
 
 .overlayConfirmDelate {

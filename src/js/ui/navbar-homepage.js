@@ -34,14 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
      </div>
      <div class="navbar-content-item d-flex flex-column">
        <a href="#" id="name-navbar" class="text-primary text-end h4 p-0 fw-light custom-name"></a>
-       <div class="d-flex gap-1">
-         <i class="fa-solid fa-coins"></i>
-         <span id="credits-navbar" class="text-dark text-end small-font-size p-0 fw-light"></span>
-       </div>
+      
      </div>
      <div class="navbar-content-item m-2 avatar-custom-media">
        <a href="#" id="avatar-small-navbar">
-         <img src="/images/avatar-bidme.png" alt="Avatar." id="avatar-navbar" class="custom-avatar-size avatar-img shadow">
+         <img src="/images/avatar-bidme.png" alt="Avatar." id="avatar-navbar" class="custom-avatar-size">
        </a>
      </div>
       

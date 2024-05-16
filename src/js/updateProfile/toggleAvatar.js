@@ -4,6 +4,7 @@ export function toggleAvatarForm() {
   document.addEventListener("DOMContentLoaded", function () {
     const toggleAvatarFormButton = document.getElementById("toggleAvatarForm")
     const closeBtn = document.getElementById("close-btn")
+    closeBtn.classList.add("float-right")
     const avatarForm = document.getElementById("avatarUploadForm")
 
     toggleAvatarFormButton.addEventListener("click", function (event) {
