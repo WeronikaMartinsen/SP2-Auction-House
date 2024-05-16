@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
      <a href="#" id="logout" class="text-dark text-end small-font-size p-0 fw-light"><i class="fa-solid fa-right-from-bracket text-dark"></i> Logout</a>
   <div class="border-light w-100 border-bottom mt-4 custom-border-width"></div>
      </div>
-     <div class="navbar-content-item d-flex flex-column">
-       <a href="#" id="name-navbar" class="text-primary text-end h6 p-0 fw-light custom-name"></a>
+     <div class="navbar-content-item d-flex flex-column text-wrap">
+       <a href="#" id="name-navbar" class="text-primary text-end h6 p-0 fw-light custom-name text-wrap"></a>
        <div class="d-flex gap-1">
          <i class="fa-solid fa-coins"></i>
          <span id="credits-navbar" class="text-dark text-end small-font-size p-0 fw-light"></span>
