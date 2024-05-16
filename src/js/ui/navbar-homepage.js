@@ -19,19 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 
   <div class="navbar-content-item">
-    <a href="#" id="profile" class="nav-link display-1">Profile</a>
-  </div>
-  <div class="navbar-content-item">
-  <a href="#" id="logout-nav" class="nav-link display-1 text-decoration-underline">Logout</a>
+<a href="/html/register/register.html" class="nav-link display-1">Register</a>
 </div>
+  <div class="navbar-content-item">
+  <a href="/html/login/index.html" class="nav-link btn btn-primary text-white display-1 p-2 px-3">Log in</a>
+</div>
+
   </div>
   
-    
-     
-     <div class="navbar-content-item custom-padding-logout-btn">
-     <a href="#" id="logout" class="text-dark text-end small-font-size p-0 fw-light"><i class="fa-solid fa-right-from-bracket text-dark"></i> Logout</a>
-  <div class="border-light w-100 border-bottom mt-4 custom-border-width"></div>
-     </div>
      <div class="navbar-content-item d-flex flex-column">
        <a href="#" id="name-navbar" class="text-primary text-end h4 p-0 fw-light custom-name"></a>
       
