@@ -4,8 +4,7 @@
 
 ## "Bidme-Auction House"
 
-![/images/forReadme.jpeg]()
-
+![Screenshot 2](/images/forReadme.jpeg)
 
 ## Description
 
