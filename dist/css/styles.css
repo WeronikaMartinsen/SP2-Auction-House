@@ -24,6 +24,9 @@ p {
 .custom-letter-spacing {
   letter-spacing: 0.1em;
 }
+.custom-margin-top {
+  margin-top: 5em;
+}
 
 .custom-avatar-size {
   width: 3em;
