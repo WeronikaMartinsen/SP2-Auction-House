@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <a href="#" id="profile" class="nav-link display-1">Profile</a>
   </div>
   <div class="navbar-content-item">
-  <a href="#" id="logout-nav" class="nav-link display-1 text-decoration-underline">Logout</a>
+  <a href="#" id="logout-nav" class="nav-link display-1 btn btn-primary text-white opacity-75 px-2">Logout</a>
 </div>
   </div>
   
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
      <a href="#" id="logout" class="text-dark text-end small-font-size p-0 fw-light"><i class="fa-solid fa-right-from-bracket text-dark"></i> Logout</a>
   <div class="border-light w-100 border-bottom mt-4 custom-border-width"></div>
      </div>
-     <div class="navbar-content-item d-flex flex-column text-wrap">
+     <div class="navbar-content-item d-flex flex-column flex-wrap text-wrap custom-width-name-div">
        <a href="#" id="name-navbar" class="text-primary text-end h6 p-0 fw-light custom-name text-wrap"></a>
-       <div class="d-flex gap-1">
+       <div class="d-flex flex-row gap-1">
          <i class="fa-solid fa-coins"></i>
          <span id="credits-navbar" class="text-dark text-end small-font-size p-0 fw-light"></span>
        </div>
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
     </div>
     <div class="navbar-toggler-custome">
-      <i class="fa-solid fa-bars" class="hamburger-custom"></i>
+      <i class="fa-solid fa-bars p-0 m-0" class="hamburger-custom"></i>
     </div>
    
   </nav>
