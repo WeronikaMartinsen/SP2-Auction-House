@@ -38,11 +38,14 @@ export function createListingCard(listing) {
 
   card.appendChild(imageContainer)
 
+  const mainContent = document.createElement("div")
+  mainContent.classList.add("main-content")
+
   const sellerContainer = document.createElement("div")
   sellerContainer.classList.add("sellerContainer")
 
   // Append sellerContainer to card
-  card.appendChild(sellerContainer)
+  mainContent.appendChild(sellerContainer)
 
   const updateContainer = document.createElement("div")
   updateContainer.classList.add("d-flex", "justify-content-end")
@@ -54,15 +57,14 @@ export function createListingCard(listing) {
     "justify-content-center",
     "align-items-center",
   )
-  const btnUpdate = document.createElement("a")
+  const btnUpdate = document.createElement("button")
   btnUpdate.textContent = ". . ."
-  btnUpdate.classList.add("pe-auto", "text-dark", "getProfileLinkUpdate")
+  btnUpdate.classList.add("text-dark", "getProfileLinkUpdate", "btn", "btn-sm")
   btnUpdate.addEventListener("click", () => {
     window.location.href = `/html/listings/updateListing.html?name=${user}&id=${listingId}`
   })
-  const btnDelete = document.createElement("a")
-  btnDelete.classList.add("px-2")
-  btnDelete.classList.add("fa-solid", "fa-xmark", "pe-auto", "text-dark")
+  const btnDelete = document.createElement("button")
+  btnDelete.classList.add("fa-solid", "fa-xmark", "text-dark", "btn", "btn-sm")
   btnDelete.addEventListener("click", () => {
     confirmDelateListing(
       "Are you sure you want to delate your listing?",
@@ -74,7 +76,7 @@ export function createListingCard(listing) {
     userProfile &&
     userProfile.userName === (listing.seller ? listing.seller.name : undefined)
   ) {
-    card.appendChild(updateContainer)
+    mainContent.appendChild(updateContainer)
     updateContainer.appendChild(btnsContainer)
     btnsContainer.appendChild(btnUpdate)
     btnsContainer.appendChild(btnDelete)
@@ -106,7 +108,7 @@ export function createListingCard(listing) {
     listing.seller && listing.seller.name
       ? listing.seller.name
       : "Unknown Seller"
-  sellerName.classList.add("h6", "text-dark", "m-0")
+  sellerName.classList.add("h6", "text-dark", "m-0", "fw-light")
   sellerContainer.addEventListener("click", () => {
     if (listing.seller && listing.seller.name) {
       window.location.href = `/html/profiles/profile.html?name=${listing.seller.name}`
@@ -130,7 +132,7 @@ export function createListingCard(listing) {
 
   const contentContainer = document.createElement("div")
   contentContainer.classList.add("contentContainer")
-  card.appendChild(contentContainer)
+  mainContent.appendChild(contentContainer)
 
   // Append the formatted date to the avatarAndDate container
   avatarAndDate.appendChild(details)
@@ -195,7 +197,7 @@ export function createListingCard(listing) {
   const bidsCount =
     listing._count && listing._count.bids ? listing._count.bids : 0 // Get the count of bids
   const bidsContainer = document.createElement("div")
-  bidsContainer.classList.add("bids-container")
+  bidsContainer.classList.add("m-0")
 
   if (bidsCount > 0 && listing.bids) {
     const lastBid = listing.bids[listing.bids.length - 1] // Get the last bid
@@ -242,7 +244,8 @@ export function createListingCard(listing) {
 
   btnContainer.appendChild(bidBtn)
 
-  card.appendChild(btnContainer)
+  mainContent.appendChild(btnContainer)
+  card.appendChild(mainContent)
 
   return card
 }

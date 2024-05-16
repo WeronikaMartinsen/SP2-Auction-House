@@ -3,6 +3,11 @@
   background-size: 100% auto;
   background-position: center;
 }
+.custom-bg-update {
+  background-image: url("/images/img-5.png");
+  background-size: 100% auto;
+  background-position: center;
+}
 
 a {
   text-decoration: none;
@@ -233,7 +238,6 @@ p {
   border-radius: 15px;
   max-width: 35em;
   min-width: 20em;
-  z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
 }
@@ -251,12 +255,14 @@ p {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   word-wrap: break-word;
-  min-height: 20em;
+  min-height: 15em;
+}
+.main-content {
+  max-height: 18em;
 }
 
 .image-container {
@@ -319,11 +325,6 @@ p {
   justify-content: start;
   align-items: start;
   flex-direction: column;
-}
-.bids-container {
-  border: 1px solid light;
-  border-radius: 15px;
-  margin: 0;
 }
 
 .small-font-size {
