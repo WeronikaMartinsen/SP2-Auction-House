@@ -201,7 +201,6 @@ export async function displayAllListings() {
       const filteredListings = allListings.filter(function (listing) {
         return (
           listing.title.toLowerCase().includes(searchValue) ||
-          listing.description.toLowerCase().includes(searchValue) ||
           listing.seller.name.toLowerCase().includes(searchValue)
         )
       })

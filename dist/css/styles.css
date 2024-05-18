@@ -270,14 +270,15 @@ p {
   position: relative;
   background-color: white;
   display: flex;
+  justify-content: start;
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   word-wrap: break-word;
-  min-height: 15em;
+  height: auto;
 }
 .main-content {
-  max-height: 18em;
+  min-height: 5em;
 }
 
 .image-container {

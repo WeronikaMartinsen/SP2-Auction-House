@@ -1,12 +1,9 @@
 export function startCountdown(listing, endsAtElement) {
   if (listing.endsAt) {
     const endsAt = new Date(listing.endsAt).getTime()
-
-    // Function to calculate and display the countdown
-    const updateCountdown = () => {
+    const countdownInterval = setInterval(() => {
       const now = new Date().getTime()
       const distance = endsAt - now
-
       if (distance < 0) {
         clearInterval(countdownInterval)
         endsAtElement.textContent = "Auction ended"
@@ -19,10 +16,6 @@ export function startCountdown(listing, endsAtElement) {
         const seconds = Math.floor((distance % (1000 * 60)) / 1000)
         endsAtElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`
       }
-    }
-
-    updateCountdown()
-
-    const countdownInterval = setInterval(updateCountdown, 1000)
+    }, 1000)
   }
 }

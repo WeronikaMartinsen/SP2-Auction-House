@@ -5,7 +5,7 @@ import { hideLoadingIndicator } from "../ui/loadingIndicator.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 
 export async function getListings() {
-  const getListingsURL = `${API_BASE_URL}${LISTINGS}?_seller=true&_bids=true&sort=endsAt`
+  const getListingsURL = `${API_BASE_URL}${LISTINGS}?_seller=true&_bids=true`
   const token = load("token")
 
   try {
