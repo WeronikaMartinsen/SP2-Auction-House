@@ -58,13 +58,20 @@ export function createListingCard(listing) {
     "align-items-center",
   )
   const btnUpdate = document.createElement("button")
-  btnUpdate.textContent = ". . ."
-  btnUpdate.classList.add("text-dark", "getProfileLinkUpdate", "btn", "btn-sm")
+
+  btnUpdate.classList.add(
+    "text-dark",
+    "getProfileLinkUpdate",
+    "fa-solid",
+    "fa-pen-to-square",
+    "btn",
+    "border-none",
+  )
   btnUpdate.addEventListener("click", () => {
     window.location.href = `/html/listings/updateListing.html?name=${user}&id=${listingId}`
   })
   const btnDelete = document.createElement("button")
-  btnDelete.classList.add("fa-solid", "fa-xmark", "text-dark", "btn", "btn-sm")
+  btnDelete.classList.add("fa-solid", "fa-trash", "text-dark", "btn", "btn-sm")
   btnDelete.addEventListener("click", () => {
     confirmDelateListing(
       "Are you sure you want to delate your listing?",
@@ -82,17 +89,27 @@ export function createListingCard(listing) {
     btnsContainer.appendChild(btnDelete)
   }
 
-  // Avatar
   const avatarImg = document.createElement("img")
+
+  // Check if the listing has a seller and a valid avatar URL
   if (listing.seller && listing.seller.avatar && listing.seller.avatar.url) {
     avatarImg.src = listing.seller.avatar.url
   } else {
     avatarImg.src = "/images/avatar-bidme.png"
+    console.log("Using default avatar")
   }
+
+  // Set image alt attribute and CSS class
   avatarImg.alt = "Avatar"
   avatarImg.classList.add("sellerAvatar")
 
-  // Append avatarImg to sellerContainer
+  // Add an error handler to use the default image if the avatar fails to load
+  avatarImg.onerror = function () {
+    avatarImg.src = "/images/avatar-bidme.png"
+    console.log("Avatar image failed to load, using default avatar")
+  }
+
+  // Append avatar image to the seller container
   sellerContainer.appendChild(avatarImg)
 
   const avatarAndDate = document.createElement("div")
@@ -157,43 +174,6 @@ export function createListingCard(listing) {
   title.classList.add("mt-1")
   contentContainer.appendChild(title)
 
-  /*   // Description
-  const description = document.createElement("p")
-  const maxDescriptionLength = 100 // Maximum length of the description to display initially
-
-  if (listing.description.length > maxDescriptionLength) {
-    // If description length exceeds the maximum length, truncate it
-    const truncatedDescription = `${listing.description.substring(0, maxDescriptionLength)}...`
-    description.textContent = truncatedDescription
-    const readMoreBtn = document.createElement("a")
-    readMoreBtn.textContent = "Read more"
-    readMoreBtn.classList.add(
-      "text-dark",
-      "small-font-size",
-      "text-start",
-      "p-0",
-      "m-0",
-    )
-    let isDescriptionExpanded = false
-    readMoreBtn.addEventListener("click", () => {
-      isDescriptionExpanded = !isDescriptionExpanded
-      if (isDescriptionExpanded) {
-        description.textContent = listing.description
-        readMoreBtn.textContent = "Read less"
-      } else {
-        description.textContent = truncatedDescription
-        readMoreBtn.textContent = "Read more"
-      }
-    })
-    contentContainer.appendChild(description)
-
-    contentContainer.appendChild(readMoreBtn)
-  } else {
-    // If description length doesn't exceed the maximum length, display it without truncation
-    description.textContent = listing.description
-  }
- */
-  // Bids
   const bidsCount =
     listing._count && listing._count.bids ? listing._count.bids : 0 // Get the count of bids
   const bidsContainer = document.createElement("div")

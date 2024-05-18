@@ -54,11 +54,16 @@ export function createListingCard(listing) {
   avatarImg.alt = "Avatar"
   avatarImg.classList.add("sellerAvatar")
 
-  // Append avatarImg to sellerContainer
+  // Add error handler for avatar image
+  avatarImg.onerror = function () {
+    avatarImg.src = "/images/avatar-bidme.png"
+  }
+
   sellerContainer.appendChild(avatarImg)
 
   const avatarAndDate = document.createElement("div")
   avatarAndDate.classList.add("avatarAndDate")
+  sellerContainer.appendChild(avatarAndDate)
 
   // Append avatarAndDate to sellerContainer
   sellerContainer.appendChild(avatarAndDate)
@@ -112,11 +117,6 @@ export function createListingCard(listing) {
   title.textContent = listing.title
   title.classList.add("mt-1")
   contentContainer.appendChild(title)
-
-  /*   // Description
-  const description = document.createElement("p")
-  description.textContent = listing.description
-  contentContainer.appendChild(description) */
 
   return card
 }

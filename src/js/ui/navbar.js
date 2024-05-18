@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar-custom")
 
   navbar.innerHTML = `
-  <div class="fixed-top">
+  <div class="fixed-top shadow-sm">
   <div class="container-fluid custom-height-pre-navbar bg-dark d-flex justify-content-end align-items-center">
   </div>
   <nav class="navbar bg-white text-dark justify-content-between align-items-center">
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <a href="#" id="profile" class="nav-link display-1">Profile</a>
   </div>
   <div class="navbar-content-item">
-  <a href="#" id="logout-nav" class="nav-link display-1 btn btn-primary text-white opacity-75 px-2">Logout</a>
+  <a href="#" id="logout-nav" class="nav-link display-1 btn btn-primary text-white px-3">Logout</a>
 </div>
   </div>
   

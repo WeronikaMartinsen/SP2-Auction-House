@@ -32,8 +32,20 @@ export async function getProfileForm() {
 
     userName.textContent = profile.name
     userEmail.textContent = profile.email
-    userAvatar.src = profile.avatar.url || "/images/avatar-bidme.png"
+    if (profile.avatar && profile.avatar.url) {
+      console.log("Using profile avatar:", profile.avatar.url)
+      userAvatar.src = profile.avatar.url
+    } else {
+      console.log("Using default avatar")
+      userAvatar.src = "/images/avatar-bidme.png"
+    }
     userAvatar.alt = "User image."
+
+    // Add an error handler to the avatar image
+    userAvatar.onerror = function () {
+      userAvatar.src = "/images/avatar-bidme.png"
+      console.log("Failed to load avatar image, using default avatar")
+    }
 
     userCredits.textContent = profile.credits
 
