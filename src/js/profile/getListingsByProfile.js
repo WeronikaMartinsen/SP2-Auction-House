@@ -41,7 +41,6 @@ export async function getListingsByProfile() {
     const fetchedListings = await response.json()
     hideLoadingIndicator()
 
-    console.log("Listings fetched successfully:", fetchedListings)
     return fetchedListings
   } catch (error) {
     // Handle errors

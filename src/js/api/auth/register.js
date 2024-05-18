@@ -14,7 +14,7 @@ export async function register(user) {
     }
     const response = await fetch(registerURL, postData)
     const json = await response.json()
-    console.log("Response from server:", json)
+
     const status = json.statusCode
     if (response.ok) {
       userFeedback(

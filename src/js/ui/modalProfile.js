@@ -28,11 +28,7 @@ modalBackdrop.addEventListener("click", (event) => {
 })
 
 // Function to handle logout
-function handleLogout() {
-  // Your logout logic here
-  // For example:
-  console.log("Logout clicked")
-}
+function handleLogout() {}
 
 // Profile and logout options
 const profileContent = `
@@ -62,7 +58,6 @@ modalContainer.innerHTML = `
 `
 document.body.appendChild(modalContainer)
 
-// Event listener for logout button
 const logoutBtn = document.getElementById("logoutBtn")
 logoutBtn.addEventListener("click", () => {
   handleLogout()

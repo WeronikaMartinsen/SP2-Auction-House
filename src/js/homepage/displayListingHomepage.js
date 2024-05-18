@@ -8,8 +8,6 @@ const LISTINGS_PER_PAGE = 10
 
 export async function displayListings() {
   try {
-    console.log("Fetching listings...")
-
     const response = await getListings()
     let allListings = response.data
 
@@ -19,8 +17,6 @@ export async function displayListings() {
       console.error("Error: getListings did not return an array:", allListings)
       return
     }
-
-    console.log("Listings fetched successfully:", allListings)
 
     allListings.sort((a, b) => new Date(b.created) - new Date(a.created))
 
@@ -35,20 +31,16 @@ export async function displayListings() {
     let currentPage = 1
 
     filterOptionTwo.addEventListener("click", function () {
-      console.log("Sorting listings from old to new...")
       sortListingsByCreationDateAsc(allListings)
       displayFilteredListings(allListings, getProfile, listingsContainer)
     })
 
     filterOptionThree.addEventListener("click", function () {
-      console.log("Sorting listings from old to new...")
       sortListingsByCreationDateDesc(allListings)
       displayFilteredListings(allListings, getProfile, listingsContainer)
     })
 
     filterOptionFour.addEventListener("click", function () {
-      console.log("Filtering for active listings...")
-
       const currentDate = new Date() // Get the current date and time
 
       const activeListings = allListings.filter((listing) => {
@@ -62,7 +54,6 @@ export async function displayListings() {
     })
 
     searchInput.addEventListener("keyup", function (event) {
-      console.log("Searching listings...")
       const searchValue = event.target.value.trim().toLowerCase()
       const filteredListings = allListings.filter(function (listing) {
         return (
@@ -76,7 +67,6 @@ export async function displayListings() {
     })
 
     loadMoreBtn.addEventListener("click", function () {
-      console.log("Loading more listings...")
       currentPage++
       const startIndex = (currentPage - 1) * LISTINGS_PER_PAGE
       const endIndex = startIndex + LISTINGS_PER_PAGE
@@ -89,7 +79,6 @@ export async function displayListings() {
       }
     })
 
-    console.log("Displaying initial listings...")
     displayFilteredListings(
       allListings.slice(0, LISTINGS_PER_PAGE),
       getProfile,
@@ -122,7 +111,6 @@ export function displayFilteredListings(
   if (!append) {
     listingsContainer.innerHTML = ""
   }
-  console.log("Filtered Listings:", listings) // Log filtered listings
 
   listings.forEach((listing) => {
     const card = createListingCard(listing, getProfile)

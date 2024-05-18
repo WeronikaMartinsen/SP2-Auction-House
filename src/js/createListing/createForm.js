@@ -11,12 +11,10 @@ export async function createNewListing() {
     if (getForm) {
       getForm.addEventListener("submit", async (event) => {
         event.preventDefault()
-        console.log("Form submitted!")
 
         try {
-          console.log("Fetching user profile...")
           const profile = await loadProfile()
-          console.log("User profile fetched:", profile)
+
           const userName = profile ? profile.userName : null
 
           if (!userName) {
@@ -56,11 +54,7 @@ export async function createNewListing() {
             seller: { name: userName },
           }
 
-          // Log the newListing object
-          console.log("New Listing:", newListing)
-
           const createdListing = await createListing(newListing)
-          console.log("Created Listing:", createdListing)
 
           userFeedback("Your listing has been successfully added!.", () => {
             location.reload()
@@ -68,7 +62,6 @@ export async function createNewListing() {
 
           const listingsContainer = document.querySelector("#listings")
           if (listingsContainer) {
-            console.log("Displaying filtered listings...")
             displayAllListings(
               [createdListing],
               getProfile,

@@ -3,8 +3,6 @@ import { createListingCard } from "../listings/listingCard.js"
 
 export async function displayListingsByProfile(sellerName) {
   try {
-    console.log("Fetching listings by profile...")
-
     // Fetch listings by profile
     const response = await getListingsByProfile(sellerName)
 
@@ -33,8 +31,6 @@ export async function displayListingsByProfile(sellerName) {
       const card = createListingCard(listing)
       listingsContainer.appendChild(card)
     })
-
-    console.log("Listings displayed successfully.")
   } catch (error) {
     console.error("Error fetching and displaying listings by profile:", error)
     // Handle error

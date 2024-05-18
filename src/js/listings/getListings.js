@@ -10,7 +10,7 @@ export async function getListings() {
 
   try {
     showLoadingIndicator()
-    console.log("Fetching listings...")
+
     const response = await fetch(getListingsURL, {
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export async function getListings() {
     if (response.ok) {
       hideLoadingIndicator()
       save("listings", listings)
-      console.log("Listings fetched successfully:", listings)
+
       return listings
     } else {
       console.log("Error fetching listings:", listings)

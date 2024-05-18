@@ -19,8 +19,6 @@ export async function login(user) {
     const response = await fetch(loginURL, postData)
     const json = await response.json()
 
-    console.log("Response Data:", json)
-
     if (response.ok) {
       const accessToken = json.data.accessToken
       if (!accessToken) {

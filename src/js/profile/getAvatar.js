@@ -21,8 +21,6 @@ export async function getAvatar() {
     const response = await getProfile(user)
     const profile = response.data // Access the `data` object
 
-    console.log("Profile fetched:", profile)
-
     // Update the DOM with the profile information
     const userName = document.querySelector("#name-navbar")
     const avatarSmallNavbar = document.querySelector("#avatar-small-navbar")

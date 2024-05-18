@@ -1,7 +1,6 @@
 import { bidOnListing } from "./bidOn.js"
 
 export function bidForm() {
-  console.log("Bid form initialized")
   const form = document.querySelector("#newBid")
   if (form) {
     form.addEventListener("submit", async (event) => {

@@ -36,7 +36,6 @@ export async function getProfile(sellerName) {
     // Parse the response JSON
     const fetchedProfile = await response.json()
 
-    console.log("Profile fetched successfully:", fetchedProfile)
     return fetchedProfile
   } catch (error) {
     // Handle errors

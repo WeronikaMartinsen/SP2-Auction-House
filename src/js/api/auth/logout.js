@@ -13,7 +13,7 @@ export function logout() {
 
   logoutBtn.addEventListener("click", (event) => {
     event.preventDefault()
-    console.log("Logout button clicked")
+
     remove("token")
     remove("profile")
     remove("apiKey")

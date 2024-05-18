@@ -57,7 +57,6 @@ export async function updateListingForm() {
           endsAt: deadline,
         }
 
-        console.log(updatedListing)
         updateListing(updatedListing)
       })
     }

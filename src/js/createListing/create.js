@@ -19,7 +19,7 @@ export async function createListing(newListing) {
     }
 
     const response = await fetch(createListingURL, postData)
-    console.log(response)
+
     const result = await response.json()
 
     if (response.ok) {

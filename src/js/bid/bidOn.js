@@ -12,7 +12,6 @@ export async function bidOnListing(bidAmount) {
   }
 
   const bidOnListingURL = `${API_BASE_URL}${LISTING}/bids`
-  console.log("Bid URL:", bidOnListingURL)
 
   try {
     const postData = {
@@ -24,8 +23,6 @@ export async function bidOnListing(bidAmount) {
       },
       body: JSON.stringify(bidAmount),
     }
-
-    console.log("Post Data:", postData)
 
     const response = await fetch(bidOnListingURL, postData)
     const result = await response.json()

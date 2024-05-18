@@ -16,8 +16,6 @@ export async function updateListingDetails() {
 
     const listing = response.data
 
-    console.log("Retrieved Listing Data:", listing)
-
     const lastBid =
       listing.bids && listing.bids.length > 0
         ? listing.bids[listing.bids.length - 1]
@@ -79,7 +77,6 @@ export async function updateListingDetails() {
 
     // Check if the HTML elements are selected correctly
     const titleElement = document.getElementById("title")
-    console.log("Title Element:", titleElement)
 
     if (!titleElement) {
       console.error("Title element not found.")

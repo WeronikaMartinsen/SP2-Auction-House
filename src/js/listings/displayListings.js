@@ -42,20 +42,16 @@ export async function displayAllListings() {
     let currentPage = 1
 
     filterOptionTwo.addEventListener("click", function () {
-      console.log("Sorting listings from old to new...")
       sortListingsByCreationDateAsc(allListings)
       displayFilteredListings(allListings, getProfile, listingsContainer)
     })
 
     filterOptionThree.addEventListener("click", function () {
-      console.log("Sorting listings from old to new...")
       sortListingsByCreationDateDesc(allListings)
       displayFilteredListings(allListings, getProfile, listingsContainer)
     })
 
     filterOptionFour.addEventListener("click", function () {
-      console.log("Filtering for active listings...")
-
       const currentDate = new Date()
       const activeListings = allListings.filter((listing) => {
         const endDate = new Date(listing.endsAt)
@@ -67,7 +63,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan100Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 100...")
       const bidLessThan100Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount < 100
@@ -80,7 +75,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan200Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 200...")
       const bidLessThan200Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 100 && lastBid.amount < 200
@@ -93,7 +87,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan300Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 300...")
       const bidLessThan300Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 200 && lastBid.amount < 300
@@ -106,7 +99,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan400Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 400...")
       const bidLessThan400Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 300 && lastBid.amount < 400
@@ -119,7 +111,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan500Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 500...")
       const bidLessThan500Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 400 && lastBid.amount < 500
@@ -132,7 +123,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan600Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 600...")
       const bidLessThan600Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 500 && lastBid.amount < 600
@@ -145,7 +135,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan700Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 700...")
       const bidLessThan700Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 600 && lastBid.amount < 700
@@ -158,7 +147,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan800Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 800...")
       const bidLessThan800Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 700 && lastBid.amount < 800
@@ -171,7 +159,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan900Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 900...")
       const bidLessThan900Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 800 && lastBid.amount < 900
@@ -184,7 +171,6 @@ export async function displayAllListings() {
     })
 
     bidLessThan1000Option.addEventListener("click", function () {
-      console.log("Filtering listings with bids less than 1000...")
       const bidLessThan1000Listings = allListings.filter((listing) => {
         const lastBid = getLastBid(listing.bids)
         return lastBid && lastBid.amount > 900 && lastBid.amount < 1000
@@ -196,7 +182,6 @@ export async function displayAllListings() {
       )
     })
     searchInput.addEventListener("keyup", function (event) {
-      console.log("Searching listings...")
       const searchValue = event.target.value.trim().toLowerCase()
       const filteredListings = allListings.filter(function (listing) {
         return (
@@ -209,7 +194,6 @@ export async function displayAllListings() {
     })
 
     loadMoreBtn.addEventListener("click", function () {
-      console.log("Loading more listings...")
       currentPage++
       const startIndex = (currentPage - 1) * LISTINGS_PER_PAGE
       const endIndex = startIndex + LISTINGS_PER_PAGE

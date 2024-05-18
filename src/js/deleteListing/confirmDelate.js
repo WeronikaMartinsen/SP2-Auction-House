@@ -2,7 +2,6 @@ import { deleteListing } from "./delete.js"
 import { handleError } from "../userFeedback/errorMessage.js"
 
 export function confirmDelateListing(message, listingId) {
-  console.log("Attempting to delete listing with id:", listingId)
   const overlay = document.createElement("div")
   overlay.classList.add("overlayConfirmDelate", "border")
 
@@ -22,7 +21,6 @@ export function confirmDelateListing(message, listingId) {
   yesBtn.classList.add("btn", "btn-primary", "custom-shadow", "text-white")
   yesBtn.addEventListener("click", async () => {
     try {
-      console.log("Attempting to delete listing with id:", listingId)
       await deleteListing(listingId)
       document.body.removeChild(overlay)
     } catch (error) {
