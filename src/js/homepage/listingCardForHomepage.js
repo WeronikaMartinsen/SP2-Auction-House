@@ -101,7 +101,7 @@ export function createListingCard(listing) {
 
   // Auctions End
   const auctionsEnd = document.createElement("div")
-  auctionsEnd.classList.add("auctionEnds", "rounded-4", "bg-opacity-75")
+  auctionsEnd.classList.add("auctionEnds", "rounded-3", "bg-opacity-75")
 
   // Start Countdown after appending clock icon
   startCountdown(listing, auctionsEnd)
