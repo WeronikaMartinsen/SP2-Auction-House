@@ -28,7 +28,7 @@ export async function bidOnListing(bidAmount) {
     const result = await response.json()
 
     if (response.ok) {
-      userFeedback("You have successfully added a bid!")
+      userFeedback("You have successfully placed a bid!")
       setTimeout(function () {
         location.reload()
       }, 1000)

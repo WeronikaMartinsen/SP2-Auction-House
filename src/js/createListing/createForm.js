@@ -9,6 +9,9 @@ export async function createNewListing() {
     const getForm = document.getElementById("createListingModal")
 
     if (getForm) {
+      const deadlineInput = getForm.querySelector("#deadline")
+      const today = new Date().toISOString().split("T")[0]
+      deadlineInput.setAttribute("min", today)
       getForm.addEventListener("submit", async (event) => {
         event.preventDefault()
 
@@ -29,9 +32,12 @@ export async function createNewListing() {
 
           const parsedDeadline = new Date(deadline)
 
-          if (isNaN(parsedDeadline)) {
-            // Invalid date format, handle error
-            console.error("Invalid deadline format:", deadline)
+          // Check if the selected date is valid and not in the past
+          if (isNaN(parsedDeadline) || parsedDeadline < new Date(today)) {
+            console.error("Invalid or past deadline:", deadline)
+            userFeedback(
+              "Please select a valid date that is today or in the future.",
+            )
             return
           }
 
