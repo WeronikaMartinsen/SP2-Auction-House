@@ -11,7 +11,7 @@ export function userFeedback(message, callback) {
   const messageBox = document.createElement("div")
   messageBox.classList.add("messageBox")
 
-  const content = document.createElement("h6")
+  const content = document.createElement("h5")
   content.classList.add("text-center", "text-wrap")
   content.textContent = message
 
