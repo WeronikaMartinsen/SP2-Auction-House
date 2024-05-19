@@ -74,17 +74,23 @@ export function showModal(title, modalMessage) {
 
   // Login button
   const loginButton = document.createElement("a")
-  loginButton.href = "html/login/index.html"
   loginButton.classList.add("btn", "btn-primary", "text-white")
   loginButton.textContent = "Login"
-  buttonsContainer.appendChild(loginButton)
 
-  // Register button
-  const registerButton = document.createElement("a")
-  registerButton.href = "html/register/register.html"
-  registerButton.classList.add("btn", "btn-outline-primary", "text-dark")
-  registerButton.textContent = "Register"
-  buttonsContainer.appendChild(registerButton)
+  // Get the current path
+  const currentPath = window.location.pathname
+
+  // Set the login button href based on the current path
+  if (currentPath.includes("singleListingHomepage.html")) {
+    loginButton.href = "/html/login/index.html"
+  } else if (currentPath.includes("index.html")) {
+    loginButton.href = "/html/login/index.html"
+  } else {
+    // Default path
+    loginButton.href = "/html/login/index.html"
+  }
+
+  buttonsContainer.appendChild(loginButton)
 
   // Append buttons container to messageContainer
   messageContainer.appendChild(buttonsContainer)

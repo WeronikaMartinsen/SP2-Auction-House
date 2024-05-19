@@ -1,9 +1,19 @@
 import { API_BASE_URL, LISTING, API_KEY_NAME } from "../api/constants.js"
 import { load } from "../api/storage/storeToken.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
+import { showModal } from "../userFeedback/modalMessage.js" // Import showModal
 
 export async function bidOnListing(bidAmount) {
   const token = load("token")
+
+  if (!token) {
+    // If the user is not logged in, show the modal
+    const message = "You must have an account to place a bid!"
+    const title = "Login Required"
+    showModal(title, message)
+    return
+  }
+
   const searchParams = new URLSearchParams(window.location.search)
   const id = searchParams.get("id")
   if (!id) {
@@ -35,7 +45,7 @@ export async function bidOnListing(bidAmount) {
       return result
     }
     if (result.statusCode === 400) {
-      userFeedback("Your bid must be higher than current bid!")
+      userFeedback("Your bid must be higher than the current bid!")
     }
   } catch (error) {
     console.error(error)

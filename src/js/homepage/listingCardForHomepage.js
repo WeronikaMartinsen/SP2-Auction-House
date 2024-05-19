@@ -1,5 +1,4 @@
 import { startCountdown } from "../listings/countDown.js"
-import { showModal } from "../userFeedback/modalMessage.js"
 
 export function createListingCard(listing) {
   const card = document.createElement("div")
@@ -23,15 +22,10 @@ export function createListingCard(listing) {
     image.src = "/images/defaultImage.png"
     image.alt = "Listing Image"
   }
+
+  imageContainer.href = `/html/listings/singleListingHomepage.html?id=${listing.id}`
   imageContainer.addEventListener("click", () => {
-    // Define the message content
-    const message = "You must have an account to see the listing details!"
-
-    // Define the title
-    const title = "Login Required"
-
-    // Call the showModal function with the defined title and message
-    showModal(title, message)
+    window.location.href = imageContainer.href
   })
 
   imageContainer.appendChild(image)
