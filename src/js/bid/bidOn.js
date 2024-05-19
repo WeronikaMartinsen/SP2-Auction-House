@@ -1,14 +1,14 @@
 import { API_BASE_URL, LISTING, API_KEY_NAME } from "../api/constants.js"
 import { load } from "../api/storage/storeToken.js"
 import { userFeedback } from "../userFeedback/feedbackOverlay.js"
-import { showModal } from "../userFeedback/modalMessage.js" // Import showModal
+import { showModal } from "../userFeedback/modalMessage.js"
 
 export async function bidOnListing(bidAmount) {
   const token = load("token")
 
   if (!token) {
     // If the user is not logged in, show the modal
-    const message = "You must have an account to place a bid!"
+    const message = "You must to be logged in to place a bid!"
     const title = "Login Required"
     showModal(title, message)
     return

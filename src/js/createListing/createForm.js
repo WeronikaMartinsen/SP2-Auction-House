@@ -3,6 +3,7 @@ import { userFeedback } from "../userFeedback/feedbackOverlay.js"
 import { getProfile } from "../profile/getProfile.js"
 import { loadProfile } from "../api/storage/storeToken.js"
 import { displayAllListings } from "../listings/displayListings.js"
+import { invalidDate } from "../userFeedback/invalidDate.js"
 
 export async function createNewListing() {
   try {
@@ -35,8 +36,9 @@ export async function createNewListing() {
           // Check if the selected date is valid and not in the past
           if (isNaN(parsedDeadline) || parsedDeadline < new Date(today)) {
             console.error("Invalid or past deadline:", deadline)
-            userFeedback(
-              "Please select a valid date that is today or in the future.",
+            invalidDate(
+              "Invalid Date",
+              "Please select a valid date that is in the future. The bid deadline cannot be today or in the past.",
             )
             return
           }
