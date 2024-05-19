@@ -4,7 +4,6 @@ import { load } from "../api/storage/storeToken.js"
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    console.log("DOM content loaded")
     await getAvatar()
   } catch (error) {
     handleError("Error fetching user profile.")
@@ -13,8 +12,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 export async function getAvatar() {
   try {
-    console.log("Fetching profile...")
-
     const getProfileFromToken = load("profile")
     const user = getProfileFromToken.userName
 

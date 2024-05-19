@@ -205,7 +205,6 @@ export async function displayAllListings() {
       }
     })
 
-    console.log("Displaying initial listings...")
     displayFilteredListings(
       allListings.slice(0, LISTINGS_PER_PAGE),
       getProfile,
@@ -237,7 +236,6 @@ export function displayFilteredListings(
   newListing = null,
 ) {
   if (!append) {
-    console.log("Clearing listings container...")
     listingsContainer.innerHTML = ""
   }
 
@@ -254,7 +252,6 @@ export function displayFilteredListings(
       console.log("Listing appended:", card)
     })
   } else {
-    console.log("Displaying all listings...")
     listings.forEach((listing) => {
       const card = createListingCard(listing, getProfile)
       listingsContainer.appendChild(card)
